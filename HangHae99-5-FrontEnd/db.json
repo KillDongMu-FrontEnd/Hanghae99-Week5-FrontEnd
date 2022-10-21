@@ -1,0 +1,13 @@
+{
+  "members":[],
+  "boards":[
+    {
+      "id":1,
+      "title": "제목입니다.",
+      "content": "내용입니다.",
+      "createdAt": "2022-10-21"
+    }
+  ],
+  "comments":[],
+  "hearts": []
+}
