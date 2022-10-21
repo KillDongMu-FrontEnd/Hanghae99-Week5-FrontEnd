@@ -1,9 +1,9 @@
-import { MainPage } from "./pages/MainPage"
+import Router from "./Shared/Router";
 
 function App() {
   return (
     <div className="App">
-      <MainPage/>
+      <Router/>
     </div>
   );
 }

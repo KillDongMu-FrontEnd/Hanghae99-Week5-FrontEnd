@@ -30,7 +30,7 @@ export const LogoText = styled.h1`
 `
 
 export const LogoLowerCase = styled.span`
-  font-size: 11rem;
+  font-size: 10rem;
   line-height: 0.1em;
   text-align: center;
 `

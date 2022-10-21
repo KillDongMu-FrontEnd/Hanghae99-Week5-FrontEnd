@@ -8,7 +8,7 @@ export const MainPage = () => {
     <div>
       <Logo/>
       <Header/>
-      {/* <Form/> */}
+      <Form/>
       <List/>
     </div>
   )

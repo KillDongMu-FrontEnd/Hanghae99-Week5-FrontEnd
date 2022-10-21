@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const MenuToggle = styled.div`
   display: block;
-  position: relative;
   top: 3rem;
   left: 3rem;
   position: sticky;
@@ -60,7 +59,7 @@ export const Menu = styled.ul`
   position: absolute;
   width: 10rem;
   height: 50rem;
-  margin: -3rem 0 0 -.5rem;
+  margin: -6rem 0 0 -.5rem;
   padding: 50px;
   padding-top: 125px;
   background: gray;
