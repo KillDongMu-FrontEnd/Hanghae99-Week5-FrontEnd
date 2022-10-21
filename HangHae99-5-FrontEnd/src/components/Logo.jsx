@@ -1,10 +1,10 @@
-import { LogoContainer, LogoCover, LogoText } from "../style/Logo.styled";
+import { LogoContainer, LogoCover, LogoText, LogoLowerCase } from "../style/Logo.styled";
 
 export const Logo = () => {
   return(
     <LogoContainer>
       <LogoCover>
-        <LogoText>to do list</LogoText>
+        <LogoText>오<br/><LogoLowerCase>tt</LogoLowerCase></LogoText>
       </LogoCover>
     </LogoContainer>
   )
