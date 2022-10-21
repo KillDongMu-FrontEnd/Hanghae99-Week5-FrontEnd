@@ -36,7 +36,6 @@ export const boardSlice = createSlice({
     [__getBoards.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.boards = action.payload;
-      console.log("할당 완료!");
     },
     [__getBoards.rejected]: (state, action) => {
       state.isLoading = false;
