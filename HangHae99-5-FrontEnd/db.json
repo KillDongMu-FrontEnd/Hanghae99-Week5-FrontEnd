@@ -1,13 +1,28 @@
 {
-  "members":[],
-  "boards":[
+  "memberList": [],
+  "boardList": [
     {
-      "id":1,
-      "title": "제목입니다.",
-      "content": "내용입니다.",
+      "board_id": 1,
+      "title": "제목입니다.1",
+      "content": "내용입니다.1",
+      "author": "kim",
+      "createdAt": "2022-10-21"
+    },
+    {
+      "board_id": 2,
+      "title": "제목입니다.2",
+      "content": "내용입니다.2",
+      "author": "kim",
+      "createdAt": "2022-10-21"
+    },
+    {
+      "board_id": 3,
+      "title": "제목입니다.3",
+      "content": "내용입니다.3",
+      "author": "kim",
       "createdAt": "2022-10-21"
     }
   ],
-  "comments":[],
+  "commentList": [],
   "hearts": []
 }
