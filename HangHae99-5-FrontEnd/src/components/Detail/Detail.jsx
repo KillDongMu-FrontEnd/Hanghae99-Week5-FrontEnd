@@ -17,9 +17,11 @@ export const Detail = () => {
   }, [dispatch, id]);
 
   const onChangeHandler = (e) =>{
-    const {name, value} = e.target;
+    e.preventDefault();
+    const {name, value} = e.target;   
     setEdit({...boardData, [name]: value });
    }
+   
 
   return (
     <div>
@@ -44,12 +46,12 @@ export const Detail = () => {
           />
         ) : (
           boardData.content
-        )};
+        )}
         {board ? (<button
           onClick={()=>{
             dispatch(__editBoard(edit));
             dispatch(__getBoardId(id));
-            setBoard(false)
+            setBoard(false);
           }}
           >완료</button> ):(<button onClick={()=>{setBoard(!board)}}>수정</button>)}
       </h4>
