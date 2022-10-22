@@ -56,7 +56,7 @@ export const Form = () => {
           <Label>내용임</Label>
         </FormGroup>
 
-        <button >등록하기</button>
+        <button>등록하기</button>
     </FormContainer>
   )
 };
