@@ -2,6 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi} from "./boardApi"
 
 
+const initialState = {
+  boards : [],
+  board: {},
+  isLoading: false,
+  error: null,    
+}
+
 export const __postBoard = createAsyncThunk(
   "postBoard",
   async (payload, thunkAPI) => {
@@ -45,12 +52,7 @@ export const __editBoard = createAsyncThunk(
 
 export const boardSlice = createSlice({
   name: "boards",
-  initialState:{
-      boards : [],
-      board: {},
-      isLoading: false,
-      error: null,    
-  },
+  initialState,
   reducers: {
     postBoard: (state, action) => {
       const id = state.boards[state.boards.length - 1]?.id + 1 || 1;
@@ -60,7 +62,7 @@ export const boardSlice = createSlice({
       state.boards = action.payload;
     },
     delBoard: (state, action) => {
-      state.boards = action.payload.filter((item)=>item.id !== action.payload);
+      state.boards = action.payload.filter((item)=>item?.id !== action.payload);
     },
     getBoard_Id: (state, action) => {
       state.board = action.payload;
@@ -71,7 +73,6 @@ export const boardSlice = createSlice({
       })
     },
   },
- 
 });
 
 export const { postBoard, getBoard,delBoard,getBoard_Id,editBoard} = boardSlice.actions;
