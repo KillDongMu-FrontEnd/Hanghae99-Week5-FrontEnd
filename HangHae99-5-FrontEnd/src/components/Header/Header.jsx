@@ -1,4 +1,4 @@
-import { MenuToggle, Checkbox, Bar, Menu, MenuItem } from "../style/Header.styled"
+import { MenuToggle, Checkbox, Bar, Menu, MenuItem, MenuLink } from "./Header.styled"
 
 export const Header = () => {
   return(
@@ -10,7 +10,7 @@ export const Header = () => {
       <Bar/>
 
       <Menu>
-        <MenuItem>asd</MenuItem>
+        <MenuItem><MenuLink to="/login">Sign In</MenuLink></MenuItem>
         <MenuItem>asd</MenuItem>
         <MenuItem>asd</MenuItem>
       </Menu>

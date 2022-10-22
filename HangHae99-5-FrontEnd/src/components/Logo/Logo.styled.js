@@ -17,10 +17,11 @@ export const LogoCover = styled.div`
 
 export const LogoText = styled.h1`
   /* text-transform: uppercase; */
-  font-size: 11em;
+  font-size: 10.5em;
   padding-top: 3.5rem;
   line-height: 0.7em;
   text-align: center;
+  color: #ff4444;
   word-wrap: break-word;
   overflow-wrap: break-word;
   -webkit-user-select:none;
@@ -30,7 +31,7 @@ export const LogoText = styled.h1`
 `
 
 export const LogoLowerCase = styled.span`
-  font-size: 10rem;
-  line-height: 0.1em;
+  font-size: 11.5rem;
+  line-height: 0.7em;
   text-align: center;
 `
