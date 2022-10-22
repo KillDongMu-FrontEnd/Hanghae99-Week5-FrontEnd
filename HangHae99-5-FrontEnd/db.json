@@ -2,25 +2,11 @@
   "memberList": [],
   "boardList": [
     {
-      "board_id": 1,
-      "title": "제목입니다.1",
-      "content": "내용입니다.1",
-      "author": "kim",
-      "createdAt": "2022-10-21"
-    },
-    {
-      "board_id": 2,
-      "title": "제목입니다.2",
-      "content": "내용입니다.2",
-      "author": "kim",
-      "createdAt": "2022-10-21"
-    },
-    {
-      "board_id": 3,
-      "title": "제목입니다.3",
-      "content": "내용입니다.3",
-      "author": "kim",
-      "createdAt": "2022-10-21"
+      "title": "헝규❤️해은 ",
+      "content": "환승연애 곧 마지막회....ㅠㅠ",
+      "author": "",
+      "createdAt": "",
+      "id": 1
     }
   ],
   "commentList": [],

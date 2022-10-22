@@ -1,105 +1,64 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi} from "./boardApi"
 
-const BASE_URL = process.env.REACT_APP_SERVER
 
-// Set InitialState
-const initialState = {
-  boards : [],
-  isLoading: false,
-  error: null,
-};
-
-// GET Boards Data
-export const __getBoardList = createAsyncThunk(
-  "getBoardList",
-  async (payload, thunkAPI) => {
-    try {
-      const boardList = await axios.get(`${BASE_URL}/boardList`);
-      console.log("불러옴")
-      return thunkAPI.fulfillWithValue(boardList.data);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
-// POST Board
 export const __postBoard = createAsyncThunk(
   "postBoard",
-  (payload, thunkAPI) => {
-    console.log(payload);
-    try {
-      axios.post(`${BASE_URL}/boardList`, payload);
-      return thunkAPI.fulfillWithValue("asd");
-    } catch (error) {
-      return thunkAPI.rejectWithValue("error");
-    }
+  async (payload, thunkAPI) => {
+    await postBoardApi(payload);
+    thunkAPI.dispatch(postBoard(payload));
   }
 );
 
-// DELETE Board
-export const __deleteBoard = createAsyncThunk(
-  "deleteBoard",
+export const __getBoard = createAsyncThunk(
+  "getBoard",
   async (payload, thunkAPI) => {
-    try{
-      await axios.delete(`${BASE_URL}/boardList?board_id=${payload}`);
-      return thunkAPI.fulfillWithValue(payload);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+    const response = await getBoardApi(payload);
+    thunkAPI.dispatch(getBoard(response));
+  }
+);
+  
+export const __delBoard = createAsyncThunk(
+    "delBoard",
+    async (payload, thunkAPI) => {
+      await delBoardApi(payload);
+      thunkAPI.dispatch(delBoard(payload));
     }
-  } 
+  );
+
+export const __getBoardId = createAsyncThunk(
+  "getBoard_Id",
+  async (payload, thunkAPI) => {
+    const response = await getBoardIdApi(payload);
+    thunkAPI.dispatch(getBoard_Id(response));
+  }
 );
 
 export const boardSlice = createSlice({
   name: "boards",
-  initialState,
-  reducers: {},
-  extraReducers: { // thunk함수는 외부에서 작성한 것이므로 extraReducers를 사용
-    // 서버에서 가져오는 데이터를 [로딩, 성공, 실패]로 나누어 상태를 관리
-    // 즉, 상태값에 따른 렌더링이 가능함
-
-    // GET Boards Data Reducer
-    [__getBoardList.pending]: (state) => {
-      state.isLoading = true;
+  initialState:{
+      boards : [],
+      board: {},
+      isLoading: false,
+      error: null,    
+  },
+  reducers: {
+    postBoard: (state, action) => {
+      const id = state.boards[state.boards.length - 1]?.id + 1 || 1;
+      state.boards.push({ id, ...action.payload });
     },
-    [__getBoardList.fulfilled]: (state, action) => {
-      state.isLoading = false;
+    getBoard: (state, action) => {
       state.boards = action.payload;
     },
-    [__getBoardList.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
+    delBoard: (state, action) => {
+      state.boards = action.payload.filter((item)=>item.id !== action.payload);
     },
-
-    // POST Boards Data Reducer
-    [__postBoard.pending]: (state) => {
-      state.isLoading = true;
+    getBoard_Id: (state, action) => {
+      state.board = action.payload;
     },
-    [__postBoard.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      // console.log(action.payload);
-      state.boards.push(action.payload);
-    },
-    [__postBoard.rejected]: (state, action) => {
-      state.isLoading = false;
-      // console.log(action.payload);
-      state.error = action.payload;
-    },
-
-    // DELETE Board Date Reducer
-    [__deleteBoard.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [__deleteBoard.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.boards = state.boards.filter((item) => item.board_id !== action.payload);
-    },
-    [__deleteBoard.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    }
   },
+ 
 });
 
+export const { postBoard, getBoard,delBoard,getBoard_Id} = boardSlice.actions;
 export default boardSlice.reducer;
