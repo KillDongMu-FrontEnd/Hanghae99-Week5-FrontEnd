@@ -31,7 +31,8 @@ export const List = () => {
               <Link to={`/detail/${board.id}`}>상세보기</Link>
               <button onClick={(e)=>{
                 e.preventDefault();
-                dispatch(__delBoard(board.id))
+                dispatch(__delBoard(board.id));
+                dispatch(__getBoard());
               }}>삭제하기</button>
               <hr/>
             </div>
