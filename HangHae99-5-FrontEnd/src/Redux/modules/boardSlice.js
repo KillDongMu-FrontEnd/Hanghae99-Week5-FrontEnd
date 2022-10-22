@@ -34,7 +34,6 @@ export const __getBoardId = createAsyncThunk(
   }
 );
 
-
 export const __editBoard = createAsyncThunk(
   "editBoard",
   async (payload, thunkAPI) => {
