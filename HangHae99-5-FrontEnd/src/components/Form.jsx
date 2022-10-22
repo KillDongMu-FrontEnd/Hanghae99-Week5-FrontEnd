@@ -17,7 +17,7 @@ export const Form = () => {
   const [input, setInput] = useState(init);
 
 
- //인풋밸류 input에 넣음 
+ //인풋밸류 input에 넣었음
  const onChangeHandler = (e) =>{
   const {name, value} = e.target;
   setInput({...input, [name]: value });
