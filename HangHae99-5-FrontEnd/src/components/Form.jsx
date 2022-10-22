@@ -17,17 +17,17 @@ export const Form = () => {
   const [input, setInput] = useState(init);
 
 
- //인풋밸류 input에 넣었음
- const onChangeHandler = (e) =>{
-  const {name, value} = e.target;
-  setInput({...input, [name]: value });
- }
+  //인풋밸류 input에 넣었음
+  const onChangeHandler = (e) =>{
+    const {name, value} = e.target;
+    setInput({...input, [name]: value });
+  }
 
- const onSubmitHandler = (e) =>{
-  e.preventDefault();
-  dispatch(__postBoard(input));
-  setInput(init);
- }
+  const onSubmitHandler = (e) =>{
+    e.preventDefault();
+    dispatch(__postBoard(input));
+    setInput(init);
+  }
 
   return(
     <FormContainer onSubmit={onSubmitHandler}>

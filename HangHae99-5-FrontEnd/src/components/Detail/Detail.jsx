@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardId } from "../../Redux/modules/boardSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { __editBoard } from "../../Redux/modules/boardSlice"
 
 import styled from "styled-components";
@@ -11,7 +11,6 @@ export const Detail = () => {
   const { id } = useParams();
   const [edit, setEdit] = useState(boardData);
   const [board, setBoard] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,8 +21,7 @@ export const Detail = () => {
     e.preventDefault();
     const {name, value} = e.target;   
     setEdit({...boardData, [name]: value });
-   }
-   
+  }
 
   return (
     <DetailContainer>

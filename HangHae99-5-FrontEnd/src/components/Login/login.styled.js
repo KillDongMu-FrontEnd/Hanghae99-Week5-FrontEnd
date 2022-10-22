@@ -28,9 +28,18 @@ export const LoginLogoOne = styled.b`
   }
 `
 
-export const LoginContainer = styled.div`
+export const RegisterContainer = styled.form`
   width: 400px;
-  height: 400px;
+  height: 600px;
+  position: absolute;
+  top:calc(50vh - 200px);
+  left:calc(50vw - 200px);
+  overflow:hidden;
+`
+
+export const LoginContainer = styled.form`
+  width: 400px;
+  height: 450px;
   position: absolute;
   top:calc(50vh - 200px);
   left:calc(50vw - 200px);
@@ -88,7 +97,16 @@ export const ToRegister = styled(Link)`
   color: #666;
   font-size: 16px;
   text-decoration: none;
+  transition: all 0.5s;
+  text-align: center;
+  margin: 0 auto;
   &:hover {
     color: #ff4444;
   }
+`
+
+export const ErrorMsg = styled.span`
+  color: #ff4444;
+  text-align: center;
+  margin-left: 2.4rem;
 `
