@@ -11,7 +11,8 @@ export const Header = () => {
 
       <Menu>
         <MenuItem><MenuLink to="/login">Sign In</MenuLink></MenuItem>
-        <MenuItem>asd</MenuItem>
+        <hr/>
+        <MenuItem><MenuLink to="/">Home</MenuLink></MenuItem>
         <MenuItem>asd</MenuItem>
       </Menu>
     </MenuToggle>
