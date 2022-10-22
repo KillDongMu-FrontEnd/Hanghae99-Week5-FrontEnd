@@ -27,13 +27,13 @@ export const __getBoardList = createAsyncThunk(
 // POST Board
 export const __postBoard = createAsyncThunk(
   "postBoard",
-  async (payload, thunkAPI) => {
+  (payload, thunkAPI) => {
     console.log(payload);
     try {
-      await axios.post(`${BASE_URL}/boardList`, payload);
-      return thunkAPI.fulfillWithValue(payload);
+      axios.post(`${BASE_URL}/boardList`, payload);
+      return thunkAPI.fulfillWithValue("asd");
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue("error");
     }
   }
 );
@@ -78,10 +78,12 @@ export const boardSlice = createSlice({
     },
     [__postBoard.fulfilled]: (state, action) => {
       state.isLoading = false;
+      // console.log(action.payload);
       state.boards.push(action.payload);
     },
     [__postBoard.rejected]: (state, action) => {
       state.isLoading = false;
+      // console.log(action.payload);
       state.error = action.payload;
     },
 

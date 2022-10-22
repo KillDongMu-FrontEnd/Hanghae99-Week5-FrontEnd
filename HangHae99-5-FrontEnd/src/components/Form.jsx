@@ -9,11 +9,13 @@ export const Form = () => {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
+    board_id: 4,
     title: "",
-    content: ""
+    content: "",
+    author: "lee"
   });
   const { title, content } = input;
-  console.log(typeof input)
+  console.log(input)
 
   return(
     <FormContainer>
@@ -21,14 +23,15 @@ export const Form = () => {
           <FormInput
             type="text"
             autoComplete="off"
+            id="title"
             value={title}
             onChange={(e) => {
-              const { valueTitle } = e.target;
+              const { value } = e.target;
               setInput({
                 ...input,
-                title: valueTitle,
+                title: value,
               });
-            }} 
+            }}
           />
           <HighLight/>
           <InputBar/>
@@ -38,12 +41,13 @@ export const Form = () => {
           <FormInput 
             type="text"
             autoComplete="off"
+            id="content"
             value={content}
             onChange={(e) => {
-              const { valueContent } = e.target;
+              const { value } = e.target;
               setInput({
                 ...input,
-                content: valueContent,
+                content: value,
               });
             }} 
           />
@@ -52,8 +56,9 @@ export const Form = () => {
           <Label>내용임</Label>
         </FormGroup>
         <button onClick={() => {
+          console.log(input)
           dispatch(__postBoard(input));
-          setInput({ title: "", content: "" });
+          setInput({ board_id: 5, title: "", content: "" });
         }}>등록하기</button>
     </FormContainer>
   )

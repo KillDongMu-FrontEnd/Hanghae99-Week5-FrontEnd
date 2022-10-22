@@ -1,6 +1,3 @@
-import styled from "styled-components"
-import { Link } from "react-router-dom";
-
 import { LoginLogo, LoginLogoOne, LoginContainer, LoginBox, LoginTitle, LoginBtn, LoginInput, LoginInfo, ToRegister } from "./login.styled";
 
 export const Login = () => {
