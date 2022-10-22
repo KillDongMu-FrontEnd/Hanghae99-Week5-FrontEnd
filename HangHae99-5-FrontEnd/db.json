@@ -2,15 +2,8 @@
   "memberList": [],
   "boardList": [
     {
-      "title": "안녕하세요",
-      "content": "반갑읍니다",
-      "author": "",
-      "createdAt": "",
-      "id": 34
-    },
-    {
-      "title": "123",
-      "content": "123",
+      "title": "123555",
+      "content": "123ㅁㄴㅇㄹㅇㄴㄹㅁㄴㅇㄹ",
       "author": "",
       "createdAt": "",
       "id": 35
@@ -27,21 +20,21 @@
       "content": "ㅁㄴㅇ",
       "author": "",
       "createdAt": "",
-      "id": 38
-    },
-    {
-      "title": "ㅁㄴㅇㄹ",
-      "content": "ㅁㄴㅇㄹ",
-      "author": "",
-      "createdAt": "",
-      "id": 39
+      "id": 40
     },
     {
       "title": "ㅁㄴㅇ",
       "content": "ㅁㄴㅇ",
       "author": "",
       "createdAt": "",
-      "id": 40
+      "id": 41
+    },
+    {
+      "title": "123",
+      "content": "123",
+      "author": "",
+      "createdAt": "",
+      "id": 42
     }
   ],
   "commentList": [],
