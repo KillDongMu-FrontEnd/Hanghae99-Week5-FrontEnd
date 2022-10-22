@@ -17,12 +17,6 @@ export const Form = () => {
           <InputBar/>
           <Label>내용임</Label>
         </FormGroup>
-        <FormGroup>
-          <FormInput required/>
-          <HighLight/>
-          <InputBar/>
-          <Label>작성자임</Label>
-        </FormGroup>
       </form>
     </FormContainer>
   )
