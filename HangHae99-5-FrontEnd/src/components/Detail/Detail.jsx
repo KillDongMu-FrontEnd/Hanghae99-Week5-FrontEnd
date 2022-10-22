@@ -53,9 +53,6 @@ export const Detail = () => {
           }}
           >완료</button> ):(<button onClick={()=>{setBoard(!board)}}>수정</button>)}
       </h4>
-      {/* <h3>{boardData.title}</h3>
-      <p>{boardData.content}</p>
-      <button>수정하기</button> */}
     </div>
   );
 };
