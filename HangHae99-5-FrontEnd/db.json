@@ -2,56 +2,25 @@
   "memberList": [],
   "boardList": [
     {
-<<<<<<< HEAD
-      "title": "1조",
-      "content": "최고에요",
-      "author": "",
-      "createdAt": "",
-      "id": 2
-    },
-    {
-      "title": "안녕히러ㅣㅁ너리ㅏㅁ",
-      "content": "가세요ㅁㅇㄹㄴㅁㄴㄹ",
-      "author": "",
-      "createdAt": "",
-      "id": 3
-    },
-    {
-      "title": "1조임!!!",
-      "content": "월요일미팅함",
-=======
-      "title": "asd",
-      "content": "asd",
-      "author": "",
-      "createdAt": "",
-      "id": 1
-    },
-    {
-      "title": "ads",
-      "content": "asd",
-      "author": "",
-      "createdAt": "",
-      "id": 2
-    },
-    {
       "title": "ff",
       "content": "ff",
->>>>>>> 8bf126b (123)
       "author": "",
       "createdAt": "",
       "id": 4
     },
     {
-<<<<<<< HEAD
-      "title": "ㅇㄴㄹ",
-      "content": "ㅛㅗㅛㅗㅇㄹㅎㅇㄹㄴ",
-=======
       "title": "dsf",
       "content": "dsaf",
->>>>>>> 8bf126b (123)
       "author": "",
       "createdAt": "",
       "id": 5
+    },
+    {
+      "title": "asdf",
+      "content": "sadf",
+      "author": "",
+      "createdAt": "",
+      "id": 6
     }
   ],
   "commentList": [],
