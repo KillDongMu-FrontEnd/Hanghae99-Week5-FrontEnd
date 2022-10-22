@@ -5,8 +5,8 @@ import { Logo } from "../components/Logo/Logo";
 export const DetailPage = () => {
   return(
     <div>
-      <Logo/>
-      <Header/>
+      {/* <Logo/> */}
+      {/* <Header/> */}
       <Detail/>
     </div>
   )

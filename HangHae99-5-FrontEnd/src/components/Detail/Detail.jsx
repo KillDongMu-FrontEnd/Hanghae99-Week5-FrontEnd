@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardId } from "../../Redux/modules/boardSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import {__editBoard} from "../../Redux/modules/boardSlice"
+import { __editBoard } from "../../Redux/modules/boardSlice"
+
+import styled from "styled-components";
 
 export const Detail = () => {
   const boardData = useSelector((state) => state.boards.board);
@@ -19,11 +21,10 @@ export const Detail = () => {
   const onChangeHandler = (e) =>{
     const {name, value} = e.target;
     setEdit({...boardData, [name]: value });
-   }
+  }
 
   return (
-    <div>
-      <button onClick={() => navigate("/")}>뒤로가기</button>
+    <DetailContainer>
       <h4>
         {board ? (
           <input
@@ -44,7 +45,7 @@ export const Detail = () => {
           />
         ) : (
           boardData.content
-        )};
+        )}
         {board ? (<button
           onClick={()=>{
             dispatch(__editBoard(edit));
@@ -53,6 +54,15 @@ export const Detail = () => {
           }}
           >완료</button> ):(<button onClick={()=>{setBoard(!board)}}>수정</button>)}
       </h4>
-    </div>
+    </DetailContainer>
   );
 };
+
+const DetailContainer = styled.div`
+  display: flex;
+  width: 30rem;
+  height: 30rem;
+  margin: 0 auto;
+  background: tomato;
+  text-align: center;
+`

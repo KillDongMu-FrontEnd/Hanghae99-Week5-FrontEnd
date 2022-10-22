@@ -16,10 +16,10 @@ export const List = () => {
   console.log(boards);
 
 //만약 데이터가없다면 화면에 로딩중
-  if (boards.length === 0) {
-    console.log("로딩 중");
-    return <h1>Loading...</h1>
-  };
+  // if (boards.length === 0) {
+  //   console.log("로딩 중");
+  //   return <h1>Loading...</h1>
+  // };
 
   return(
     <div>
