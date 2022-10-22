@@ -8,6 +8,7 @@ export const Detail = () => {
   const boardData = useSelector((state)=> state.boards.board) 
   const { id } = useParams();
   const [edit,setEdit] = useState(boardData||[]);
+console.log(id)
   const navigate = useNavigate();
   const dispatch = useDispatch();
  
