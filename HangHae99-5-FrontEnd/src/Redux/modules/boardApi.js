@@ -19,3 +19,8 @@ export const postBoardApi = async (payload) => {
     const response = await axios.get(`${BASE_URL}/boardList?id=${id}`);  
     return response.data[0];
   };
+
+  export const editBoardApi = async (edit) => {
+    console.log(edit);
+    await axios.put(`${BASE_URL}/boardList/${edit.id}`,edit);
+  };
