@@ -5,8 +5,7 @@ import { useEffect } from "react";
 import { __getComment } from "../../Redux/modules/commentSlice";
 
 export const CommentList = () => {
-  // const commentCard = useSelector((state) => state.comments.comment); 
-  
+  const commentCard = useSelector((state) => state.comments.comment); 
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
@@ -14,9 +13,9 @@ export const CommentList = () => {
   },[dispatch,id]);
   return (
     <div>
-  {/* {commentCard.map((comment)=>(
+  {commentCard.map((comment)=>(
     <CommentCard comment={comment} key={comment.id} />
-  ))} */}
+  ))}
     </div>
   );
 };

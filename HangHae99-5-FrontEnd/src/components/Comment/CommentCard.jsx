@@ -13,8 +13,7 @@ export const CommentCard = (props) => {
 
   return (
     <div>
-      <p>gg</p>
-     {/* <p>
+     <p>
         {comment.name}님 : 
         {edit ? (
           <input
@@ -36,7 +35,7 @@ export const CommentCard = (props) => {
         type="submit"
         >완료</button> : <button onClick={()=>{setEdit(!edit)}}>수정</button>}
         <button onClick={() => dispatch(__delComment(comment))}>삭제</button>
-      </p> */}
+      </p>
     </div>
   );
 };

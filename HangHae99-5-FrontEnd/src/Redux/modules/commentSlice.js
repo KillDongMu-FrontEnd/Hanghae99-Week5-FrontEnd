@@ -42,7 +42,7 @@ export const __addComment = createAsyncThunk(
     },
     reducers: {
       addComment: (state, action) => {
-        console.log(current(state))  
+        console.log("에드커멘트")  
         // const id = state.comment[state.comment.length - 1]?.id + 1 || 1;
         state.comment.push(action.payload);
       },

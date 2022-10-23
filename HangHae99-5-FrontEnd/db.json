@@ -72,6 +72,26 @@
       "boardId": 1,
       "comment": "ㄴㅇㄹ",
       "id": 10
+    },
+    {
+      "boardId": 1,
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "id": 11
+    },
+    {
+      "boardId": 1,
+      "comment": "ㅇㄴㄴㅇㄹ",
+      "id": 12
+    },
+    {
+      "boardId": 1,
+      "comment": "ㅇㄴㄹㄴㄹ",
+      "id": 13
+    },
+    {
+      "boardId": 1,
+      "comment": "ㄴㅇㄹㄴㄹ",
+      "id": 14
     }
   ],
   "hearts": []
