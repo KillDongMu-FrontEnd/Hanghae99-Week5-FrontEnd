@@ -8,71 +8,43 @@
       "createAt": "2022-10-23"
     },
     {
-      "email": "ksh_1035@naver.com",
-      "username": "sungho",
+      "email": "v_vsoi@naver.com",
+      "username": "임소희",
       "password": "1234",
-      "createAt": "2022-10-23",
+      "passwordConfirm": "1234",
+      "createAt": "2022-10-24",
+      "id": 2
+    }
+  ],
+  "commentList": [
+    {
+      "boardId": 2,
+      "comment": "제발되라",
+      "id": 1
+    },
+    {
+      "boardId": 1,
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
       "id": 2
     },
     {
-      "email": "ksh_1035@naver.com",
-      "username": "asd",
-      "password": "asd",
-      "passwordConfirm": "asd",
-      "createAt": "2022-10-23",
+      "boardId": 1,
+      "comment": "sdfsdf",
       "id": 3
     },
     {
-      "email": "ksh_1035@naver.com",
-      "username": "test",
-      "password": "test",
-      "passwordConfirm": "test",
-      "createAt": "2022-10-23",
-      "id": 5
+      "boardId": 4,
+      "comment": "ㅇㄴㄹㄴ",
+      "id": 4
     }
   ],
   "boardList": [
     {
-      "title": "asd",
-      "content": "asd",
-      "author": "",
+      "title": "ㄴㅇㄹㄴㅇㄹ",
+      "content": "ㄴㅇㄹㄴㅇㄹ",
+      "username": "",
       "createdAt": "",
-      "id": 2
-    },
-    {
-      "title": "asd",
-      "content": "asd",
-      "author": "",
-      "createdAt": "",
-      "id": 5
-    },
-    {
-      "title": "asd",
-      "content": "asd",
-      "author": "",
-      "createdAt": "",
-      "id": 6
-    },
-    {
-      "title": "asd",
-      "content": "asd",
-      "author": "",
-      "createdAt": "",
-      "id": 7
-    },
-    {
-      "title": "123",
-      "content": "123",
-      "author": "",
-      "createdAt": "",
-      "id": 8
-    },
-    {
-      "title": "adsf",
-      "content": "fdas",
-      "author": "",
-      "createdAt": "",
-      "id": 10
+      "id": 4
     }
   ],
   "hearts": []
