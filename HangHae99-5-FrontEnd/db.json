@@ -2,13 +2,77 @@
   "memberList": [],
   "boardList": [
     {
-      "title": "ㅋㅋㄹㄹ",
-      "content": "가세요",
-      "author": "",
+      "title": "ㄲㄱ",
+      "content": "ㅇㅇㄴㅁㅇㄴ",
+      "username": "",
       "createdAt": "",
       "id": 1
+    },
+    {
+      "title": "sdfsf",
+      "content": "sfsfsd",
+      "username": "",
+      "createdAt": "",
+      "id": 2
+    },
+    {
+      "title": "1234",
+      "content": "56546",
+      "username": "",
+      "createdAt": "",
+      "id": 3
     }
   ],
-  "commentList": [],
+  "commentList": [
+    {
+      "boardId": 1,
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "id": 1
+    },
+    {
+      "boardId": 1,
+      "comment": "sdfsdf",
+      "id": 2
+    },
+    {
+      "boardId": 2,
+      "comment": "sfdsf",
+      "id": 3
+    },
+    {
+      "comment": "",
+      "id": 4
+    },
+    {
+      "boardId": 1,
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "id": 5
+    },
+    {
+      "boardId": 1,
+      "comment": "123345",
+      "id": 6
+    },
+    {
+      "boardId": 3,
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "id": 7
+    },
+    {
+      "boardId": 3,
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "id": 8
+    },
+    {
+      "boardId": 1,
+      "comment": "ㄴㅇㄹㄴ",
+      "id": 9
+    },
+    {
+      "boardId": 1,
+      "comment": "ㄴㅇㄹ",
+      "id": 10
+    }
+  ],
   "hearts": []
 }

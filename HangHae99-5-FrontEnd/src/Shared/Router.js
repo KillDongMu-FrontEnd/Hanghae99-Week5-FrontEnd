@@ -3,6 +3,7 @@ import { Login } from "../components/Login/Login";
 import { MainPage } from "../pages/MainPage"
 import { DetailPage } from "../pages/DetailPage";
 
+
 const Router = () => {
   return (
     <BrowserRouter>

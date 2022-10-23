@@ -2,36 +2,48 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardId } from "../../Redux/modules/boardSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import {__editBoard} from "../../Redux/modules/boardSlice"
+import { __editBoard } from "../../Redux/modules/boardSlice"
+
+import styled from "styled-components";
 
 export const Detail = () => {
-  const boardData = useSelector((state) => state.boards.board);
-  const { id } = useParams();
-  const [edit, setEdit] = useState(boardData);
-  const [board, setBoard] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const boardData = useSelector((state) => state.boards.board);
+  const { id } = useParams();
+  const [edit, setEdit] = useState();
+  const [board, setBoard] = useState(false);
+ 
 
   useEffect(() => {
     dispatch(__getBoardId(id));
   }, [dispatch, id]);
 
+
   const onChangeHandler = (e) =>{
     e.preventDefault();
     const {name, value} = e.target;   
-    setEdit({...boardData, [name]: value });
-   }
-   
+    setEdit({...edit, [name]: value });
+  };
+
+  useEffect(()=>{
+    setEdit(boardData);
+  },[boardData]);
+
+
+  
 
   return (
-    <div>
-      <button onClick={() => navigate("/")}>뒤로가기</button>
+    <DetailContainer>
+      <button onClick={()=>navigate('/')}>뒤로가기</button>
       <h4>
         {board ? (
           <input
             type="text"
             name="title"
-            defaultValue={boardData.title}
+            value={edit?.title}
             onChange={onChangeHandler}
           />
         ) : (
@@ -41,7 +53,7 @@ export const Detail = () => {
           <input
             type="text"
             name="content"
-            defaultValue={boardData.content}
+            value={edit?.content}
             onChange={onChangeHandler}
           />
         ) : (
@@ -55,6 +67,15 @@ export const Detail = () => {
           }}
           >완료</button> ):(<button onClick={()=>{setBoard(!board)}}>수정</button>)}
       </h4>
-    </div>
+    </DetailContainer>
   );
 };
+
+const DetailContainer = styled.div`
+  display: flex;
+  width: 30rem;
+  height: 30rem;
+  margin: 0 auto;
+  background: tomato;
+  text-align: center;
+`
