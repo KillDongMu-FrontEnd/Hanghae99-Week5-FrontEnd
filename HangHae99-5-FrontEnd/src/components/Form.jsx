@@ -8,7 +8,7 @@ export const Form = () => {
   const init = {
       "title": "",
       "content": "",
-      "author": "",
+      "username": "",
       "createdAt": ""
   }
 

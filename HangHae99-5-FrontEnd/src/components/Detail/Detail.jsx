@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardId } from "../../Redux/modules/boardSlice";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { __editBoard } from "../../Redux/modules/boardSlice"
 
 import styled from "styled-components";
 
 export const Detail = () => {
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const boardData = useSelector((state) => state.boards.board);
   const { id } = useParams();
-  const [edit, setEdit] = useState(boardData);
+  const [edit, setEdit] = useState();
   const [board, setBoard] = useState(false);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(__getBoardId(id));
@@ -20,17 +22,23 @@ export const Detail = () => {
   const onChangeHandler = (e) =>{
     e.preventDefault();
     const {name, value} = e.target;   
-    setEdit({...boardData, [name]: value });
-  }
+    setEdit({...edit, [name]: value });
+  };
+
+  useEffect(()=>{
+    setEdit(boardData);
+  },[boardData]);
+
 
   return (
     <DetailContainer>
+      <button onClick={()=>navigate('/')}>뒤로가기</button>
       <h4>
         {board ? (
           <input
             type="text"
             name="title"
-            defaultValue={boardData.title}
+            value={edit?.title}
             onChange={onChangeHandler}
           />
         ) : (
@@ -40,7 +48,7 @@ export const Detail = () => {
           <input
             type="text"
             name="content"
-            defaultValue={boardData.content}
+            value={edit?.content}
             onChange={onChangeHandler}
           />
         ) : (

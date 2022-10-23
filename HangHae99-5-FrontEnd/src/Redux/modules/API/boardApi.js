@@ -21,6 +21,5 @@ export const postBoardApi = async (payload) => {
   };
 
   export const editBoardApi = async (edit) => {
-    console.log(edit);
     await axios.put(`${BASE_URL}/boardList/${edit.id}`,edit);
   };

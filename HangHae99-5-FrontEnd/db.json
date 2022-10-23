@@ -24,14 +24,6 @@
     },
     {
       "email": "ksh_1035@naver.com",
-      "username": "123",
-      "password": "123",
-      "passwordConfirm": "123",
-      "createAt": "2022-10-23",
-      "id": 4
-    },
-    {
-      "email": "ksh_1035@naver.com",
       "username": "test",
       "password": "test",
       "passwordConfirm": "test",
@@ -83,6 +75,5 @@
       "id": 10
     }
   ],
-  "commentList": [],
   "hearts": []
 }

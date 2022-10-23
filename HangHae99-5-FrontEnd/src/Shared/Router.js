@@ -4,6 +4,7 @@ import { Register } from "../components/Login/Register";
 import { MainPage } from "../pages/MainPage"
 import { DetailPage } from "../pages/DetailPage";
 
+
 const Router = () => {
   return (
     <BrowserRouter>
