@@ -3,7 +3,7 @@ import reset from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
-  *{
+  *, *::before, *::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
