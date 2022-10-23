@@ -1,5 +1,5 @@
-import { createSlice,createAsyncThunk,current  } from "@reduxjs/toolkit";
-import { addCommentApi,getCommentApi,delCommentApi,editCommentApi } from "./API/commentApi";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { addCommentApi, getCommentApi, delCommentApi, editCommentApi } from "./API/commentApi";
 
 export const __addComment = createAsyncThunk(
     "addComment",

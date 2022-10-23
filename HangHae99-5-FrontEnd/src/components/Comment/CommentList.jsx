@@ -8,14 +8,20 @@ export const CommentList = () => {
   const commentCard = useSelector((state) => state.comments.comment); 
   const dispatch = useDispatch();
   const { id } = useParams();
+
   useEffect(() => {
     dispatch(__getComment(id));
   },[dispatch,id]);
+
   return (
     <div>
-  {commentCard.map((comment)=>(
-    <CommentCard comment={comment} key={comment.id} />
-  ))}
+      {
+        commentCard?.map((comment)=>(
+          <CommentCard 
+            comment={comment} key={comment.id} 
+          />
+        ))
+      }
     </div>
   );
 };
