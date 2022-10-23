@@ -8,71 +8,68 @@
       "createAt": "2022-10-23"
     },
     {
-      "email": "ksh_1035@naver.com",
-      "username": "sungho",
-      "password": "1234",
-      "createAt": "2022-10-23",
-      "id": 2
-    },
-    {
-      "email": "ksh_1035@naver.com",
+      "email": "asd@naver.com",
       "username": "asd",
-      "password": "asd",
-      "passwordConfirm": "asd",
-      "createAt": "2022-10-23",
-      "id": 3
-    },
-    {
-      "email": "ksh_1035@naver.com",
-      "username": "test",
-      "password": "test",
-      "passwordConfirm": "test",
-      "createAt": "2022-10-23",
-      "id": 5
+      "password": "asdasd",
+      "passwordConfirm": "asdasd",
+      "createAt": "2022-10-24",
+      "id": 2
     }
   ],
   "boardList": [
     {
-      "title": "asd",
-      "content": "asd",
-      "author": "",
-      "createdAt": "",
-      "id": 2
-    },
-    {
-      "title": "asd",
-      "content": "asd",
-      "author": "",
-      "createdAt": "",
-      "id": 5
-    },
-    {
-      "title": "asd",
-      "content": "asd",
-      "author": "",
-      "createdAt": "",
-      "id": 6
-    },
-    {
-      "title": "asd",
-      "content": "asd",
-      "author": "",
-      "createdAt": "",
-      "id": 7
+      "title": "123",
+      "content": "123",
+      "username": "",
+      "createdAt": "2022-10-24",
+      "id": 1
     },
     {
       "title": "123",
       "content": "123",
-      "author": "",
-      "createdAt": "",
-      "id": 8
+      "username": "",
+      "createdAt": "2022-10-24",
+      "id": 2
     },
     {
-      "title": "adsf",
-      "content": "fdas",
-      "author": "",
-      "createdAt": "",
-      "id": 10
+      "title": "123",
+      "content": "123",
+      "username": "",
+      "createdAt": "2022-10-24",
+      "id": 3
+    },
+    {
+      "title": "123",
+      "content": "123",
+      "username": "",
+      "createdAt": "2022-10-24",
+      "id": 4
+    },
+    {
+      "title": "13",
+      "content": "123",
+      "username": "",
+      "createdAt": "2022-10-24",
+      "id": 5
+    },
+    {
+      "title": "123",
+      "content": "123",
+      "username": "",
+      "createdAt": "2022-10-24",
+      "id": 6
+    }
+  ],
+  "commentList": [
+    {
+      "boardId": 1,
+      "comment": "123",
+      "id": 1
+    },
+    {
+      "boardId": 1,
+      "comment": "443214",
+      "id": 2
     }
   ],
   "hearts": []

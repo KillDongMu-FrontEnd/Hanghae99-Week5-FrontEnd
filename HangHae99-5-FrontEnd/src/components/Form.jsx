@@ -5,17 +5,22 @@ import { FormInput, HighLight, InputBar, Label } from "../style/MaterialInput.st
 import { __postBoard } from "../Redux/modules/boardSlice";
 
 export const Form = () => {
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+
   const init = {
       "title": "",
       "content": "",
       "username": "",
-      "createdAt": ""
+      "createdAt": year + "-" + month + "-" + day,
   }
 
   const dispatch = useDispatch();
 
   const [input, setInput] = useState(init);
-
 
   //인풋밸류 input에 넣었음
   const onChangeHandler = (e) =>{
