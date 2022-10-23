@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi} from "./boardApi"
+import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi} from "./API/boardApi"
 
 
 export const __postBoard = createAsyncThunk(
@@ -73,5 +73,5 @@ export const boardSlice = createSlice({
  
 });
 
-export const { postBoard, getBoard,delBoard,getBoard_Id,editBoard} = boardSlice.actions;
+export const { postBoard, getBoard,delBoard,getBoard_Id,editBoard } = boardSlice.actions;
 export default boardSlice.reducer;

@@ -1,7 +1,8 @@
 import { __getBoard, __delBoard } from "../Redux/modules/boardSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 export const List = () => {
 
@@ -10,6 +11,8 @@ export const List = () => {
   useEffect(() => {
     dispatch(__getBoard());
   }, [dispatch]);
+
+  const navigate = useNavigate();
 
   //슬라이드 불러오기
   const boards = useSelector((state) => state.boards.boards);
@@ -21,28 +24,64 @@ export const List = () => {
       <h1>아직생성한 게시물이 없습니다. 소중한 의견을 남겨주세요.</h1>
       </div>
     ) 
-    
   };
 
   return(
-    <div>
+    <CardContainer>
       {
         boards?.map((board) => {
           return(
-            <div key={board.id }>
-              <h2>{ board.title }</h2>
+            <CardItem onClick={() => {
+              navigate(`/detail/${board.id}`)
+            }}>
+              <CardItemTitle>{ board.title }</CardItemTitle>
               <p>{ board.createdAt }</p>
-              <Link to={`/detail/${board.id}`}>상세보기</Link>
               <button onClick={(e)=>{
                 e.preventDefault();
                 dispatch(__delBoard(board.id));
                 dispatch(__getBoard());
               }}>삭제하기</button>
-              <hr/>
-            </div>
+            </CardItem>
           )
         })
       }
-    </div>
+    </CardContainer>
   )
 };
+
+const CardContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  grid-gap: 2rem;
+  margin: 2rem;
+  width: 80%;
+  background: #b5b5ed;
+  float: right;
+  margin: 0;
+  box-sizing: border-box;
+  border-radius: 8px;
+`
+
+const CardItem = styled.div`
+  display: grid;
+  height: 15rem;
+  width: 15rem;
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
+  border-radius: 8px;
+  background: #ff4444;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  grid-template-rows: 1fr 1fr;
+  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.035, 1.035);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  }
+`
+
+const CardItemTitle = styled.h2`
+  text-align: center;
+  padding: 10px;
+`

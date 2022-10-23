@@ -1,97 +1,78 @@
 {
-  "memberList": [],
-  "boardList": [
+  "memberList": [
     {
-      "title": "ㄲㄱ",
-      "content": "ㅇㅇㄴㅁㅇㄴ",
-      "username": "",
-      "createdAt": "",
-      "id": 1
+      "id": 1,
+      "username": "김성호",
+      "password": "1234",
+      "email": "ksh_1035@naver.com",
+      "createAt": "2022-10-23"
     },
     {
-      "title": "sdfsf",
-      "content": "sfsfsd",
-      "username": "",
-      "createdAt": "",
+      "email": "ksh_1035@naver.com",
+      "username": "sungho",
+      "password": "1234",
+      "createAt": "2022-10-23",
       "id": 2
     },
     {
-      "title": "1234",
-      "content": "56546",
-      "username": "",
-      "createdAt": "",
+      "email": "ksh_1035@naver.com",
+      "username": "asd",
+      "password": "asd",
+      "passwordConfirm": "asd",
+      "createAt": "2022-10-23",
       "id": 3
+    },
+    {
+      "email": "ksh_1035@naver.com",
+      "username": "test",
+      "password": "test",
+      "passwordConfirm": "test",
+      "createAt": "2022-10-23",
+      "id": 5
     }
   ],
-  "commentList": [
+  "boardList": [
     {
-      "boardId": 1,
-      "comment": "ㄴㅇㄹㄴㅇㄹ",
-      "id": 1
-    },
-    {
-      "boardId": 1,
-      "comment": "sdfsdf",
+      "title": "asd",
+      "content": "asd",
+      "author": "",
+      "createdAt": "",
       "id": 2
     },
     {
-      "boardId": 2,
-      "comment": "sfdsf",
-      "id": 3
-    },
-    {
-      "comment": "",
-      "id": 4
-    },
-    {
-      "boardId": 1,
-      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "title": "asd",
+      "content": "asd",
+      "author": "",
+      "createdAt": "",
       "id": 5
     },
     {
-      "boardId": 1,
-      "comment": "123345",
+      "title": "asd",
+      "content": "asd",
+      "author": "",
+      "createdAt": "",
       "id": 6
     },
     {
-      "boardId": 3,
-      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "title": "asd",
+      "content": "asd",
+      "author": "",
+      "createdAt": "",
       "id": 7
     },
     {
-      "boardId": 3,
-      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "title": "123",
+      "content": "123",
+      "author": "",
+      "createdAt": "",
       "id": 8
     },
     {
-      "boardId": 1,
-      "comment": "ㄴㅇㄹㄴ",
-      "id": 9
-    },
-    {
-      "boardId": 1,
-      "comment": "ㄴㅇㄹ",
+      "title": "adsf",
+      "content": "fdas",
+      "author": "",
+      "createdAt": "",
       "id": 10
-    },
-    {
-      "boardId": 1,
-      "comment": "ㄴㅇㄹㄴㅇㄹ",
-      "id": 11
-    },
-    {
-      "boardId": 1,
-      "comment": "ㅇㄴㄴㅇㄹ",
-      "id": 12
-    },
-    {
-      "boardId": 1,
-      "comment": "ㅇㄴㄹㄴㄹ",
-      "id": 13
-    },
-    {
-      "boardId": 1,
-      "comment": "ㄴㅇㄹㄴㄹ",
-      "id": 14
     }
   ],
   "hearts": []

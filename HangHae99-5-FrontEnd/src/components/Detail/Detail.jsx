@@ -7,20 +7,17 @@ import { __editBoard } from "../../Redux/modules/boardSlice"
 import styled from "styled-components";
 
 export const Detail = () => {
-
-  const navigate = useNavigate();
+  
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const boardData = useSelector((state) => state.boards.board);
   const { id } = useParams();
   const [edit, setEdit] = useState();
   const [board, setBoard] = useState(false);
- 
 
   useEffect(() => {
     dispatch(__getBoardId(id));
   }, [dispatch, id]);
-
 
   const onChangeHandler = (e) =>{
     e.preventDefault();
@@ -32,8 +29,6 @@ export const Detail = () => {
     setEdit(boardData);
   },[boardData]);
 
-
-  
 
   return (
     <DetailContainer>
