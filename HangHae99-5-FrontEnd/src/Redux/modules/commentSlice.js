@@ -50,16 +50,16 @@ export const __addComment = createAsyncThunk(
         state.comment = action.payload;
         console.log(current(action))
       },
-    //   delComment: (state, action) => {
-    //     state.comment = state.comment.filter((item) => 
-    //       item.id !== action.payload.id
-    //     )
-    //   },  
-    //   editComment: (state, action) => {
-    //     state.comment = state.comment.map((item)=>{
-    //       return item.id === action.payload.id ? action.payload : item;
-    //     })     
-    //   },
+      delComment: (state, action) => {
+        state.comment = state.comment.filter((item) => 
+          item.id !== action.payload.id
+        )
+      },  
+      editComment: (state, action) => {
+        state.comment = state.comment.map((item)=>{
+          return item.id === action.payload.id ? action.payload : item;
+        })     
+      },
     },
     // extraReducers: {
     //     [__getComment.fulfilled]: (state, action) => {
