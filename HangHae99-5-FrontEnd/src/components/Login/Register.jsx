@@ -52,9 +52,6 @@ export const Register = () => {
 
   const [errorMsg, setErrorMsg] = useState("");
 
-  console.log("pw",input.password);
-  console.log("pwCf", input.passwordConfirm);
-
   return(
     <div>
       <LoginLogo>
