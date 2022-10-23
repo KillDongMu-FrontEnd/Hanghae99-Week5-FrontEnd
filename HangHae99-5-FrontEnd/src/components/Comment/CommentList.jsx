@@ -6,6 +6,7 @@ import { __getComment } from "../../Redux/modules/commentSlice";
 
 export const CommentList = () => {
   // const commentCard = useSelector((state) => state.comments.comment); 
+  
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
