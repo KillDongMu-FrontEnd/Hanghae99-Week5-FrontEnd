@@ -29,11 +29,12 @@ export const Form = () => {
     setInput(init);
 
     const formData = new FormData();
-    formData.getAll(formData)
-    Object.entries(input).forEach(([key, value]) => {
-      formData.append(key, value);
-      fileUploadApi(formData);
-  });
+    // formData.getAll(formData)
+    // Object.entries(input).forEach(([key, value]) => {
+      // formData.append(key, value);
+      // fileUploadApi(formData);
+  // });
+  
   };
  //이미지 폼밸류 보내기
  const [image,setImage] = useState(null);
