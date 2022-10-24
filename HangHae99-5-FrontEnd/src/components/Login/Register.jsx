@@ -6,26 +6,25 @@ import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
 
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const day = today.getDate();
+  // const today = new Date();
+  // const year = today.getFullYear();
+  // const month = today.getMonth() + 1;
+  // const day = today.getDate();
 
   const init = {
     email: "",
     username: "",
     password: "",
-    passwordConfirm: "",
-    createAt: year + "-" + month + "-" + day,
+    passwordConfirm: ""
   };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [input, setInput] = useState(init);
-  console.log(input)
+  // console.log(input)
 
-  // 회원가입 state에 input value load
+  // 회원가입 state에 input value loads
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
@@ -46,9 +45,10 @@ export const Register = () => {
       dispatch(__postUser(input));
       setInput(init);
       setErrorMsg("");
-      navigate("/login");
+      // navigate("/login");
     }
   };
+
 
   const [errorMsg, setErrorMsg] = useState("");
 

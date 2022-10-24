@@ -3,11 +3,11 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_SERVER
 
 export const postBoardApi = async (payload) => {
-    await axios.post(`${BASE_URL}/boardList`, payload);
+    await axios.post(`${BASE_URL}/api/boards/create`, payload);
   };
 
   export const getBoardApi = async () => {
-    const response = await axios.get(`${BASE_URL}/boardList`);  
+    const response = await axios.get(`${BASE_URL}/api/boards/list`);  
     return response.data;
   };
 
