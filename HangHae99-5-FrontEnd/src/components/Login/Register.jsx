@@ -17,7 +17,6 @@ export const Register = () => {
   const navigate = useNavigate();
 
   const [input, setInput] = useState(init);
-  // console.log(input)
 
   // 회원가입 state에 input value loads
   const onChangeHandler = (e) => {
