@@ -92,6 +92,31 @@
       "boardId": 1,
       "comment": "443214",
       "id": 2
+    },
+    {
+      "boardId": 1,
+      "comment": "123",
+      "id": 3
+    },
+    {
+      "boardId": 2,
+      "comment": "수정메세지",
+      "id": 4
+    },
+    {
+      "boardId": 2,
+      "comment": "452",
+      "id": 5
+    },
+    {
+      "boardId": 2,
+      "comment": "123",
+      "id": 6
+    },
+    {
+      "boardId": 2,
+      "comment": "111",
+      "id": 7
     }
   ],
   "hearts": []
