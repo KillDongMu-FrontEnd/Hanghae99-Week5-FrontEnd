@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { FormContainer, FormGroup } from "../style/Form.styled";
-import { fileUploadApi } from ".././Redux/modules/API/fileUploadApi"
+import { FormContainer, FormGroup } from "./Form.styled";
+import { fileUploadApi } from "../../Redux/modules/API/fileUploadApi"
 import {
   FormInput,
   HighLight,
@@ -31,6 +31,7 @@ export const Form = () => {
     e.preventDefault();
     dispatch(__postBoard(input));
     setInput(init);
+
     const formData = new FormData();
     formData.getAll(formData)
     Object.entries(input).forEach(([key, value]) => {
@@ -46,7 +47,6 @@ export const Form = () => {
   const image = URL.createObjectURL(e.target.files[0]);
   setImage(image);
  }
-
 
   //이미지미리보기
   const [imageSrc, setImageSrc] = useState("");
