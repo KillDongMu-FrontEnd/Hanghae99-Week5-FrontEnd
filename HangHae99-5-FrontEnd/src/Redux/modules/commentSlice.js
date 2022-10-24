@@ -13,7 +13,6 @@ export const __addComment = createAsyncThunk(
     "getComment",
     async (payload, thunkAPI) => {
       const response = await getCommentApi(payload);
-      console.log("리스폰스",response)
     return thunkAPI.dispatch(getComment(response));
     }
   );
@@ -42,13 +41,11 @@ export const __addComment = createAsyncThunk(
     },
     reducers: {
       addComment: (state, action) => {
-        console.log("에드커멘트")  
         // const id = state.comment[state.comment.length - 1]?.id + 1 || 1;
         state.comment.push(action.payload);
       },
       getComment: (state, action) => {             
         state.comment = action.payload;
-        console.log(current(action))
       },
       delComment: (state, action) => {
         state.comment = state.comment.filter((item) => 
