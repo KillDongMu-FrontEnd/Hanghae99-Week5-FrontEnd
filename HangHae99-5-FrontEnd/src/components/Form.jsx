@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FormContainer, FormGroup } from "../style/Form.styled";
-import axios from 'axios';
+import axios from "axios";
 
 import {
   FormInput,
@@ -20,7 +20,7 @@ export const Form = () => {
     title: "",
     content: "",
     username: "",
-    createdAt:  year + "-" + month + "-" + day,
+    createdAt: year + "-" + month + "-" + day,
   };
 
   const dispatch = useDispatch();
@@ -37,6 +37,23 @@ export const Form = () => {
     e.preventDefault();
     dispatch(__postBoard(input));
     setInput(init);
+  };
+
+  //이미지미리보기
+  const [imageSrc, setImageSrc] = useState("");
+
+  const encodeFileToBase64 = (fileBlob) => {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(fileBlob);
+
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImageSrc(reader.result);
+
+        resolve();
+      };
+    });
   };
 
   return (
@@ -69,12 +86,23 @@ export const Form = () => {
         <FormInput
           type="file"
           id="file"
-          accept='image/*'
+          accept="image/*"
           multiple="multiple"
+          onChange={(e) => {
+            encodeFileToBase64(e.target.files[0]);
+          }}
         />
         <HighLight />
         <InputBar />
         <Label>사진첨부</Label>
+      </FormGroup>
+      <FormGroup>
+       <div>
+       {imageSrc && <img src={imageSrc} alt="preview-img" />}
+       </div>
+        <HighLight />
+        <InputBar />
+        {/* <Label>미리보기</Label> */}
       </FormGroup>
 
       <button>등록하기</button>
