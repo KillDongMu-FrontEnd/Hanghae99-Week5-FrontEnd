@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FormContainer, FormGroup } from "../style/Form.styled";
 import { fileUploadApi } from ".././Redux/modules/API/fileUploadApi"
-
 import {
   FormInput,
   HighLight,
