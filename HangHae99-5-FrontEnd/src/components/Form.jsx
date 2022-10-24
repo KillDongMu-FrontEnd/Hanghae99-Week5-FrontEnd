@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FormContainer, FormGroup } from "../style/Form.styled";
-import axios from "axios";
+import { fileUploadApi } from ".././Redux/modules/API/fileUploadApi"
 
 import {
   FormInput,
@@ -12,20 +12,16 @@ import {
 import { __postBoard } from "../Redux/modules/boardSlice";
 
 export const Form = () => {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const day = today.getDate();
   const init = {
     title: "",
     content: "",
     username: "",
-    createdAt: year + "-" + month + "-" + day,
   };
 
   const dispatch = useDispatch();
 
   const [input, setInput] = useState(init);
+
 
   //인풋밸류 input에 넣었음
   const onChangeHandler = (e) => {
@@ -37,7 +33,22 @@ export const Form = () => {
     e.preventDefault();
     dispatch(__postBoard(input));
     setInput(init);
+    const formData = new FormData();
+    formData.getAll(formData)
+    Object.entries(input).forEach(([key, value]) => {
+      formData.append(key, value);
+      fileUploadApi(formData);
+  });
   };
+ //이미지 폼밸류 보내기
+ const [image,setImage] = useState(null);
+
+ const fileUpload = (e)  =>{
+  encodeFileToBase64(e.target.files[0]);
+  const image = URL.createObjectURL(e.target.files[0]);
+  setImage(image);
+ }
+
 
   //이미지미리보기
   const [imageSrc, setImageSrc] = useState("");
@@ -50,7 +61,6 @@ export const Form = () => {
     return new Promise((resolve) => {
       reader.onload = () => {
         setImageSrc(reader.result);
-
         resolve();
       };
     });
@@ -88,9 +98,7 @@ export const Form = () => {
           id="file"
           accept="image/*"
           multiple="multiple"
-          onChange={(e) => {
-            encodeFileToBase64(e.target.files[0]);
-          }}
+          onChange={fileUpload}
         />
         <HighLight />
         <InputBar />
