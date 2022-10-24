@@ -10,11 +10,11 @@ export const Header = () => {
       <Bar/>
 
       <Menu>
-        <MenuItem><MenuLink to="/login">Sign In</MenuLink></MenuItem>
+        <MenuItem><MenuLink to="/login">Sign In<br/>(Log_out*)</MenuLink></MenuItem>
         <hr/>
         <MenuItem><MenuLink to="/">Home</MenuLink></MenuItem>
-        <MenuItem><MenuLink to="/form">글 작성하기</MenuLink></MenuItem>
-        <MenuItem>asd</MenuItem>
+        <MenuItem><MenuLink to="/form">글 작성하기*</MenuLink></MenuItem>
+        <MenuItem>My Page*</MenuItem>
       </Menu>
     </MenuToggle>
   )
