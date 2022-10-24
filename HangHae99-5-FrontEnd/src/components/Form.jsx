@@ -12,18 +12,16 @@ import {
 import { __postBoard } from "../Redux/modules/boardSlice";
 
 export const Form = () => {
-
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth() + 1;
   const day = today.getDate();
-
   const init = {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": year + "-" + month + "-" + day,
-  }
+    title: "",
+    content: "",
+    username: "",
+    createdAt:  year + "-" + month + "-" + day,
+  };
 
   const dispatch = useDispatch();
 
@@ -71,6 +69,7 @@ export const Form = () => {
         <FormInput
           type="file"
           id="file"
+          accept='image/*'
           multiple="multiple"
         />
         <HighLight />
