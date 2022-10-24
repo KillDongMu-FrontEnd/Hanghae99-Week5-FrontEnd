@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FormContainer, FormGroup } from "../style/Form.styled";
 import { fileUploadApi } from ".././Redux/modules/API/fileUploadApi"
-
 import {
   FormInput,
   HighLight,
@@ -21,7 +20,6 @@ export const Form = () => {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState(init);
-
 
   //인풋밸류 input에 넣었음
   const onChangeHandler = (e) => {
@@ -104,6 +102,7 @@ export const Form = () => {
         <InputBar />
         <Label>사진첨부</Label>
       </FormGroup>
+
       <FormGroup>
        <div>
        {imageSrc && <img src={imageSrc} alt="preview-img" />}
@@ -112,7 +111,6 @@ export const Form = () => {
         <InputBar />
         {/* <Label>미리보기</Label> */}
       </FormGroup>
-
       <button>등록하기</button>
     </FormContainer>
   );
