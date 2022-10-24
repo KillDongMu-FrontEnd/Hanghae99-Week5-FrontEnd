@@ -28,8 +28,6 @@ export const Login = () => {
     dispatch(__loginUser(input));
     setInput(init);
   }
-  // Authorization << Access Token
-  // RefreshToken << Refresh Token
 
   return(
     <div>
