@@ -1,35 +1,36 @@
 import { LoginLogo, LoginLogoOne, RegisterContainer, LoginBox, LoginTitle, LoginBtn, LoginInput, LoginInfo, ToRegister, ErrorMsg } from "./login.styled";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __postUser } from "../../Redux/modules/userSlice";
+import { __postUser } from "../../Redux/modules/userSlice"
 import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
-
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const day = today.getDate();
 
   const init = {
     email: "",
     username: "",
     password: "",
-    passwordConfirm: "",
-    createAt: year + "-" + month + "-" + day,
+    passwordConfirm: ""
   };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [input, setInput] = useState(init);
-  console.log(input)
 
-  // 회원가입 state에 input value load
+  // 회원가입 state에 input value loads
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
+
+  // 추가할 로직
+  // 1. email 중복체크
+  // 2. username 중복체크
+  // username, 4 ~ 12글자,
+  // password, 4 ~ 12글자,
+  // 각 조건 만족 시 input 밑에 메시지 띄우고,
+  // 불만족 시, 회원가입 버튼 비활성, 
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -94,7 +95,7 @@ export const Register = () => {
             onChange={(e) => onChangeHandler(e)}
           />
           <ErrorMsg>{ errorMsg }</ErrorMsg>
-          <LoginBtn>회원가입</LoginBtn>
+          <LoginBtn type="submit">회원가입</LoginBtn>
           <LoginInfo>이미 회원이신가요? <ToRegister to="/login"> 로그인</ToRegister></LoginInfo>
           <hr align="center" style={{"width": "50%"}}/>
           <LoginInfo><ToRegister to="/">메인으로</ToRegister></LoginInfo>

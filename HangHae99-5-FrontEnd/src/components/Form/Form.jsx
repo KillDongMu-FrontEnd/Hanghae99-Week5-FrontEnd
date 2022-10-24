@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { FormContainer, FormGroup } from "../style/Form.styled";
-import { fileUploadApi } from ".././Redux/modules/API/fileUploadApi"
-import {
-  FormInput,
-  HighLight,
-  InputBar,
-  Label,
-} from "../style/MaterialInput.styled";
-import { __postBoard } from "../Redux/modules/boardSlice";
+
+import { FormContainer, FormGroup } from "./Form.styled";
+import { fileUploadApi } from "../../Redux/modules/API/fileUploadApi"
+import { FormInput, HighLight, InputBar, Label } from "../../style/MaterialInput.styled";
+import { __postBoard } from "../../Redux/modules/boardSlice";
 
 export const Form = () => {
   const init = {
@@ -21,7 +17,6 @@ export const Form = () => {
 
   const [input, setInput] = useState(init);
 
-
   //인풋밸류 input에 넣었음
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -32,6 +27,7 @@ export const Form = () => {
     e.preventDefault();
     dispatch(__postBoard(input));
     setInput(init);
+
     const formData = new FormData();
     formData.getAll(formData)
     Object.entries(input).forEach(([key, value]) => {
@@ -47,7 +43,6 @@ export const Form = () => {
   const image = URL.createObjectURL(e.target.files[0]);
   setImage(image);
  }
-
 
   //이미지미리보기
   const [imageSrc, setImageSrc] = useState("");
@@ -103,6 +98,7 @@ export const Form = () => {
         <InputBar />
         <Label>사진첨부</Label>
       </FormGroup>
+
       <FormGroup>
        <div>
        {imageSrc && <img src={imageSrc} alt="preview-img" />}
@@ -111,7 +107,6 @@ export const Form = () => {
         <InputBar />
         {/* <Label>미리보기</Label> */}
       </FormGroup>
-
       <button>등록하기</button>
     </FormContainer>
   );

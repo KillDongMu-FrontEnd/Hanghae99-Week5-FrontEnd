@@ -4,22 +4,26 @@ import { postUserApi } from "./API/userAPI";
 export const __postUser = createAsyncThunk(
   "registUser",
   async (payload, thunkAPI) => {
-    await postUserApi(payload);
-    thunkAPI.dispatch(postUser(payload));
-    console.log(payload)
+    try {
+      await postUserApi(payload);
+      return thunkAPI.fulfillWithValue(payload);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error)
+    }
   }
 );
 
 export const userSlice = createSlice({
   name: "users",
   initialState: {
-    username: "",
-    password: "",
-    email: "",
+    userInfo: [],
+    // isLoading: false,
+    // error: null,
   },
-  reducers: {
-    postUser: (state, action) => {
-      state.users.push(action.payload)
+  reducers: {},
+  extraReducers: {
+    [__postUser.fulfilled]: (state, action) => {
+      state.userInfo.push(action.payload)
     }
   }
 })

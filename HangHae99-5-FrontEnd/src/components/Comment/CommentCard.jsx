@@ -13,8 +13,8 @@ export const CommentCard = (props) => {
 
   return (
     <div>
-      <p>
-        {comment.id}님 :
+     <p>
+        {comment?.id}님 : 
         {edit ? (
           <input
             type="text"
