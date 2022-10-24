@@ -1,19 +1,27 @@
-import { createSlice,createAsyncThunk,current  } from "@reduxjs/toolkit";
-import { addCommentApi,getCommentApi,delCommentApi,editCommentApi } from "./commentApi";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { addCommentApi, getCommentApi, delCommentApi, editCommentApi } from "./API/commentApi";
 
 export const __addComment = createAsyncThunk(
     "addComment",
     async (payload, thunkAPI) => {
-      await addCommentApi(payload);
-    return thunkAPI.dispatch(addComment(payload));
+      try{
+        await addCommentApi(payload);
+        return thunkAPI.fulfillWithValue(payload);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
     }
   );
 
   export const __getComment = createAsyncThunk(
     "getComment",
     async (payload, thunkAPI) => {
-      const response = await getCommentApi(payload);
-    return thunkAPI.dispatch(getComment(response));
+      try{
+        const response = await getCommentApi(payload);
+        return thunkAPI.fulfillWithValue(response);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
     }
   );
 
@@ -38,26 +46,48 @@ export const __addComment = createAsyncThunk(
     name: "comments",
     initialState: {
       comment: [],
+      isLoading: false,
+      error: null, 
     },
     reducers: {
-      addComment: (state, action) => {
-        // const id = state.comment[state.comment.length - 1]?.id + 1 || 1;
-        state.comment.push(action.payload);
+    //   delComment: (state, action) => {
+    //     state.comment = state.comment.filter((item) => 
+    //       item.id !== action.payload.id
+    //     )
+    //   },  
+    //   editComment: (state, action) => {
+    //     state.comment = state.comment.map((item)=>{
+    //       return item.id === action.payload.id ? action.payload : item;
+    //     })     
+    //   },
+    },
+    extraReducers: {
+      // GET Request Comment
+      [__getComment.pending]: (state) => {
+        state.isLoading = true;
       },
-      getComment: (state, action) => {             
+      [__getComment.fulfilled]: (state, action) => {
+        state.isLoading = false;
         state.comment = action.payload;
       },
-      delComment: (state, action) => {
-        state.comment = state.comment.filter((item) => 
-          item.id !== action.payload.id
-        )
-      },  
-      editComment: (state, action) => {
-        state.comment = state.comment.map((item)=>{
-          return item.id === action.payload.id ? action.payload : item;
-        })     
+      [__getComment.rejected]: (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       },
-    },
+
+      // POST Request Comment
+      [__addComment.pending]: (state) => {
+        state.isLoading = true;
+      },
+      [__addComment.fulfilled]: (state, action) => {
+        state.isLoading = false;
+        state.comment.push(action.payload);
+      },
+      [__getComment.rejectWithValue]: (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      }
+    }
     // extraReducers: {
     //     [__getComment.fulfilled]: (state, action) => {
     //     state.isLoading = false;

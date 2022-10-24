@@ -40,256 +40,58 @@
   ],
   "boardList": [
     {
-      "title": "ㄴㅇㄹㄴㅇㄹ",
-      "content": "ㄴㅇㄹㄴㅇㄹ",
+      "title": "123",
+      "content": "123",
       "username": "",
-      "createdAt": "",
+      "createdAt": "2022-10-24",
+      "id": 1
+    },
+    {
+      "title": "123",
+      "content": "123",
+      "username": "",
+      "createdAt": "2022-10-24",
       "id": 2
     },
     {
-      "title": "sadf",
-      "content": "asdf",
+      "title": "123",
+      "content": "123",
       "username": "",
-      "createdAt": "",
+      "createdAt": "2022-10-24",
       "id": 3
     },
     {
-      "title": "sadf",
-      "content": "sadf",
+      "title": "123",
+      "content": "123",
       "username": "",
-      "createdAt": "",
+      "createdAt": "2022-10-24",
       "id": 4
     },
     {
-      "title": "sadf",
-      "content": "asdf",
+      "title": "13",
+      "content": "123",
       "username": "",
-      "createdAt": "",
+      "createdAt": "2022-10-24",
       "id": 5
     },
     {
-      "title": "sadf",
-      "content": "asdf",
+      "title": "123",
+      "content": "123",
       "username": "",
-      "createdAt": "",
+      "createdAt": "2022-10-24",
       "id": 6
+    }
+  ],
+  "commentList": [
+    {
+      "boardId": 1,
+      "comment": "123",
+      "id": 1
     },
     {
-      "title": "asdf",
-      "content": "asdf",
-      "username": "",
-      "createdAt": "",
-      "id": 7
-    },
-    {
-      "title": "sadf",
-      "content": "sadf",
-      "username": "",
-      "createdAt": "",
-      "id": 8
-    },
-    {
-      "title": "asdf",
-      "content": "asdf",
-      "username": "",
-      "createdAt": "",
-      "id": 9
-    },
-    {
-      "title": "sadf",
-      "content": "asdf",
-      "username": "",
-      "createdAt": "",
-      "id": 10
-    },
-    {
-      "title": "sadf",
-      "content": "sadf",
-      "username": "",
-      "createdAt": "",
-      "id": 11
-    },
-    {
-      "title": "asdf",
-      "content": "sadf",
-      "username": "",
-      "createdAt": "",
-      "id": 12
-    },
-    {
-      "title": "dsaf",
-      "content": "sadf",
-      "username": "",
-      "createdAt": "",
-      "id": 13
-    },
-    {
-      "title": "dfsa",
-      "content": "sadf",
-      "username": "",
-      "createdAt": "",
-      "id": 14
-    },
-    {
-      "title": "sadf",
-      "content": "adsf",
-      "username": "",
-      "createdAt": "",
-      "id": 15
-    },
-    {
-      "title": "adsf",
-      "content": "sadf",
-      "username": "",
-      "createdAt": "",
-      "id": 16
-    },
-    {
-      "title": "sadf",
-      "content": "asdf",
-      "username": "",
-      "createdAt": "",
-      "id": 17
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 18
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 19
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 20
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 21
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 22
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 23
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 24
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 25
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 26
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 27
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 28
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 29
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 30
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 31
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 32
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 33
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 34
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 35
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 36
-    },
-    {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": "",
-      "id": 37
+      "boardId": 1,
+      "comment": "443214",
+      "id": 2
     }
   ],
   "hearts": []

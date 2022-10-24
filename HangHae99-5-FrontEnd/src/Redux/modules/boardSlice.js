@@ -5,40 +5,60 @@ import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi} from
 export const __postBoard = createAsyncThunk(
   "postBoard",
   async (payload, thunkAPI) => {
-    await postBoardApi(payload);
-    thunkAPI.dispatch(postBoard(payload));
+    try {
+      await postBoardApi(payload);
+      return thunkAPI.fulfillWithValue(payload);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
 );
 
 export const __getBoard = createAsyncThunk(
   "getBoard",
   async (payload, thunkAPI) => {
-    const response = await getBoardApi(payload);
-    thunkAPI.dispatch(getBoard(response));
+    try{
+      const response = await getBoardApi(payload);
+      return thunkAPI.fulfillWithValue(response);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
 );
   
 export const __delBoard = createAsyncThunk(
     "delBoard",
     async (payload, thunkAPI) => {
-      await delBoardApi(payload);
-      thunkAPI.dispatch(delBoard(payload));
+      try{
+        await delBoardApi(payload);
+        return thunkAPI.fulfillWithValue(payload);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
     }
   );
 
 export const __getBoardId = createAsyncThunk(
   "getBoard_Id",
   async (payload, thunkAPI) => {
-    const response = await getBoardIdApi(payload);
-    thunkAPI.dispatch(getBoard_Id(response));
+    try {
+      const response = await getBoardIdApi(payload);
+      return thunkAPI.fulfillWithValue(response);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
 );
 
 export const __editBoard = createAsyncThunk(
   "editBoard",
   async (payload, thunkAPI) => {
-    const response = await editBoardApi(payload);
-    thunkAPI.dispatch(editBoard(response));
+    try {
+      const response = await editBoardApi(payload);
+      return thunkAPI.fulfillWithValue(response);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
 );
 
@@ -50,28 +70,76 @@ export const boardSlice = createSlice({
       isLoading: false,
       error: null,    
   },
-  reducers: {
-    postBoard: (state, action) => {
-      const id = state.boards[state.boards.length - 1]?.id + 1 || 1;
-      state.boards.push({ id, ...action.payload });
+  reducers: {},
+  extraReducers:{
+    // GET Request BoardList
+    [__getBoard.pending]: (state) => {
+      state.isLoading = true;
     },
-    getBoard: (state, action) => {
+    [__getBoard.fulfilled]: (state, action) => {
+      state.isLoading = false;
       state.boards = action.payload;
     },
-    delBoard: (state, action) => {
-      state.boards = action.payload.filter((item)=>item.id !== action.payload);
+    [__getBoard.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
-    getBoard_Id: (state, action) => {
+
+    // GET Request one board Item
+    [__getBoardId.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__getBoardId.fulfilled]: (state, action) => {
+      state.isLoading = false;
       state.board = action.payload;
     },
-    editBoard: (state, action) => {
+    [__getBoardId.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    // POST Request board Item
+    [__postBoard.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__postBoard.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.boards.push(action.payload);
+    },
+    [__postBoard.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    // DELETE Request board Item
+    [__delBoard.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__delBoard.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.boards = action.payload;
+    },
+    [__delBoard.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    // EDIT Request board Item
+    [__editBoard.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__editBoard.fulfilled]: (state, action) => {
+      state.isLoading = false;
       state.boards = state.boards.map((board)=>{
         return board.id === action.payload.id ? action.payload : board
-      })
+      });
     },
-  },
- 
+    [__editBoard.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    }
+  }
 });
 
-export const { postBoard, getBoard,delBoard,getBoard_Id,editBoard } = boardSlice.actions;
+// export const { postBoard, getBoard,delBoard,getBoard_Id,editBoard } = boardSlice.actions;
 export default boardSlice.reducer;

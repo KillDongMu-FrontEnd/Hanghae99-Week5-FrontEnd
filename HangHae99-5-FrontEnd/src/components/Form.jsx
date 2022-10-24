@@ -12,12 +12,18 @@ import {
 import { __postBoard } from "../Redux/modules/boardSlice";
 
 export const Form = () => {
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+
   const init = {
-    title: "",
-    content: "",
-    username: "",
-    createdAt: "",
-  };
+      "title": "",
+      "content": "",
+      "username": "",
+      "createdAt": year + "-" + month + "-" + day,
+  }
 
   const dispatch = useDispatch();
 

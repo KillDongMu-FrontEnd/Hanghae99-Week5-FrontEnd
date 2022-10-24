@@ -1,11 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { postUserApi } from "./API/userAPI";
 
-// const today = new Date();
-// const year = today.getFullYear();
-// const month = today.getMonth() + 1;
-// const day = today.getDate();
-
 export const __postUser = createAsyncThunk(
   "registUser",
   async (payload, thunkAPI) => {
