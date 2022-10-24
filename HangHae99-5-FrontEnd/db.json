@@ -18,11 +18,6 @@
   ],
   "commentList": [
     {
-      "boardId": 2,
-      "comment": "제발되라",
-      "id": 1
-    },
-    {
       "boardId": 1,
       "comment": "ㄴㅇㄹㄴㅇㄹ",
       "id": 2
@@ -36,6 +31,11 @@
       "boardId": 4,
       "comment": "ㅇㄴㄹㄴ",
       "id": 4
+    },
+    {
+      "boardId": 2,
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "id": 5
     }
   ],
   "boardList": [
