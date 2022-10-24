@@ -8,8 +8,8 @@ import {
   HighLight,
   InputBar,
   Label,
-} from "../style/MaterialInput.styled";
-import { __postBoard } from "../Redux/modules/boardSlice";
+} from "../../style/MaterialInput.styled";
+import { __postBoard } from "../../Redux/modules/boardSlice";
 
 export const Form = () => {
   const init = {

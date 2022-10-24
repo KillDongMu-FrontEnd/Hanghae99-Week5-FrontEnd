@@ -1,10 +1,30 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
+
+export const MainContainer = styled.div`
+  margin-top: 40rem;
+`
+
+export const LinkContainer = styled.div`
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+`
+
+export const GoToForm = styled(Link)`
+  font-size: 3rem;
+  text-decoration: none;
+  color: black;
+  width: 200px;
+  margin-left: 20px;
+`
 
 export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
   grid-gap: 2rem;
   margin: 2rem;
+  margin-top: 38rem;
   width: 80%;
   background: #b5b5ed;
   float: right;

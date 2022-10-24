@@ -1,8 +1,9 @@
 import { __getBoard, __delBoard } from "../../Redux/modules/boardSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { CardContainer, CardItem, CardItemTitle } from "./List.styled";
+import { Link, useNavigate } from "react-router-dom";
+import { MainContainer, LinkContainer, GoToForm, CardContainer, CardItem, CardItemTitle } from "./List.styled";
+import styled from "styled-components";
 
 export const List = () => {
 
@@ -18,7 +19,7 @@ export const List = () => {
   const boards = useSelector((state) => state.boards.boards);
   // console.log(boards);
 
-// 만약 데이터가없다면 화면에 로딩중
+// 만약 데이터가없다면 화면에 띄워줄 메시지
   if (boards.length === 0) {
     return(
       <div>
@@ -28,8 +29,10 @@ export const List = () => {
   };
 
   return(
-    <div>
-      <h1>새로운 글 작성하기</h1>
+    <MainContainer>
+      <LinkContainer>
+        <GoToForm to="/form">새로운 글 작성하기</GoToForm>
+      </LinkContainer>
       <CardContainer>
         {
           boards?.map((board, idx) => {
@@ -52,6 +55,6 @@ export const List = () => {
           })
         }
       </CardContainer>
-    </div>
+    </MainContainer>
   )
 };
