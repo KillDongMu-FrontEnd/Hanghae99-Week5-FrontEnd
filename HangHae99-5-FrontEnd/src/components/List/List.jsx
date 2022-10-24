@@ -1,11 +1,11 @@
 import { __getBoard, __delBoard } from "../../Redux/modules/boardSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MainContainer, LinkContainer, GoToForm, CardContainer, CardItem, CardItemTitle } from "./List.styled";
-import styled from "styled-components";
 
 export const List = () => {
+
 
   const dispatch = useDispatch();
 //리스트 첫 진입할때 겟보드 청크 디스패치보내기

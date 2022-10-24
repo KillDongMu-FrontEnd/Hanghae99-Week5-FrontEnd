@@ -4,6 +4,7 @@ import { Register } from "../components/Login/Register";
 import { MainPage } from "../pages/MainPage"
 import { FormPage } from "../pages/FormPage";
 import { DetailPage } from "../pages/DetailPage";
+import { ErrorPage } from "../pages/ErrorPage";
 
 
 const Router = () => {
@@ -16,6 +17,7 @@ const Router = () => {
         <Route exact path="/detail/" element={ <DetailPage/> } />
         <Route exact path="/detail/:id" element={ <DetailPage/> } />
         <Route exact path="/form"  element={ <FormPage/> }/>
+        <Route path="*" element={ <ErrorPage/> } />
       </Routes>
     </BrowserRouter>
   )

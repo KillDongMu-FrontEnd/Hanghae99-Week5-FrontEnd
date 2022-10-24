@@ -13,6 +13,7 @@ export const Header = () => {
         <MenuItem><MenuLink to="/login">Sign In</MenuLink></MenuItem>
         <hr/>
         <MenuItem><MenuLink to="/">Home</MenuLink></MenuItem>
+        <MenuItem><MenuLink to="/form">글 작성하기</MenuLink></MenuItem>
         <MenuItem>asd</MenuItem>
       </Menu>
     </MenuToggle>
