@@ -2,12 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FormContainer, FormGroup } from "./Form.styled";
 import { fileUploadApi } from "../../Redux/modules/API/fileUploadApi"
-import {
-  FormInput,
-  HighLight,
-  InputBar,
-  Label,
-} from "../../style/MaterialInput.styled";
+import { FormInput, HighLight, InputBar, Label } from "../../style/MaterialInput.styled";
 import { __postBoard } from "../../Redux/modules/boardSlice";
 
 export const Form = () => {
