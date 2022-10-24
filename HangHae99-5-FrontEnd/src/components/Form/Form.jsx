@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-
+import styled from "styled-components";
 import { FormContainer, FormGroup } from "./Form.styled";
 import { fileUploadApi } from "../../Redux/modules/API/fileUploadApi"
 import { FormInput, HighLight, InputBar, Label } from "../../style/MaterialInput.styled";
@@ -100,9 +100,9 @@ export const Form = () => {
       </FormGroup>
 
       <FormGroup>
-       <div>
-       {imageSrc && <img src={imageSrc} alt="preview-img" />}
-       </div>
+       <ImageLayout>
+       {imageSrc && <ImageSize src={imageSrc} alt="preview-img" />}
+       </ImageLayout>
         <HighLight />
         <InputBar />
         {/* <Label>미리보기</Label> */}
@@ -111,3 +111,23 @@ export const Form = () => {
     </FormContainer>
   );
 };
+
+
+export const ImageSize = styled.img`
+     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: gray;
+`;
+
+const ImageLayout = styled.div`
+    position: relative;
+    height: 400px;
+    width: 400px;
+    border-radius: 50px;
+    /* overflow: hidden; */
+`;
+
