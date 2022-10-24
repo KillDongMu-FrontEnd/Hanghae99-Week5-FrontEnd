@@ -1,7 +1,6 @@
 import { LoginLogo, LoginLogoOne, RegisterContainer, LoginBox, LoginTitle, LoginBtn, LoginInput, LoginInfo, ToRegister, ErrorMsg } from "./login.styled";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { __postUser } from "../../Redux/modules/userSlice";
 import { __postUser } from "../../Redux/modules/userSlice"
 import { useNavigate } from "react-router-dom";
 
@@ -25,6 +24,14 @@ export const Register = () => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
+
+  // 추가할 로직
+  // 1. email 중복체크
+  // 2. username 중복체크
+  // username, 4 ~ 12글자,
+  // password, 4 ~ 12글자,
+  // 각 조건 만족 시 input 밑에 메시지 띄우고,
+  // 불만족 시, 회원가입 버튼 비활성, 
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
