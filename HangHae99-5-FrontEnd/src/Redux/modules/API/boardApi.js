@@ -7,7 +7,8 @@ export const postBoardApi = async (payload) => {
   };
 
   export const getBoardApi = async () => {
-    const response = await axios.get(`${BASE_URL}/api/boards/list`);  
+    const response = await axios.get(`${BASE_URL}/api/boards/list`); 
+    console.log(response.data) 
     return response.data;
   };
 

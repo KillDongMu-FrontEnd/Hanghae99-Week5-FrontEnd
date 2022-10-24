@@ -23,7 +23,6 @@ export const Login = () => {
     e.preventDefault();
     dispatch();
     setInput("");
-
   }
 
   return(
