@@ -12,21 +12,24 @@ export const Login = () => {
     password: ""
   }
 
+  // 입력값 받는 state
   const [input, setInput] = useState(init);
   // console.log(input)
 
+  // input 값 state에 담는 handler
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
 
+  // 로그인 요청 handler
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(__loginUser(input));
     setInput(init);
   }
-
-  // 성공했을 때, main페이지로 보내려면 어떻게 하나용?
+  // Authorization << Access Token
+  // RefreshToken << Refresh Token
 
   return(
     <div>
