@@ -8,5 +8,6 @@ export const postUserApi = async (payload) => {
 };
 
 export const loginApi = async (payload) => {
+  console.log(payload);
   await axios.post(`${BASE_URL}/api/members/login`, payload);
 }
