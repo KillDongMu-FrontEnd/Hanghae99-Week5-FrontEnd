@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { FormContainer, FormGroup } from "../style/Form.styled";
-import axios from 'axios';
+import { FormContainer, FormGroup } from "./Form.styled";
 
 import {
   FormInput,
   HighLight,
   InputBar,
   Label,
-} from "../style/MaterialInput.styled";
-import { __postBoard } from "../Redux/modules/boardSlice";
+} from "../../style/MaterialInput.styled";
+import { __postBoard } from "../../Redux/modules/boardSlice";
 
 export const Form = () => {
 
