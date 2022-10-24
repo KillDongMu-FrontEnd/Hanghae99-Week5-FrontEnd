@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { FormContainer, FormGroup } from "./Form.styled";
+import { FormContainer, FormGroup } from "../style/Form.styled";
+import { fileUploadApi } from ".././Redux/modules/API/fileUploadApi"
 import {
   FormInput,
   HighLight,
@@ -10,18 +11,11 @@ import {
 import { __postBoard } from "../../Redux/modules/boardSlice";
 
 export const Form = () => {
-
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const day = today.getDate();
-
   const init = {
-      "title": "",
-      "content": "",
-      "username": "",
-      "createdAt": year + "-" + month + "-" + day,
-  }
+    title: "",
+    content: "",
+    username: "",
+  };
 
   const dispatch = useDispatch();
 
@@ -37,6 +31,37 @@ export const Form = () => {
     e.preventDefault();
     dispatch(__postBoard(input));
     setInput(init);
+    const formData = new FormData();
+    formData.getAll(formData)
+    Object.entries(input).forEach(([key, value]) => {
+      formData.append(key, value);
+      fileUploadApi(formData);
+  });
+  };
+ //이미지 폼밸류 보내기
+ const [image,setImage] = useState(null);
+
+ const fileUpload = (e)  =>{
+  encodeFileToBase64(e.target.files[0]);
+  const image = URL.createObjectURL(e.target.files[0]);
+  setImage(image);
+ }
+
+
+  //이미지미리보기
+  const [imageSrc, setImageSrc] = useState("");
+
+  const encodeFileToBase64 = (fileBlob) => {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(fileBlob);
+
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImageSrc(reader.result);
+        resolve();
+      };
+    });
   };
 
   return (
@@ -69,13 +94,23 @@ export const Form = () => {
         <FormInput
           type="file"
           id="file"
+          accept="image/*"
           multiple="multiple"
+          onChange={fileUpload}
         />
         <HighLight />
         <InputBar />
         <Label>사진첨부</Label>
       </FormGroup>
 
+      <FormGroup>
+       <div>
+       {imageSrc && <img src={imageSrc} alt="preview-img" />}
+       </div>
+        <HighLight />
+        <InputBar />
+        {/* <Label>미리보기</Label> */}
+      </FormGroup>
       <button>등록하기</button>
     </FormContainer>
   );
