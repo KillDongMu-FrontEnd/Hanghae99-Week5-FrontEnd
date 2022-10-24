@@ -8,12 +8,34 @@
       "createAt": "2022-10-23"
     },
     {
-      "email": "asd@naver.com",
-      "username": "asd",
-      "password": "asdasd",
-      "passwordConfirm": "asdasd",
+      "email": "v_vsoi@naver.com",
+      "username": "임소희",
+      "password": "1234",
+      "passwordConfirm": "1234",
       "createAt": "2022-10-24",
       "id": 2
+    }
+  ],
+  "commentList": [
+    {
+      "boardId": 1,
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "id": 2
+    },
+    {
+      "boardId": 1,
+      "comment": "sdfsdf",
+      "id": 3
+    },
+    {
+      "boardId": 4,
+      "comment": "ㅇㄴㄹㄴ",
+      "id": 4
+    },
+    {
+      "boardId": 2,
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "id": 5
     }
   ],
   "boardList": [

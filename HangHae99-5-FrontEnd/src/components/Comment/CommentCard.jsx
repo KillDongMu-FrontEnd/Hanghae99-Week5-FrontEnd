@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __editComment,__delComment } from "../../Redux/modules/commentSlice";
-
+import {
+  __editComment,
+  __delComment,
+} from "../../Redux/modules/commentSlice";
 
 export const CommentCard = (props) => {
- const dispatch = useDispatch();
- const {comment} = props;
- console.log(comment)
- const [edit,setEdit] = useState(false);
- const [mentEdit,setMentEdit] = useState(comment);
-
+  const dispatch = useDispatch();
+  const { comment } = props;
+  const [edit, setEdit] = useState(false);
+  const [mentEdit, setMentEdit] = useState(comment);
 
   return (
     <div>
-     <p>
-        {comment.name}님 : 
+      <p>
+        {comment.id}님 :
         {edit ? (
           <input
             type="text"
@@ -26,14 +26,26 @@ export const CommentCard = (props) => {
         ) : (
           comment.comment
         )}
-        {edit ? <button
-        onClick={(e)=>{
-          e.preventDefault();
-          dispatch(__editComment({...comment,comment:mentEdit}));
-          setEdit(false)
-        }}
-        type="submit"
-        >완료</button> : <button onClick={()=>{setEdit(!edit)}}>수정</button>}
+        {edit ? (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(__editComment({ ...comment, comment: mentEdit }));
+              setEdit(false);
+            }}
+            type="submit"
+          >
+            완료
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setEdit(!edit);
+            }}
+          >
+            수정
+          </button>
+        )}
         <button onClick={() => dispatch(__delComment(comment))}>삭제</button>
       </p>
     </div>
