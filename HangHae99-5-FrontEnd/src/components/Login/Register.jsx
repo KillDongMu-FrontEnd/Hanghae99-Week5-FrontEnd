@@ -1,15 +1,11 @@
 import { LoginLogo, LoginLogoOne, RegisterContainer, LoginBox, LoginTitle, LoginBtn, LoginInput, LoginInfo, ToRegister, ErrorMsg } from "./login.styled";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __postUser } from "../../Redux/modules/userSlice";
+// import { __postUser } from "../../Redux/modules/userSlice";
+import { __postUser } from "../../Redux/modules/userSlice"
 import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
-
-  // const today = new Date();
-  // const year = today.getFullYear();
-  // const month = today.getMonth() + 1;
-  // const day = today.getDate();
 
   const init = {
     email: "",
@@ -45,10 +41,9 @@ export const Register = () => {
       dispatch(__postUser(input));
       setInput(init);
       setErrorMsg("");
-      // navigate("/login");
+      navigate("/login");
     }
   };
-
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -94,7 +89,7 @@ export const Register = () => {
             onChange={(e) => onChangeHandler(e)}
           />
           <ErrorMsg>{ errorMsg }</ErrorMsg>
-          <LoginBtn>회원가입</LoginBtn>
+          <LoginBtn type="submit">회원가입</LoginBtn>
           <LoginInfo>이미 회원이신가요? <ToRegister to="/login"> 로그인</ToRegister></LoginInfo>
           <hr align="center" style={{"width": "50%"}}/>
           <LoginInfo><ToRegister to="/">메인으로</ToRegister></LoginInfo>
