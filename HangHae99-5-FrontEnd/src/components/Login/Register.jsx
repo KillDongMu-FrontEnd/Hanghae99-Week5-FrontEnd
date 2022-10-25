@@ -81,6 +81,7 @@ export const Register = () => {
             value={ input.email }
             onChange={(e) => onChangeHandler(e)}
           />
+          <ErrorMsg></ErrorMsg>
           <LoginInput 
             type="Username" 
             placeholder="Username"
