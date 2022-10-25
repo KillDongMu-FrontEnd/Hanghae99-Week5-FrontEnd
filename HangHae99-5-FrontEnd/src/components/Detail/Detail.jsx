@@ -19,18 +19,18 @@ export const Detail = () => {
 
 
 
-  const [edit, setEdit] = useState();
+  const [edit, setEdit] = useState("");
   const [board, setBoard] = useState(false);
 
   useEffect(() => {
     dispatch(__getBoardId(id));
   }, [dispatch, id]);
 
-  // const onChangeHandler = (e) =>{
-  //   e.preventDefault();
-  //   const {name, value} = e.target;   
-  //   setEdit({...edit, [name]: value });
-  // };
+  const onChangeHandler = (e) =>{
+    e.preventDefault();
+    const {name, value} = e.target;   
+    setEdit({...edit, [name]: value });
+  };
 
   // useEffect(()=>{
   //   setEdit(boardData);
@@ -54,6 +54,8 @@ export const Detail = () => {
         </DetailText>
         <DetailInfo>
           <p>{ boardData.createdAt?.substr(0,10) }</p>
+          <button>수정</button>
+          <button>삭제</button>
           <div>
             <DetailBsThreeDots/>
             <DetailBsHeart/>
@@ -65,32 +67,26 @@ export const Detail = () => {
       <DetailContent>
         <DetailComment>
           {
-            commentList.map((comment) => {
+            commentList?.map((comment, idx) => {
               return (
-                <div>
-                  <p>
-                    {comment}
-                  </p>
+                <div key={idx}>
+                  <DetailCommentEditInput
+                    type="text"
+                    name="comment"
+                    spellcheck={false}
+                    value={comment}
+                    onChange={onChangeHandler}
+                    readOnly
+                  />
                   <hr/>
                 </div>
               )
             })
           }
-          {/* <p>
-            댓글임
-          </p>
-          <hr/>
-          <p>
-            댓글임 댓글임 댓글임 댓글임 댓글임 
-          </p>
-          <hr/>
-          <p>
-            댓글임 댓글임 댓글임 댓글임 댓글임 댓글임 댓글임 댓글임 댓글임 댓글임댓글임 댓글임 댓글임 댓글임 댓글임
-          </p>
-          <hr/> */}
         </DetailComment>
         <DetailCommentInfo>
           <DetailCommentInput/>
+          <DetailCommentBtn>댓</DetailCommentBtn>
         </DetailCommentInfo>
       </DetailContent>
 
@@ -138,6 +134,11 @@ export const DetailComment = styled.div`
 export const DetailCommentInput = styled.input`
   width: 300px;
   margin: 0 auto;
+  outline: none;
+`
+
+export const DetailCommentBtn = styled.button`
+
 `
 
 export const DetailBsHeart = styled(BsHeart)`
@@ -146,6 +147,11 @@ export const DetailBsHeart = styled(BsHeart)`
   margin-right: 1.5rem;
 `
 
+export const DetailCommentEditInput = styled.input`
+  width: 180px;
+  border: none;
+  outline: none;
+`
 
 
 export const DetailBsChatLeftText = styled(BsChatLeftText)`
