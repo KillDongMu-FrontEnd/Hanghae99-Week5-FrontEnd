@@ -5,8 +5,8 @@ export const __addComment = createAsyncThunk(
     "addComment",
     async (payload, thunkAPI) => {
       try{
-        await addCommentApi(payload);
-        return thunkAPI.fulfillWithValue(payload);
+        const response = await addCommentApi(payload);
+        return thunkAPI.fulfillWithValue(response);
       } catch (error) {
         return thunkAPI.rejectWithValue(error);
       }

@@ -2,8 +2,17 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
+const accessToken = localStorage.getItem("authorization");
+const refreshToken = localStorage.getItem("refreshToken");
+
 export const addCommentApi = async (payload) => {
-    await axios.post(`${BASE_URL}/commentList`, payload);
+    const response = await axios.post(`${BASE_URL}/commentList`, payload, {
+      headers: {
+        Authorization: accessToken,
+        "Refresh-Token": refreshToken,
+      }
+    });
+    return response.data
   };
 
   // export const getCommentApi = async (payload) => {

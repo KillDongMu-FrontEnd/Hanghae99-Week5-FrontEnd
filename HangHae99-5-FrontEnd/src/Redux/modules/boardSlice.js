@@ -34,24 +34,14 @@ const BASE_URL = "REACT_APP_SERVER";
 export const __postBoard = createAsyncThunk(
   "postBoard",
   async (payload, thunkAPI) => {
-    await postBoardApi(payload);
-   console.log(payload)
-    thunkAPI.dispatch(postBoard(payload));
+    try {
+      const response = await postBoardApi(payload);
+      return thunkAPI.fulfillWithValue(response);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
 );
-
-
-// export const __postBoard = createAsyncThunk(
-//   "postBoard",  
-//   async (payload, thunkAPI) => {    
-//     try {      
-//       await postBoardApi(payload);        
-//       return thunkAPI.fulfillWithValue(payload);
-//     } catch (error) {      
-//       return thunkAPI.rejectWithValue(error);
-//     }
-//   }
-// );
 
 export const __getBoard = createAsyncThunk(
   "getBoard",
@@ -117,9 +107,9 @@ export const boardSlice = createSlice({
     //   state.board = action.payload;
     //   register(action.payload);
     // },
-    postBoard:(state, action) =>{
-      state.boards.push(action.payload);
-    }
+    // postBoard:(state, action) =>{
+    //   state.boards.push(action.payload);
+    // }
   },
   extraReducers:{
     // GET Request BoardList
@@ -149,18 +139,18 @@ export const boardSlice = createSlice({
     },
 
     // POST Request board Item
-    // [__postBoard.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
-    // [__postBoard.fulfilled]: (state, action) => {
-    //   state.isLoading = false;
-    //   console.log(action.payload) 
-    //   state.boards.push(action.payload);
-    // },
-    // [__postBoard.rejected]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
+    [__postBoard.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__postBoard.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      console.log(action.payload) 
+      state.boards.push(action.payload);
+    },
+    [__postBoard.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
 
     // DELETE Request board Item
     [__delBoard.pending]: (state) => {

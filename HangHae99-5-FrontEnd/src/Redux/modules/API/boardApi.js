@@ -4,6 +4,9 @@ const BASE_URL = process.env.REACT_APP_SERVER;
 const accessToken = localStorage.getItem("authorization");
   const refreshToken = localStorage.getItem("refreshToken");
 
+const accessToken = localStorage.getItem("authorization");
+const refreshToken = localStorage.getItem("refreshToken");
+
 // const instance = axios.create({
 //   BASE_URL: process.env.REACT_APP_SERVER,
 // });
@@ -13,9 +16,24 @@ const accessToken = localStorage.getItem("authorization");
 //   return config;
 // });
 
+//     .post(`${BASE_URL}/api/boards/create`, frm, {
+//       headers: {
+//         Authorization: accessToken,
+//         "Refresh-Token": refreshToken,
+//         "Content-Type": "multipart/form-data",
+//       },
+//     })
+
+
+
 export const postBoardApi = async (payload) => {
-  console.log("pay",payload) 
-    await axios.post(`${BASE_URL}/api/boards/create`, payload);
+  const response = await axios.post(`${BASE_URL}/api/boards/create`, payload, {
+    headers: {
+      Authorization: accessToken,
+      "Refresh-Token": refreshToken,
+    }
+  });
+  return response.data
   };
 
   export const fileUploadApi = async (payload) => {
@@ -33,7 +51,6 @@ export const postBoardApi = async (payload) => {
 
   export const getBoardIdApi = async (id) => {
     const response = await axios.get(`${BASE_URL}/api/boards/detail/${id}`);  
-    console.log(response.data)
     return response.data;
   };
 
