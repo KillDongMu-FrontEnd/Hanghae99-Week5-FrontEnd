@@ -1,18 +1,57 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi} from "./API/boardApi"
+import axios from "axios";
 
+
+
+const BASE_URL = "REACT_APP_SERVER";
+
+// const register = (payload) => {
+//   const accessToken = localStorage.getItem("accessToken");
+//   const refreshToken = localStorage.getItem("refreshToken");
+
+//   const frm = new FormData();
+//   frm.append("title", payload.title);
+//   frm.append("content", payload.content);
+//   // frm.append("file", payload.file);
+//   axios
+//     .post(`${BASE_URL}/api/boards/create`, frm, {
+//       headers: {
+//         Authorization: accessToken,
+//         "Refresh-Token": refreshToken,
+//         "Content-Type": "multipart/form-data",
+//       },
+//     })
+//     .then(function a(response) {
+//       alert("게시되었습니다.");
+//       window.location.replace("/");
+//     })
+//     .catch(function (error) {
+//       console.log(error.response);
+//     });
+// };
 
 export const __postBoard = createAsyncThunk(
   "postBoard",
   async (payload, thunkAPI) => {
-    try {
-      await postBoardApi(payload);
-      return thunkAPI.fulfillWithValue(payload);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
+    await postBoardApi(payload);
+   console.log(payload)
+    thunkAPI.dispatch(postBoard(payload));
   }
 );
+
+
+// export const __postBoard = createAsyncThunk(
+//   "postBoard",  
+//   async (payload, thunkAPI) => {    
+//     try {      
+//       await postBoardApi(payload);        
+//       return thunkAPI.fulfillWithValue(payload);
+//     } catch (error) {      
+//       return thunkAPI.rejectWithValue(error);
+//     }
+//   }
+// );
 
 export const __getBoard = createAsyncThunk(
   "getBoard",
@@ -72,7 +111,16 @@ export const boardSlice = createSlice({
       isLoading: false,
       error: null,    
   },
-  reducers: {},
+  reducers: {
+    //  // action => dispatch로 보낸 데이터를 받아오는 곳
+    //  addPost: (state, action) => {
+    //   state.board = action.payload;
+    //   register(action.payload);
+    // },
+    postBoard:(state, action) =>{
+      state.boards.push(action.payload);
+    }
+  },
   extraReducers:{
     // GET Request BoardList
     [__getBoard.pending]: (state) => {
@@ -101,17 +149,18 @@ export const boardSlice = createSlice({
     },
 
     // POST Request board Item
-    [__postBoard.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [__postBoard.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.boards.push(action.payload);
-    },
-    [__postBoard.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+    // [__postBoard.pending]: (state) => {
+    //   state.isLoading = true;
+    // },
+    // [__postBoard.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   console.log(action.payload) 
+    //   state.boards.push(action.payload);
+    // },
+    // [__postBoard.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
 
     // DELETE Request board Item
     [__delBoard.pending]: (state) => {
@@ -143,5 +192,5 @@ export const boardSlice = createSlice({
   }
 });
 
-// export const { postBoard, getBoard,delBoard,getBoard_Id,editBoard } = boardSlice.actions;
+export const { postBoard} = boardSlice.actions;
 export default boardSlice.reducer;
