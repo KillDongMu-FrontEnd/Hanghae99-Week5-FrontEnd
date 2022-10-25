@@ -84,7 +84,7 @@ export const __editBoard = createAsyncThunk(
   "editBoard",
   async (payload, thunkAPI) => {
     try {    
-      const response = await editBoardApi(payload);
+      const response = await editBoardApi(payload);    
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -143,7 +143,6 @@ export const boardSlice = createSlice({
     },
     [__postBoard.fulfilled]: (state, action) => {
       state.isLoading = false;
-      console.log(action.payload) 
       state.boards.push(action.payload);
     },
     [__postBoard.rejected]: (state, action) => {
@@ -171,6 +170,7 @@ export const boardSlice = createSlice({
     },
     [__editBoard.fulfilled]: (state, action) => {
       state.isLoading = false;
+      console.log(action.payload);
       state.boards = state.boards.map((board)=>{
         return board.id === action.payload.id ? action.payload : board
       });
