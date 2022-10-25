@@ -31,6 +31,8 @@ export const Detail = () => {
   const [edit, setEdit] = useState("");
   const [board, setBoard] = useState(false);
 
+  const username = localStorage.getItem("username");
+
   useEffect(() => {
     dispatch(__getBoardId(id));
   }, [dispatch, id]);
@@ -47,27 +49,13 @@ export const Detail = () => {
 
   return (
     <DetailContainer>
-     {board ? (
-          <DetailHeader>
-            <input
-              type="text"
-              name="title"
-              value={edit?.title}
-              onChange={onChangeHandler}
-            />
-          </DetailHeader>
-        ) : (
-          <DetailHeader>
-             <h1>
-          <strong>{boardData.title}</strong>
+
+      <DetailHeader>
+        <h1>
+          <strong>{ boardData.title }</strong>
         </h1>
-        <DetailAuthor>{boardData.username}</DetailAuthor>
-          </DetailHeader>
-        )}
-      {/* <DetailHeader>
-       
-        <DetailAuthor>{boardData.username}</DetailAuthor>
-      </DetailHeader> */}
+        <DetailAuthor>{ boardData.username }</DetailAuthor>
+      </DetailHeader>
 
       <DetailContent>
         <h1>
@@ -86,40 +74,40 @@ export const Detail = () => {
           </DetailText>
         ) : (
           <DetailText>
-            <p>{boardData.content}</p>
+            <p>{ boardData.content }</p>
           </DetailText>
         )}
 
         <DetailInfo>
-          {board ? (
-            <button
-              onClick={() => {
-                dispatch(__editBoard(edit));
-                dispatch(__getBoardId(id));
-                setBoard(false);
-              }}
-            >
-              완료
-            </button>
-          ) : ( 
-            <button
-              onClick={() => {
-                setBoard(!board);
-              }}
-            >
-              수정
-            </button>
-          )}
-          <button
-          onClick={()=>{dispatch(__delBoard(id));
-            navigate("/");
-          }}
-          >삭제</button>
-          <div>
-            <DetailBsThreeDots />
-            <DetailBsHeart />
-            <DetailBsChatLeftText />
-          </div>
+          {
+            username === boardData.username ? (
+              <div>
+                {
+                  board ? (
+                    <DetailOptionBtn
+                      onClick={() => {
+                        dispatch(__editBoard(edit));
+                        dispatch(__getBoardId(id));
+                        setBoard(false);
+                      }}
+                    >
+                      완료
+                    </DetailOptionBtn>
+                  ) : (
+                    <DetailOptionBtn
+                      onClick={() => {
+                        setBoard(!board);
+                      }}
+                    >
+                      수정
+                    </DetailOptionBtn>
+                  )
+                }
+                <DetailOptionBtn>삭제</DetailOptionBtn>
+              </div>
+            ) : null
+          }
+          <DetailBsHeart />
         </DetailInfo>
       </DetailContent>
 
@@ -210,6 +198,14 @@ export const DetailCommentEditInput = styled.input`
   border: none;
   outline: none;
 `;
+
+export const DetailOptionBtn = styled.button`
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  text-align: center;
+  background-color: transparent;
+`
 
 export const DetailBsChatLeftText = styled(BsChatLeftText)`
   color: black;
