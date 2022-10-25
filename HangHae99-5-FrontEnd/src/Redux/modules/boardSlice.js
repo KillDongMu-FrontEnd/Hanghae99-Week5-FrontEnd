@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi} from "./API/boardApi"
-import axios from "axios";
+// import axios from "axios";
 
 
 
-const BASE_URL = "REACT_APP_SERVER";
+// const BASE_URL = "REACT_APP_SERVER";
 
 // const register = (payload) => {
 //   const accessToken = localStorage.getItem("accessToken");
@@ -35,7 +35,7 @@ export const __postBoard = createAsyncThunk(
   "postBoard",
   async (payload, thunkAPI) => {
     try {
-      const response = await postBoardApi(payload);
+      const response = await postBoardApi(payload);      
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -73,7 +73,6 @@ export const __getBoardId = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await getBoardIdApi(payload);
-      console.log(payload);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -84,7 +83,7 @@ export const __getBoardId = createAsyncThunk(
 export const __editBoard = createAsyncThunk(
   "editBoard",
   async (payload, thunkAPI) => {
-    try {
+    try {      
       const response = await editBoardApi(payload);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {

@@ -22,42 +22,49 @@ const refreshToken = localStorage.getItem("refreshToken");
 //       },
 //     })
 
-
-
 export const postBoardApi = async (payload) => {
   const response = await axios.post(`${BASE_URL}/api/boards/create`, payload, {
     headers: {
       Authorization: accessToken,
       "Refresh-Token": refreshToken,
-    }
+    },
   });
-  return response.data
-  };
+  return response.data;
+};
 
-  export const fileUploadApi = async (payload) => {
-    await axios.post(`${BASE_URL}/file`, payload);
-  };
+export const fileUploadApi = async (payload) => {
+  await axios.post(`${BASE_URL}/file`, payload);
+};
 
-  export const getBoardApi = async () => {
-    const response = await axios.get(`${BASE_URL}/api/boards/list`); 
-    return response.data;
-  };
+export const getBoardApi = async () => {
+  const response = await axios.get(`${BASE_URL}/api/boards/list`);
+  return response.data;
+};
 
-  export const delBoardApi = async (id) => {
-    await axios.delete(`${BASE_URL}/api/boards/delete?board-id=${id}`);
-  };
+export const delBoardApi = async (id) => {
+  await axios.delete(`${BASE_URL}/api/boards/delete?board-id=${id}`,{
+    headers: {
+      Authorization: accessToken,
+      "Refresh-Token": refreshToken,
+    },
+  });
+};
 
-  export const getBoardIdApi = async (id) => {
-    const response = await axios.get(`${BASE_URL}/api/boards/detail/${id}`);  
-    return response.data;
-  };
+export const getBoardIdApi = async (id) => {
+  const response = await axios.get(`${BASE_URL}/api/boards/detail/${id}`);
+  return response.data;
+};
 
-  export const editBoardApi = async (edit) => {
-    const response = await axios.put(`${BASE_URL}/api/boards/update?board-id=${edit.id}`,edit,{
+export const editBoardApi = async (edit) => {
+  const response = await axios.put(
+    `${BASE_URL}/api/boards/update?board-id=${edit.id}`,
+    edit,
+    {
       headers: {
         Authorization: accessToken,
-        "Refresh-Token": refreshToken
-      }
-    }); 
-    return response.data;
-  };
+        "Refresh-Token": refreshToken,
+      },
+    }
+  );
+  return response.data;
+};

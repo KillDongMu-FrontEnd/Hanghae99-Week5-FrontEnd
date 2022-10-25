@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardId } from "../../Redux/modules/boardSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import { __editBoard } from "../../Redux/modules/boardSlice";
+import { __editBoard,__delBoard } from "../../Redux/modules/boardSlice";
 import {
   BsHeartFill,
   BsHeart,
@@ -47,12 +47,27 @@ export const Detail = () => {
 
   return (
     <DetailContainer>
-      <DetailHeader>
-        <h1>
+     {board ? (
+          <DetailHeader>
+            <input
+              type="text"
+              name="title"
+              value={edit?.title}
+              onChange={onChangeHandler}
+            />
+          </DetailHeader>
+        ) : (
+          <DetailHeader>
+             <h1>
           <strong>{boardData.title}</strong>
         </h1>
         <DetailAuthor>{boardData.username}</DetailAuthor>
-      </DetailHeader>
+          </DetailHeader>
+        )}
+      {/* <DetailHeader>
+       
+        <DetailAuthor>{boardData.username}</DetailAuthor>
+      </DetailHeader> */}
 
       <DetailContent>
         <h1>
@@ -64,8 +79,8 @@ export const Detail = () => {
           <DetailText>
             <input
               type="text"
-              name="title"
-              value={edit?.title}
+              name="content"
+              value={edit?.content}
               onChange={onChangeHandler}
             />
           </DetailText>
@@ -86,7 +101,7 @@ export const Detail = () => {
             >
               완료
             </button>
-          ) : (
+          ) : ( 
             <button
               onClick={() => {
                 setBoard(!board);
@@ -95,7 +110,11 @@ export const Detail = () => {
               수정
             </button>
           )}
-          <button>삭제</button>
+          <button
+          onClick={()=>{dispatch(__delBoard(id));
+            navigate("/");
+          }}
+          >삭제</button>
           <div>
             <DetailBsThreeDots />
             <DetailBsHeart />
