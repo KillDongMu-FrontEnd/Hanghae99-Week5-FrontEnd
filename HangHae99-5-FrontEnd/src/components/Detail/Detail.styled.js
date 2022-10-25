@@ -75,7 +75,7 @@ export const DetailInfo = styled.div`
 	box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.1);
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 	position: absolute;
 	padding: 15px 30px;
 	bottom: 0;

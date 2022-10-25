@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 export const MainContainer = styled.div`
-  margin-top: 40rem;
+  margin-top: 20rem;
 `
 
 export const LinkContainer = styled.div`
