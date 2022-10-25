@@ -2,12 +2,25 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
+const instance = axios.create({
+  BASE_URL: process.env.REACT_APP_SERVER,
+});
+
+instance.interceptors.request.use(config => {
+  config.headers["Content-Type"] = "multipart/form-data";
+  return config;
+});
+
 export const postBoardApi = async (payload) => {
-    await axios.post(`${BASE_URL}/api/boards/create`, payload);
+    await axios.post(`${BASE_URL}/boardList`, payload);
+  };
+
+  export const fileUploadApi = async (payload) => {
+    await axios.post(`${BASE_URL}/file`, payload);
   };
 
   export const getBoardApi = async () => {
-    const response = await axios.get(`${BASE_URL}/api/boards/list`); 
+    const response = await axios.get(`${BASE_URL}/boardList`); 
     console.log(response.data) 
     return response.data;
   };
