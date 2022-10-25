@@ -21,6 +21,7 @@ const refreshToken = localStorage.getItem("refreshToken");
 //       },
 //     })
 
+// 게시글 작성하는 api(동작함)
 export const postBoardApi = async (payload) => {
   const response = await axios.post(`${BASE_URL}/api/boards/create`, payload, {
     headers: {

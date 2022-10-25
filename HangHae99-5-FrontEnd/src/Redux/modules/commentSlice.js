@@ -4,6 +4,7 @@ import { addCommentApi, getCommentApi, delCommentApi, editCommentApi } from "./A
 export const __addComment = createAsyncThunk(
     "addComment",
     async (payload, thunkAPI) => {
+      console.log(payload);
       try{
         const response = await addCommentApi(payload);
         console.log(response)
