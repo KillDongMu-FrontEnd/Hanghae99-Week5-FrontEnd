@@ -5,8 +5,8 @@ import { Form } from "../components/Form/Form"
 export const FormPage = () => {
   return(
     <div>
-      <Logo/>
       <Header/>
+      <Logo/>
       <Form/>
     </div>
   );

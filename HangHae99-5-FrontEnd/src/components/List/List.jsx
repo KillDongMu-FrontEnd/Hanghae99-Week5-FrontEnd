@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MainContainer, LinkContainer, GoToForm, CardContainer, CardItem, CardItemTitle } from "./List.styled";
+// import "./style.css"
 
 export const List = () => {
 

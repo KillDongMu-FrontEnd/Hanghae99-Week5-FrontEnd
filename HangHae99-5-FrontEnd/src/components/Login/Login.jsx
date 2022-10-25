@@ -2,10 +2,21 @@ import { LoginLogo, LoginLogoOne, LoginContainer, LoginBox, LoginTitle, LoginBtn
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { __loginUser } from "../../Redux/modules/loginSlice";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Login = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const userId = localStorage.getItem("isLogin")
+
+  useEffect(() => {
+    if (userId === "true") {
+      navigate("/")
+    }
+  })
 
   const init = {
     username: "",
@@ -28,6 +39,7 @@ export const Login = () => {
     dispatch(__loginUser(input));
     setInput(init);
   }
+
 
   return(
     <div>

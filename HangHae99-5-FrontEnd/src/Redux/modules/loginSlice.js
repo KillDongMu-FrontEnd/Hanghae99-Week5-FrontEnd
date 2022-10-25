@@ -10,14 +10,26 @@ export const __loginUser = createAsyncThunk(
       localStorage.setItem("refreshToken", response.headers.refreshtoken);
       localStorage.setItem("username", response.headers.username);
       localStorage.setItem("isLogin", true);
-      const test = response.headers.get("Authorization");
-      console.log(test);
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
+
+export const __logoutUser = createAsyncThunk(
+  "logoutUser",
+  async (payload, thunkAPI) => {
+    try {
+      localStorage.removeItem("authorization")
+      localStorage.setItem("refreshToken");
+      localStorage.setItem("username");
+      localStorage.setItem("isLogin");
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+)
 
 export const loginSlice = createSlice({
   name: "loginInfo",

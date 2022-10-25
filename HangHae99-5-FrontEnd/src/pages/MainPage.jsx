@@ -5,8 +5,8 @@ import { List } from "../components/List/List";
 export const MainPage = () => {
   return(
     <div>
-      <Logo/>
       <Header/>
+      <Logo/>
       <List/>
     </div>
   )

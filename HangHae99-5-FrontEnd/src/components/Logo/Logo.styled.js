@@ -1,8 +1,7 @@
 import styled from "styled-components"
 
 export const LogoContainer = styled.section`
-  position: absolute;
-  width: 100%;
+  width: fit-content;
   margin: 0 auto;
 `
 export const LogoCover = styled.div`
@@ -16,7 +15,6 @@ export const LogoCover = styled.div`
 `
 
 export const LogoText = styled.h1`
-  /* text-transform: uppercase; */
   font-size: 10.5em;
   padding-top: 3.5rem;
   line-height: 0.7em;
@@ -27,7 +25,7 @@ export const LogoText = styled.h1`
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
-  user-select:none
+  user-select:none;
 `
 
 export const LogoLowerCase = styled.span`
