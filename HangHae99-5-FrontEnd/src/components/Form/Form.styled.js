@@ -17,7 +17,7 @@ export const ImageLayout = styled.div`
   border-radius: 50px;
   /* overflow: hidden; */
 `;
-export const FormContainer2 = styled.section`
+export const FormContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
