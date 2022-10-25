@@ -23,6 +23,7 @@ import {
 
 export const Detail = () => {
   const { id } = useParams();
+  console.log(id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -155,14 +156,13 @@ export const Detail = () => {
           })}
         </DetailComment>
         <DetailCommentInfo>
-          <DetailCommentInput onChange={commentChangeHandler} />
-          <DetailCommentBtn
-            onClick={() => {
-              dispatch(__addComment(comment, id));
-            }}
-          >
-            댓
-          </DetailCommentBtn>
+          <DetailCommentInput 
+            onChange={commentChangeHandler}
+          />
+          <DetailCommentBtn onClick={() => {
+            dispatch(__addComment({comment, id}))
+          }}>댓</DetailCommentBtn>
+
         </DetailCommentInfo>
       </DetailContent>
 
