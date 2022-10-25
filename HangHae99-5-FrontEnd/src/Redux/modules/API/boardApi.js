@@ -2,16 +2,17 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
-const instance = axios.create({
-  BASE_URL: process.env.REACT_APP_SERVER,
-});
+// const instance = axios.create({
+//   BASE_URL: process.env.REACT_APP_SERVER,
+// });
 
-instance.interceptors.request.use(config => {
-  config.headers["Content-Type"] = "multipart/form-data";
-  return config;
-});
+// instance.interceptors.request.use(config => {
+//   config.headers["Content-Type"] = "multipart/form-data";
+//   return config;
+// });
 
 export const postBoardApi = async (payload) => {
+  console.log("pay",payload) 
     await axios.post(`${BASE_URL}/api/boards/create`, payload);
   };
 

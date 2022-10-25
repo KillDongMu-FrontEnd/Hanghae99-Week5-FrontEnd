@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fileUploadApi } from "../../Redux/modules/API/boardApi";
+// import { fileUploadApi } from "../../Redux/modules/API/boardApi";
+// import { addPost } from "../../Redux/modules/boardSlice"; 
 import { boardSlice, __postBoard } from "../../Redux/modules/boardSlice";
 import {
   ImageSize,
@@ -21,53 +22,55 @@ export const Form = () => {
   const dispatch = useDispatch();
 
   //text usestate
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const init= {
+    title: "",
+    content:"",
+  }
+  const [input, setInput] = useState(init);
+  // const [content, setContent] = useState("");
 
 
   //이미지, 이미지미리보기 usestate
-  const [imageSrc, setImageSrc] = useState("");
-  const [image, setImage] = useState(null);
+  // const [imageSrc, setImageSrc] = useState("");
+  // const [image, setImage] = useState(null);
   //board usestate
-  const [board, setBoard] = useState({
-    title: "",
-    content: "",
-    file: "",
-  });
+  // const [board, setBoard] = useState({
+  //   title: "",
+  //   content: "",
+  //   file: "",
+  // });
 
   //이미지 온체인지핸들러
-  const fileUpload = (e) => {
-    setImage(e.target.files[0]);
+  // const fileUpload = (e) => {
+  //   setImage(e.target.files[0]);
 
-    let reader = new FileReader();
-    if (e.target.files[0]) {
-      reader.readAsDataURL(e.target.files[0]);
-    }
-    reader.onload = () => {
-      const previewImgUrl = reader.result;
-      if (previewImgUrl) {
-        setImageSrc([...imageSrc, previewImgUrl]);
-      }
-    };
-  };
+  //   let reader = new FileReader();
+  //   if (e.target.files[0]) {
+  //     reader.readAsDataURL(e.target.files[0]);
+  //   }
+  //   reader.onload = () => {
+  //     const previewImgUrl = reader.result;
+  //     if (previewImgUrl) {
+  //       setImageSrc([...imageSrc, previewImgUrl]);
+  //     }
+  //   };
+  // };
 //이미지, 제목, 콘텐트 서버에 보내기
 
 //text, image Borad에 넣었음
 const onChangeHandler = (e) => {
-  setTitle(e.target.value);
-  setContent(e.target.value);
   const { name, value } = e.target;
-  setBoard({
-    ...board,
-    [name]: value,
-    file: image,
+  setInput({
+    ...input,
+    [name]: value
+    // file: image,
   });
 };
 
 //업데이트 된 board를 디스패치 보내기
 const onSubmitHandler = (e) => {
   e.preventDefault();
-  dispatch(__postBoard(board));
+  dispatch(__postBoard(input));
 };
 
   return (
@@ -78,14 +81,14 @@ const onSubmitHandler = (e) => {
           <FormBackText>
             <h3>이미지를 업로드 해보세용</h3>
             <ImageLayout>
-              <ImageSize src={imageSrc} alt="" />
+              {/* <ImageSize src={imageSrc} alt="" /> */}
             </ImageLayout>
-            <FormBackInput
+            {/* <FormBackInput
               type="file"
               id="file"
               accept="image/jpg, image/jpeg, image/png"
               onChange={fileUpload}
-            ></FormBackInput>
+            ></FormBackInput> */}
           </FormBackText>
         </FormBack>
         <FormFront>
