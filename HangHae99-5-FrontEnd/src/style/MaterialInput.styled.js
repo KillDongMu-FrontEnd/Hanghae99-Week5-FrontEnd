@@ -7,6 +7,7 @@ export const FormInput = styled.input`
   width: 300px;
   border: none;
   border-bottom: 1px solid tomato;
+  background: transparent;
   &:focus {
     outline: none;
   }
