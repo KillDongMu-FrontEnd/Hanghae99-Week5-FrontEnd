@@ -83,7 +83,7 @@ export const __getBoardId = createAsyncThunk(
 export const __editBoard = createAsyncThunk(
   "editBoard",
   async (payload, thunkAPI) => {
-    try {      
+    try {    
       const response = await editBoardApi(payload);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
