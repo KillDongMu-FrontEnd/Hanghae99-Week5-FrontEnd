@@ -75,7 +75,7 @@ export const DetailInfo = styled.div`
 	box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.1);
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 	position: absolute;
 	padding: 15px 30px;
 	bottom: 0;
@@ -106,6 +106,54 @@ export const DetailFloatingBtn = styled.button`
 export const DetailCommentInput = styled.input`
   width: 300px;
   margin: 0 auto;
+`
+
+export const DetailCommentInfo = styled.div`
+  background-color: #ffffffd0;
+  box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  padding: 15px 30px;
+  bottom: 0;
+  left: 0;
+  width: 79%;
+  & p {
+    font-size: 14px;
+    margin: 0;
+  }
+`;
+
+export const DetailComment = styled.div`
+  overflow: scroll;
+  background-color: #fff;
+  height: 100%;
+  padding: 0px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & p {
+    color: #494856;
+    line-height: 38px;
+  }
+`;
+
+
+export const DetailCommentBtn = styled.button`
+  border: none;
+  background-color: #ff4444;
+`;
+
+
+export const DetailOptionBtn = styled.button`
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  text-align: center;
+  background-color: transparent;
 `
 
 export const DetailBsHeart = styled(BsHeart)`

@@ -39,7 +39,6 @@ export const getBoardApi = async () => {
   const response = await axios.get(`${BASE_URL}/api/boards/list`);
   return response.data;
 };
-
 export const delBoardApi = async (boardId) => {
   await axios.delete(`${BASE_URL}/api/boards/delete/${boardId}`, {
     headers: {
