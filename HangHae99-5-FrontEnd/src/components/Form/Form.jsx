@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { FormContainer, FormGroup } from "./Form.styled";
 import { fileUploadApi } from "../../Redux/modules/API/fileUploadApi"
-import { FormInput, HighLight, InputBar, Label } from "../../style/MaterialInput.styled";
 import { __postBoard } from "../../Redux/modules/boardSlice";
 import styled from "styled-components";
 
@@ -98,21 +96,21 @@ export const Form = () => {
 };
 
 export const ImageSize = styled.img`
-     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background-color: gray;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: gray;
 `;
 
 const ImageLayout = styled.div`
-    position: relative;
-    height: 400px;
-    width: 400px;
-    border-radius: 50px;
-    /* overflow: hidden; */
+  position: relative;
+  height: fit-content;
+  width: 400px;
+  border-radius: 50px;
+  /* overflow: hidden; */
 `;
 export const FormContainer2 = styled.section`
   display: flex;
