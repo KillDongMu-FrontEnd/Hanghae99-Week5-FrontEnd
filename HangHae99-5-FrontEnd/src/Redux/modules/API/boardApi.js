@@ -42,7 +42,9 @@ export const getBoardApi = async () => {
 };
 
 export const delBoardApi = async (id) => {
-  await axios.delete(`${BASE_URL}/api/boards/delete?board-id=${id}`,{
+  console.log(typeof id)
+  const intId = parseInt(id)
+  await axios.delete(`${BASE_URL}/api/boards/delete/${intId}`,{
     headers: {
       Authorization: accessToken,
       "Refresh-Token": refreshToken,
@@ -57,7 +59,7 @@ export const getBoardIdApi = async (id) => {
 
 export const editBoardApi = async (edit) => {
   const response = await axios.put(
-    `${BASE_URL}/api/boards/update?board-id=${edit.id}`,
+    `${BASE_URL}/api/boards/update/${edit.id}`,
     edit,
     {
       headers: {

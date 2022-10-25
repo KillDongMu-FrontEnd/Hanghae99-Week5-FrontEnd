@@ -157,7 +157,8 @@ export const boardSlice = createSlice({
     },
     [__delBoard.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.boards = action.payload;
+      state.boards = state.boards.filter((item)=>
+      item.id !== action.payload)
     },
     [__delBoard.rejected]: (state, action) => {
       state.isLoading = false;

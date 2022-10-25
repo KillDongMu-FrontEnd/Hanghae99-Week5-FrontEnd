@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardId } from "../../Redux/modules/boardSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import { __editBoard,__delBoard } from "../../Redux/modules/boardSlice";
+import { __editBoard, __delBoard } from "../../Redux/modules/boardSlice";
 import {
   BsHeartFill,
   BsHeart,
@@ -38,32 +38,33 @@ export const Detail = () => {
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    setEdit({ ...edit, [name]: value });
+    setEdit({ ...edit, [name]: value});
   };
 
-  // useEffect(()=>{
-  //   setEdit(boardData);
-  // },[boardData]);
+  useEffect(()=>{
+    setEdit(boardData);
+  },[boardData]);
 
   return (
     <DetailContainer>
-     {board ? (
-          <DetailHeader>
-            <input
-              type="text"
-              name="title"
-              value={edit?.title}
-              onChange={onChangeHandler}
-            />
-          </DetailHeader>
-        ) : (
-          <DetailHeader>
-             <h1>
-          <strong>{boardData.title}</strong>
-        </h1>
-        <DetailAuthor>{boardData.username}</DetailAuthor>
-          </DetailHeader>
-        )}
+      {board ? (
+        <DetailHeader>
+          <input
+            type="text"
+            name="title"
+            value={edit?.title}
+            onChange={onChangeHandler}
+          />
+          <DetailAuthor>{boardData.username}</DetailAuthor>
+        </DetailHeader>
+      ) : (
+        <DetailHeader>
+          <h1>
+            <strong>{boardData.title}</strong>
+          </h1>
+          <DetailAuthor>{boardData.username}</DetailAuthor>
+        </DetailHeader>
+      )}
       {/* <DetailHeader>
        
         <DetailAuthor>{boardData.username}</DetailAuthor>
@@ -101,7 +102,7 @@ export const Detail = () => {
             >
               완료
             </button>
-          ) : ( 
+          ) : (
             <button
               onClick={() => {
                 setBoard(!board);
@@ -111,10 +112,13 @@ export const Detail = () => {
             </button>
           )}
           <button
-          onClick={()=>{dispatch(__delBoard(id));
-            navigate("/");
-          }}
-          >삭제</button>
+            onClick={() => {
+              dispatch(__delBoard(id));
+              navigate("/");
+            }}
+          >
+            삭제
+          </button>
           <div>
             <DetailBsThreeDots />
             <DetailBsHeart />
