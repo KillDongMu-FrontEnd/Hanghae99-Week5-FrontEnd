@@ -41,7 +41,7 @@ export const __postBoard = createAsyncThunk(
       return thunkAPI.rejectWithValue(error);
     }
   }
-)
+);
 
 export const __getBoard = createAsyncThunk(
   "getBoard",
