@@ -4,12 +4,6 @@ import { __getBoardId } from "../../Redux/modules/boardSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { __editBoard, __delBoard } from "../../Redux/modules/boardSlice";
 import {
-  BsHeartFill,
-  BsHeart,
-  BsChatLeftText,
-  BsThreeDots,
-} from "react-icons/bs";
-import {
   DetailContainer,
   DetailHeader,
   DetailAuthor,
@@ -24,10 +18,7 @@ import {
   DetailBsHeart,
   DetailCommentEditInput,
   DetailOptionBtn,
-  DetailBsChatLeftText,
-  DetailBsThreeDots
 } from "./Detail.styled";
-import styled from "styled-components";
 
 export const Detail = () => {
   const { id } = useParams();
@@ -76,11 +67,6 @@ export const Detail = () => {
           <DetailAuthor>{boardData.username}</DetailAuthor>
         </DetailHeader>
       )}
-      {/* <DetailHeader>
-       
-        <DetailAuthor>{boardData.username}</DetailAuthor>
-      </DetailHeader> */}
-
       <DetailContent>
         <h1>
           여기에 이미지?
@@ -101,7 +87,6 @@ export const Detail = () => {
             <p>{ boardData.content }</p>
           </DetailText>
         )}
-
         <DetailInfo>
           {
             username === boardData.username ? (
@@ -127,7 +112,12 @@ export const Detail = () => {
                     </DetailOptionBtn>
                   )
                 }
-                <DetailOptionBtn>삭제</DetailOptionBtn>
+                <DetailOptionBtn
+                  onClick={() => {
+                    dispatch(__delBoard(id))
+                    navigate("/")
+                  }}
+                >삭제</DetailOptionBtn>
               </div>
             ) : null
           }
