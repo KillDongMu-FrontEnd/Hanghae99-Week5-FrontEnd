@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 // import { fileUploadApi } from "../../Redux/modules/API/boardApi";
 // import { addPost } from "../../Redux/modules/boardSlice"; 
-import { boardSlice, __postBoard } from "../../Redux/modules/boardSlice";
+import { __postBoard } from "../../Redux/modules/boardSlice";
 import {
   ImageSize,
   ImageLayout,
@@ -20,6 +21,7 @@ import {
 export const Form = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //text usestate
   const init= {
@@ -71,6 +73,7 @@ const onChangeHandler = (e) => {
 const onSubmitHandler = (e) => {
   e.preventDefault();
   dispatch(__postBoard(input));
+  navigate("/")
 };
 
   return (

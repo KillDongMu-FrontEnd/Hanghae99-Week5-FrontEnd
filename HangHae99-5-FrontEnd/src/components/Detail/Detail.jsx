@@ -47,12 +47,27 @@ export const Detail = () => {
 
   return (
     <DetailContainer>
-      <DetailHeader>
-        <h1>
+     {board ? (
+          <DetailHeader>
+            <input
+              type="text"
+              name="title"
+              value={edit?.title}
+              onChange={onChangeHandler}
+            />
+          </DetailHeader>
+        ) : (
+          <DetailHeader>
+             <h1>
           <strong>{boardData.title}</strong>
         </h1>
         <DetailAuthor>{boardData.username}</DetailAuthor>
-      </DetailHeader>
+          </DetailHeader>
+        )}
+      {/* <DetailHeader>
+       
+        <DetailAuthor>{boardData.username}</DetailAuthor>
+      </DetailHeader> */}
 
       <DetailContent>
         <h1>
@@ -64,8 +79,8 @@ export const Detail = () => {
           <DetailText>
             <input
               type="text"
-              name="title"
-              value={edit?.title}
+              name="content"
+              value={edit?.content}
               onChange={onChangeHandler}
             />
           </DetailText>
@@ -86,7 +101,7 @@ export const Detail = () => {
             >
               완료
             </button>
-          ) : (
+          ) : ( 
             <button
               onClick={() => {
                 setBoard(!board);
