@@ -24,7 +24,7 @@ export const List = () => {
   if (boards.length === 0) {
     return(
       <div>
-      <h1>아직 생성한 게시물이 없습니다. 소중한 의견을 남겨주세요.</h1>
+        <h1>아직 생성한 게시물이 없습니다. 소중한 의견을 남겨주세요.</h1>
       </div>
     ) 
   };
@@ -46,11 +46,11 @@ export const List = () => {
               }}>
                 <CardItemTitle>{ board.title }</CardItemTitle>
                 <p>{ board.createdAt }</p>
-                <button onClick={(e)=>{
+                {/* <button onClick={(e)=>{
                   e.preventDefault();
                   dispatch(__delBoard(board.id));
                   dispatch(__getBoard());
-                }}>삭제하기</button>
+                }}>삭제하기</button> */}
               </CardItem>
             )
           })

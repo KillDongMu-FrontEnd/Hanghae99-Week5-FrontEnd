@@ -37,7 +37,7 @@ export const Form = () => {
     e.preventDefault();
     dispatch(__postBoard(input));
     setInput(init);
-    dispatch(__addFiles(image));
+    // dispatch(__addFiles(image));
     
     // const formData = new FormData();
 
