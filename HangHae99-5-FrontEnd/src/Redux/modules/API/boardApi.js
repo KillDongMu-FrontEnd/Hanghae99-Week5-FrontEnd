@@ -2,10 +2,8 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 const accessToken = localStorage.getItem("authorization");
-  const refreshToken = localStorage.getItem("refreshToken");
-
-const accessToken = localStorage.getItem("authorization");
 const refreshToken = localStorage.getItem("refreshToken");
+
 
 // const instance = axios.create({
 //   BASE_URL: process.env.REACT_APP_SERVER,
