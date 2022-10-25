@@ -46,11 +46,6 @@ export const DetailContent = styled.div`
   width: 100%;
   padding: 30px 30px 50px;
 	position: relative;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 export const DetailText = styled.div`
@@ -58,6 +53,11 @@ export const DetailText = styled.div`
   background-color: #fff;
 	height: 60%;
   padding: 0px;
+	-ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
   &::first-letter {
     font-size: 250%;
     font-weight: bold;
@@ -79,7 +79,7 @@ export const DetailInfo = styled.div`
 	padding: 15px 30px;
 	bottom: 0;
 	left: 0;
-	width: 80%;
+	width: 100%;
   & p {
     font-size: 14px;
 	  margin: 0;

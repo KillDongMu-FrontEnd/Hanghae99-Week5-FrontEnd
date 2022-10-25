@@ -11,8 +11,8 @@ export const DetailPage = () => {
       <Header/>
       <Logo/>
       <Detail/>
-      <CommentForm/>
-      <CommentList />
+      {/* <CommentForm/> */}
+      {/* <CommentList /> */}
     </div>
   );
 };

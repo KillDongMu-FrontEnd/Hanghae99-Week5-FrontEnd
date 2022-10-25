@@ -13,17 +13,17 @@ export const __addComment = createAsyncThunk(
     }
   );
 
-  export const __getComment = createAsyncThunk(
-    "getComment",
-    async (payload, thunkAPI) => {
-      try{
-        const response = await getCommentApi(payload);
-        return thunkAPI.fulfillWithValue(response);
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error);
-      }
-    }
-  );
+  // export const __getComment = createAsyncThunk(
+  //   "getComment",
+  //   async (payload, thunkAPI) => {
+  //     try{
+  //       const response = await getCommentApi(payload);
+  //       return thunkAPI.fulfillWithValue(response);
+  //     } catch (error) {
+  //       return thunkAPI.rejectWithValue(error);
+  //     }
+  //   }
+  // );
 
   export const __delComment = createAsyncThunk(
     "delComment",
@@ -63,17 +63,17 @@ export const __addComment = createAsyncThunk(
     },
     extraReducers: {
       // GET Request Comment
-      [__getComment.pending]: (state) => {
-        state.isLoading = true;
-      },
-      [__getComment.fulfilled]: (state, action) => {
-        state.isLoading = false;
-        state.comment = action.payload;
-      },
-      [__getComment.rejected]: (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      },
+      // [__getComment.pending]: (state) => {
+      //   state.isLoading = true;
+      // },
+      // [__getComment.fulfilled]: (state, action) => {
+      //   state.isLoading = false;
+      //   state.comment = action.payload;
+      // },
+      // [__getComment.rejected]: (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = action.payload;
+      // },
 
       // POST Request Comment
       [__addComment.pending]: (state) => {
@@ -83,7 +83,7 @@ export const __addComment = createAsyncThunk(
         state.isLoading = false;
         state.comment.push(action.payload);
       },
-      [__getComment.rejectWithValue]: (state, action) => {
+      [__addComment.rejectWithValue]: (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       }
@@ -129,6 +129,6 @@ export const __addComment = createAsyncThunk(
     //     },
   });
   
-  export const { addComment, getComment, delComment,editComment } = commentSlice.actions;
+  export const { addComment, getComment, delComment, editComment } = commentSlice.actions;
   
   export default commentSlice.reducer;

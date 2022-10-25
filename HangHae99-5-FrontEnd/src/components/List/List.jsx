@@ -17,8 +17,8 @@ export const List = () => {
   const navigate = useNavigate();
 
   //슬라이드 불러오기
-  const boards = useSelector((state) => state.boards.boards);
-  // console.log(boards);
+  const boards = useSelector((state) => state?.boards?.boards);
+  console.log(boards);
 
 // 만약 데이터가없다면 화면에 띄워줄 메시지
   if (boards.length === 0) {
@@ -42,7 +42,7 @@ export const List = () => {
               // 서버 연동하고나면, ID 값 넣어줄거임 (지엉님 몰래 쓰는거임 걸리면 혼남)
                 key={idx}
                 onClick={() => {
-                  navigate(`/detail/${board.id}`)
+                  navigate(`/api/boards/detail/${board.board_id}`)
               }}>
                 <CardItemTitle>{ board.title }</CardItemTitle>
                 <p>{ board.createdAt }</p>
