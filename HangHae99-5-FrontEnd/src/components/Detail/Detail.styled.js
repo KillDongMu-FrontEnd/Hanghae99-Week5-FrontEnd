@@ -1,13 +1,14 @@
 import styled from "styled-components"
+import { BsHeartFill, BsHeart, BsChatLeftText, BsThreeDots } from "react-icons/bs";
 
 export const DetailContainer = styled.div`
 	background-color: #fff;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 	display: flex;
 	height: 80vh;
 	width: 80vw;
 	margin: 0 auto;
-  margin-bottom: 30px;
+  margin-bottom: 10rem;
 	max-width: 800px;
 `
 
@@ -46,11 +47,6 @@ export const DetailContent = styled.div`
   width: 100%;
   padding: 30px 30px 50px;
 	position: relative;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 export const DetailText = styled.div`
@@ -58,6 +54,11 @@ export const DetailText = styled.div`
   background-color: #fff;
 	height: 60%;
   padding: 0px;
+	-ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
   &::first-letter {
     font-size: 250%;
     font-weight: bold;
@@ -79,7 +80,7 @@ export const DetailInfo = styled.div`
 	padding: 15px 30px;
 	bottom: 0;
 	left: 0;
-	width: 80%;
+	width: 100%;
   & p {
     font-size: 14px;
 	  margin: 0;
@@ -100,4 +101,33 @@ export const DetailFloatingBtn = styled.button`
 	bottom: 50px;
 	right: 20px;
 	z-index: 999;
+`
+
+export const DetailCommentInput = styled.input`
+  width: 300px;
+  margin: 0 auto;
+`
+
+export const DetailBsHeart = styled(BsHeart)`
+  color: #ff4444;
+  font-size: 1.2rem;
+  margin-right: 1.5rem;
+`
+
+export const DetailCommentEditInput = styled.input`
+  width: 190px;
+  border: none;
+  outline: none;
+`
+
+export const DetailBsChatLeftText = styled(BsChatLeftText)`
+  color: black;
+  font-size: 1.3rem;
+
+`
+
+export const DetailBsThreeDots = styled(BsThreeDots)`
+  color: black;
+  font-size: 1.3rem;
+  margin-right: 1.5rem;
 `

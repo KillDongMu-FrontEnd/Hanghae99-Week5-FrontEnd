@@ -58,6 +58,7 @@ export const __getBoard = createAsyncThunk(
   async (payload, thunkAPI) => {
     try{
       const response = await getBoardApi(payload);
+      // console.log(response);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -82,6 +83,7 @@ export const __getBoardId = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await getBoardIdApi(payload);
+      console.log(payload);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

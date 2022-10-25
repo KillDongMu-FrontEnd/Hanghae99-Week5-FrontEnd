@@ -10,22 +10,27 @@ import styled from "styled-components";
 
 export const Detail = () => {
   
+  const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const boardData = useSelector((state) => state.boards.board);
-  const { id } = useParams();
-  const [edit, setEdit] = useState();
+  const commentList = boardData.commentList
+
+
+
+  const [edit, setEdit] = useState("");
   const [board, setBoard] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(__getBoardId(id));
-  // }, [dispatch, id]);
+  useEffect(() => {
+    dispatch(__getBoardId(id));
+  }, [dispatch, id]);
 
-  // const onChangeHandler = (e) =>{
-  //   e.preventDefault();
-  //   const {name, value} = e.target;   
-  //   setEdit({...edit, [name]: value });
-  // };
+  const onChangeHandler = (e) =>{
+    e.preventDefault();
+    const {name, value} = e.target;   
+    setEdit({...edit, [name]: value });
+  };
 
   // useEffect(()=>{
   //   setEdit(boardData);
@@ -35,34 +40,54 @@ export const Detail = () => {
   return (
     <DetailContainer>
       <DetailHeader>
-        <h1><strong>제목임 제목임 제목임 제목임 제목임</strong></h1>
-        <DetailAuthor>글쓴이</DetailAuthor>
+        <h1><strong>{ boardData.title }</strong></h1>
+        <DetailAuthor>{ boardData.username }</DetailAuthor>
       </DetailHeader>
 
       <DetailContent>
         <h1>
           여기에 이미지?<br/>
-          여기에 이미지?<br/>
-          여기에 이미지?<br/>
-          여기에 이미지?<br/>
         </h1>
         <hr/>
         <DetailText>
-          <p>
-            무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호
-            무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호
-            무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호
-            무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호 무야호
-          </p>
+          <p>{ boardData.content }</p>
         </DetailText>
         <DetailInfo>
-          <p>2022-10-25</p>
+          <p>{ boardData.createdAt?.substr(0,10) }</p>
+          <button>수정</button>
+          <button>삭제</button>
           <div>
             <DetailBsThreeDots/>
             <DetailBsHeart/>
             <DetailBsChatLeftText/>
           </div>
         </DetailInfo>
+      </DetailContent>
+      
+      <DetailContent>
+        <DetailComment>
+          {
+            commentList?.map((comment, idx) => {
+              return (
+                <div key={idx}>
+                  <DetailCommentEditInput
+                    type="text"
+                    name="comment"
+                    spellcheck={false}
+                    value={comment}
+                    onChange={onChangeHandler}
+                    readOnly
+                  />
+                  <hr/>
+                </div>
+              )
+            })
+          }
+        </DetailComment>
+        <DetailCommentInfo>
+          <DetailCommentInput/>
+          <DetailCommentBtn>댓</DetailCommentBtn>
+        </DetailCommentInfo>
       </DetailContent>
 
       <DetailFloatingBtn onClick={() => {
@@ -73,11 +98,61 @@ export const Detail = () => {
   );
 };
 
+export const DetailCommentInfo = styled.div`
+  background-color: #ffffffd0;
+	box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.1);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: absolute;
+	padding: 15px 30px;
+	bottom: 0;
+	left: 0;
+	width: 79%;
+  & p {
+    font-size: 14px;
+	  margin: 0;
+  }
+`
+
+export const DetailComment = styled.div`
+  overflow: scroll;
+  background-color: #fff;
+	height: 100%;
+  padding: 0px;
+	-ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & p {
+    color: #494856;
+    line-height: 38px;
+  }
+`
+
+export const DetailCommentInput = styled.input`
+  width: 300px;
+  margin: 0 auto;
+  outline: none;
+`
+
+export const DetailCommentBtn = styled.button`
+
+`
+
 export const DetailBsHeart = styled(BsHeart)`
   color: #ff4444;
   font-size: 1.2rem;
   margin-right: 1.5rem;
 `
+
+export const DetailCommentEditInput = styled.input`
+  width: 180px;
+  border: none;
+  outline: none;
+`
+
 
 export const DetailBsChatLeftText = styled(BsChatLeftText)`
   color: black;
@@ -90,3 +165,4 @@ export const DetailBsThreeDots = styled(BsThreeDots)`
   font-size: 1.3rem;
   margin-right: 1.5rem;
 `
+

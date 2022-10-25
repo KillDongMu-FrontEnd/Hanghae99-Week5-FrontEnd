@@ -9,9 +9,9 @@ export const CommentList = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  useEffect(() => {
-    dispatch(__getComment(id));
-  },[dispatch,id]);
+  // useEffect(() => {
+  //   dispatch(__getComment(id));
+  // },[dispatch,id]);
 
   return (
     <div>
