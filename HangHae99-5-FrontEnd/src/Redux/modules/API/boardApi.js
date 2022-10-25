@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
+const accessToken = localStorage.getItem("authorization");
+  const refreshToken = localStorage.getItem("refreshToken");
 
 // const instance = axios.create({
 //   BASE_URL: process.env.REACT_APP_SERVER,
@@ -36,5 +38,11 @@ export const postBoardApi = async (payload) => {
   };
 
   export const editBoardApi = async (edit) => {
-    await axios.put(`${BASE_URL}/api/boards/update?board-id=${edit.id}`,edit);
+    const response = await axios.put(`${BASE_URL}/api/boards/update?board-id=${edit.id}`,edit,{
+      headers: {
+        Authorization: accessToken,
+        "Refresh-Token": refreshToken
+      }
+    }); 
+    return response.data;
   };
