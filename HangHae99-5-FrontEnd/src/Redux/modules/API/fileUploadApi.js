@@ -1,17 +1,17 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-const instance = axios.create({
-    BASE_URL: process.env.REACT_APP_SERVER,
-});
+// const instance = axios.create({
+//     BASE_URL: process.env.REACT_APP_SERVER,
+// });
 
-instance.interceptors.request.use(config => {
-    config.headers["Content-Type"] = "multipart/form-data";
-    return config;
-});
-export const fileUploadApi = data => {
-    instance.post("/file", data);
-};
+// instance.interceptors.request.use(config => {
+//     config.headers["Content-Type"] = "multipart/form-data";
+//     return config;
+// });
+// export const fileUploadApi = data => {
+//     instance.post("/file", data);
+// };
 
 // export const __addFiles = createAsyncThunk(
 //     "fileUpload", 
