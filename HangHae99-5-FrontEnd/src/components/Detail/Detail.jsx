@@ -28,9 +28,19 @@ export const Detail = () => {
   const navigate = useNavigate();
 
   const boardData = useSelector((state) => state.boards.board);
+  // console.log(boardData)
+  const { title, content, board_id } = boardData;
+  // console.log(board_id)
+
   const commentList = boardData.commentList;
 
-  const [edit, setEdit] = useState("");
+  const init = {
+    title: title,
+    content: content
+  };
+  // console.log(init)
+  const [update, setEdit] = useState(init);
+  console.log("에딧", update);
   const [board, setBoard] = useState(false);
 
   const username = localStorage.getItem("username");
@@ -42,18 +52,18 @@ export const Detail = () => {
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    setEdit({ ...edit, [name]: value});
+    setEdit({ ...update, [name]: value });
   };
 
   const [comment, setComment] = useState("");
   const commentChangeHandler = (e) => {
     e.preventDefault();
     setComment(e.target.value);
-  }
-  console.log(comment)
-  useEffect(()=>{
-    setEdit(boardData);
-  },[boardData]);
+  };
+
+  // useEffect(() => {
+  //   setEdit(boardData);
+  // }, [boardData]);
 
   return (
     <DetailContainer>
@@ -62,7 +72,7 @@ export const Detail = () => {
           <input
             type="text"
             name="title"
-            value={edit?.title}
+            value={update?.title}
             onChange={onChangeHandler}
           />
           <DetailAuthor>{boardData.username}</DetailAuthor>
@@ -82,49 +92,47 @@ export const Detail = () => {
             <input
               type="text"
               name="content"
-              value={edit?.content}
+              value={update?.content}
               onChange={onChangeHandler}
             />
           </DetailText>
         ) : (
           <DetailText>
-            <p>{ boardData.content }</p>
+            <p>{boardData.content}</p>
           </DetailText>
         )}
         <DetailInfo>
-          {
-            username === boardData.username ? (
-              <div>
-                {
-                  board ? (
-                    <DetailOptionBtn
-                      onClick={() => {
-                        dispatch(__editBoard(edit));
-                        dispatch(__getBoardId(id));
-                        setBoard(false);
-                      }}
-                    >
-                      완료
-                    </DetailOptionBtn>
-                  ) : (
-                    <DetailOptionBtn
-                      onClick={() => {
-                        setBoard(!board);
-                      }}
-                    >
-                      수정
-                    </DetailOptionBtn>
-                  )
-                }
+          {username === boardData.username ? (
+            <div>
+              {board ? (
                 <DetailOptionBtn
                   onClick={() => {
-                    dispatch(__delBoard(id))
-                    navigate("/")
+                    dispatch(__editBoard({update, id}));
+                    dispatch(__getBoardId(id));
+                    setBoard(false);
                   }}
-                >삭제</DetailOptionBtn>
-              </div>
-            ) : null
-          }
+                >
+                  완료
+                </DetailOptionBtn>
+              ) : (
+                <DetailOptionBtn
+                  onClick={() => {
+                    setBoard(!board);
+                  }}
+                >
+                  수정
+                </DetailOptionBtn>
+              )}
+              <DetailOptionBtn
+                onClick={() => {
+                  dispatch(__delBoard(id));
+                  navigate("/");
+                }}
+              >
+                삭제
+              </DetailOptionBtn>
+            </div>
+          ) : null}
           <DetailBsHeart />
         </DetailInfo>
       </DetailContent>
@@ -154,6 +162,7 @@ export const Detail = () => {
           <DetailCommentBtn onClick={() => {
             dispatch(__addComment({comment, id}))
           }}>댓</DetailCommentBtn>
+
         </DetailCommentInfo>
       </DetailContent>
 
