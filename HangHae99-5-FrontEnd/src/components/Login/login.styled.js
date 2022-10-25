@@ -30,7 +30,7 @@ export const LoginLogoOne = styled.b`
 
 export const RegisterContainer = styled.form`
   width: 400px;
-  height: 600px;
+  height: 650px;
   position: absolute;
   top:calc(50vh - 200px);
   left:calc(50vw - 200px);
@@ -39,7 +39,7 @@ export const RegisterContainer = styled.form`
 
 export const LoginContainer = styled.form`
   width: 400px;
-  height: 450px;
+  height: 500px;
   position: absolute;
   top:calc(50vh - 200px);
   left:calc(50vw - 200px);
@@ -77,13 +77,13 @@ export const LoginBtn = styled.button`
 `
 
 export const LoginInput = styled.input`
-  display:block;
-  width:300px;
-  margin:20px auto;
-  padding:15px;
-  background:rgba(0,0,0,0.2);
-  color:#fff;
-  border:0;
+  display: block;
+  width: 300px;
+  margin: 15px auto;
+  padding: 15px;
+  background: rgba(0,0,0,0.2);
+  color: #fff;
+  border: 0;
   border: none;
   outline: none;
 `
@@ -106,7 +106,9 @@ export const ToRegister = styled(Link)`
 `
 
 export const ErrorMsg = styled.span`
+  display: flex;
   color: #ff4444;
   text-align: center;
-  margin-left: 2.4rem;
+  font-size: 0.8rem;
+  margin-left: 2.5rem;
 `

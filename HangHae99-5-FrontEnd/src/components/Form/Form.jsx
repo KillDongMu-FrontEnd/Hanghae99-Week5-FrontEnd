@@ -24,10 +24,10 @@ export const Form = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+
   //이미지, 이미지미리보기 usestate
   const [imageSrc, setImageSrc] = useState("");
   const [image, setImage] = useState(null);
-
   //board usestate
   const [board, setBoard] = useState({
     title: "",

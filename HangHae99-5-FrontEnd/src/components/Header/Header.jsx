@@ -30,7 +30,7 @@ export const Header = () => {
         <hr/>
         <MenuItem><MenuLink to="/">Home</MenuLink></MenuItem>
         <MenuItem><MenuLink to="/form">글 작성하기*</MenuLink></MenuItem>
-        <MenuItem>My Page*</MenuItem>
+        <MenuItem><MenuLink to="/mypage">마이페이지*</MenuLink></MenuItem>
       </Menu>
     </MenuToggle>
   )

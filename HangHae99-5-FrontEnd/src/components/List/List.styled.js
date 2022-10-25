@@ -24,7 +24,7 @@ export const CardContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
   grid-gap: 2rem;
   margin: 2rem;
-  margin-top: 38rem;
+  margin-top: 30rem;
   width: 80%;
   background: #b5b5ed;
   float: right;

@@ -29,9 +29,7 @@ export const Register = () => {
   // 2. username 중복체크
   // username, 4 ~ 12글자,
   // password, 4 ~ 12글자,
-  // 각 조건 만족 시 input 밑에 메시지 띄우고,
-  // 불만족 시, 회원가입 버튼 비활성, 
-
+  // 각 조건 만족 시 input 밑에 메시지 띄움
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (
@@ -41,8 +39,19 @@ export const Register = () => {
       !input.passwordConfirm
     ) {
       return setErrorMsg("모든 항목은 필수입니다.")
+    } else if (input.username.length < 4 || input.username.length > 12) {
+      setUsernameMsg("username은 4 ~ 12자 입니다.")
+      setPasswordMsg("")
+      setErrorMsg("")
+    } else if (input.password.length < 4 || input.password.length > 12) {
+      setUsernameMsg("")
+      setPasswordMsg("password는 4 ~ 12자 입니다.")
+      setErrorMsg("")
     } else if ( input.password !== input.passwordConfirm ) {
-      return setErrorMsg("비밀번호가 일치하지 않습니다.")
+      setUsernameMsg("")
+      setPasswordMsg("")
+      setErrorMsg("")
+      setErrorMsg("비밀번호가 일치하지 않습니다.")
     } else {
       dispatch(__postUser(input));
       setInput(init);
@@ -52,6 +61,8 @@ export const Register = () => {
   };
 
   const [errorMsg, setErrorMsg] = useState("");
+  const [usernameMsg, setUsernameMsg] = useState("");
+  const [passwordMsg, setPasswordMsg] = useState("");
 
   return(
     <div>
@@ -70,6 +81,7 @@ export const Register = () => {
             value={ input.email }
             onChange={(e) => onChangeHandler(e)}
           />
+          <ErrorMsg></ErrorMsg>
           <LoginInput 
             type="Username" 
             placeholder="Username"
@@ -78,6 +90,7 @@ export const Register = () => {
             value={ input.username }
             onChange={(e) => onChangeHandler(e)}
           />
+          <ErrorMsg>{ usernameMsg }</ErrorMsg>
           <LoginInput
             type="password"
             placeholder="Password"
@@ -86,6 +99,7 @@ export const Register = () => {
             value={ input.password }
             onChange={(e) => onChangeHandler(e)}
           />
+          <ErrorMsg>{ passwordMsg }</ErrorMsg>
           <LoginInput
             type="password"
             placeholder="Confirm your password"

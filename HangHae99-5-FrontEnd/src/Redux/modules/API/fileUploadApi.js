@@ -10,6 +10,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 //     return config;
 // });
 // export const fileUploadApi = data => {
+
+//     console.log(data);
+
 //     instance.post("/file", data);
 // };
 

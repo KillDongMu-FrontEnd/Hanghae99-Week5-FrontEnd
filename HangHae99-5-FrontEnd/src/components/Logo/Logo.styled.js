@@ -12,6 +12,7 @@ export const LogoCover = styled.div`
   margin: 0 auto;
   display: block;
   border-radius: 25px;
+  margin-bottom: 10rem;
 `
 
 export const LogoText = styled.h1`
