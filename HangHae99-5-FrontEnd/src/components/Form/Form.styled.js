@@ -12,7 +12,7 @@ export const ImageSize = styled.img`
 
 export const ImageLayout = styled.div`
   position: relative;
-  height: fit-content;
+  height: 300px;
   width: 400px;
   border-radius: 50px;
   /* overflow: hidden; */

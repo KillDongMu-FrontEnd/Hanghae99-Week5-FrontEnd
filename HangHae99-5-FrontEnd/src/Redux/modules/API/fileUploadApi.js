@@ -10,17 +10,16 @@ instance.interceptors.request.use(config => {
     return config;
 });
 export const fileUploadApi = data => {
-    console.log(data);
     instance.post("/file", data);
 };
 
-export const __addFiles = createAsyncThunk(
-    "fileUpload", 
-    async (payload, thunkAPI) => {
-        await axios.post("http://localhost:3001/file", payload);
-        console.log("페이로드", payload.substr(5))
+// export const __addFiles = createAsyncThunk(
+//     "fileUpload", 
+//     async (payload, thunkAPI) => {
+//         await axios.post("http://localhost:3001/file", payload);
+//         console.log("페이로드", payload.substr(5))
        
-        return thunkAPI.fulfillWithValue(payload);
+//         return thunkAPI.fulfillWithValue(payload);
     //   try {
     //     console.log("페이로드 ", payload);
 
@@ -29,8 +28,8 @@ export const __addFiles = createAsyncThunk(
     //     console.log("에러", error);
     //     return thunkAPI.rejectWithValue(error.message);
     //   }
-    }
-)
+//     }
+// )
 
 const fileSlice = createSlice({
     name: "file",
