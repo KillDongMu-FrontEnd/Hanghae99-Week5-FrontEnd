@@ -5,6 +5,7 @@ import { FormContainer, FormGroup } from "./Form.styled";
 import { fileUploadApi } from "../../Redux/modules/API/fileUploadApi"
 import { FormInput, HighLight, InputBar, Label } from "../../style/MaterialInput.styled";
 import { __postBoard } from "../../Redux/modules/boardSlice";
+import { __addFiles } from '../../Redux/modules/API/fileUploadApi'
 
 export const Form = () => {
   const init = {
@@ -23,27 +24,37 @@ export const Form = () => {
     setInput({ ...input, [name]: value });
   };
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    dispatch(__postBoard(input));
-    setInput(init);
-
-    const formData = new FormData();
-    // formData.getAll(formData)
-    // Object.entries(input).forEach(([key, value]) => {
-      // formData.append(key, value);
-      // fileUploadApi(formData);
-  // });
-  
-  };
- //이미지 폼밸류 보내기
+   //이미지 폼밸류 보내기
  const [image,setImage] = useState(null);
 
+ //이미지 온체인지핸들러
  const fileUpload = (e)  =>{
   encodeFileToBase64(e.target.files[0]);
   const image = URL.createObjectURL(e.target.files[0]);
   setImage(image);
+  console.log("이미지이타켓벨류",image)  
  }
+//이미지, 제목, 콘텐트 서버에 보내기
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    dispatch(__postBoard(input));
+    setInput(init);
+    dispatch(__addFiles(image));
+    
+    // const formData = new FormData();
+
+    // formData.append("image", input.file);
+    // formData.append("title", input.title);
+    // formData.append("content", input.content);
+
+  //   formData.getAll(formData)
+  //   Object.entries(input).forEach(([key, value]) => {
+  //     formData.append(key, value);
+  //     fileUploadApi(formData);
+  // });
+
+  };
+
 
   //이미지미리보기
   const [imageSrc, setImageSrc] = useState("");
