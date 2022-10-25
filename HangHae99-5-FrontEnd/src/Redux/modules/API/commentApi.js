@@ -5,8 +5,8 @@ const BASE_URL = process.env.REACT_APP_SERVER;
 const accessToken = localStorage.getItem("authorization");
 const refreshToken = localStorage.getItem("refreshToken");
 
-export const addCommentApi = async (payload) => {
-    const response = await axios.post(`${BASE_URL}/commentList`, payload, {
+export const addCommentApi = async (payload, id) => {
+    const response = await axios.post(`${BASE_URL}/api/boards/${id}/comments/create`, payload, {
       headers: {
         Authorization: accessToken,
         "Refresh-Token": refreshToken,

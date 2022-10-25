@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { __getBoardId } from "../../Redux/modules/boardSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { __editBoard, __delBoard } from "../../Redux/modules/boardSlice";
+import { __addComment } from "../../Redux/modules/commentSlice";
 import {
   DetailContainer,
   DetailHeader,
@@ -43,6 +44,12 @@ export const Detail = () => {
     setEdit({ ...edit, [name]: value});
   };
 
+  const [comment, setComment] = useState("");
+  const commentChangeHandler = (e) => {
+    e.preventDefault();
+    setComment(e.target.value);
+  }
+  console.log(comment)
   useEffect(()=>{
     setEdit(boardData);
   },[boardData]);
@@ -68,10 +75,6 @@ export const Detail = () => {
         </DetailHeader>
       )}
       <DetailContent>
-        <h1>
-          여기에 이미지?
-          <br />
-        </h1>
         <hr />
         {board ? (
           <DetailText>
@@ -144,8 +147,12 @@ export const Detail = () => {
           })}
         </DetailComment>
         <DetailCommentInfo>
-          <DetailCommentInput />
-          <DetailCommentBtn>댓</DetailCommentBtn>
+          <DetailCommentInput 
+            onChange={commentChangeHandler}
+          />
+          <DetailCommentBtn onClick={() => {
+            dispatch(__addComment(comment ,id))
+          }}>댓</DetailCommentBtn>
         </DetailCommentInfo>
       </DetailContent>
 
