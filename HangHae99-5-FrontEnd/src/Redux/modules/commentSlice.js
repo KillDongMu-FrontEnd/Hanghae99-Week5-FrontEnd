@@ -67,19 +67,6 @@ export const __addComment = createAsyncThunk(
     //   },
     },
     extraReducers: {
-      // GET Request Comment
-      // [__getComment.pending]: (state) => {
-      //   state.isLoading = true;
-      // },
-      // [__getComment.fulfilled]: (state, action) => {
-      //   state.isLoading = false;
-      //   state.comment = action.payload;
-      // },
-      // [__getComment.rejected]: (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = action.payload;
-      // },
-
       // POST Request Comment
       [__addComment.pending]: (state) => {
         state.isLoading = true;

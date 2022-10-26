@@ -164,10 +164,16 @@ export const DetailBsHeart = styled(BsHeart)`
   color: #ff4444;
   font-size: 1.2rem;
   margin-right: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.3);
+  }
 `
 
 export const DetailCommentEditInput = styled.input`
   width: 190px;
+  height: 40px;
   border: none;
   outline: none;
 `
