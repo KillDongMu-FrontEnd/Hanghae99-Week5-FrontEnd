@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRef } from "react";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 const accessToken = localStorage.getItem("authorization");
@@ -36,10 +37,13 @@ export const fileUploadApi = async (payload) => {
   await axios.post(`${BASE_URL}/file`, payload);
 };
 
+
 export const getBoardApi = async () => {
   const response = await axios.get(`${BASE_URL}/api/boards/list`);
   return response.data;
 };
+
+
 export const delBoardApi = async (boardId) => {
   await axios.delete(`${BASE_URL}/api/boards/delete/${boardId}`, {
     headers: {

@@ -1,4 +1,3 @@
-import { Logo } from "../components/Logo/Logo";
 import { Header } from "../components/Header/Header";
 import { Form } from "../components/Form/Form";
 import { LoginLogo, LoginLogoOne } from "../components/Login/login.styled";

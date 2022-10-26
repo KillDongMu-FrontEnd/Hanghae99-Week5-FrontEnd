@@ -17,17 +17,18 @@ export const addCommentApi = async (payload) => {
     return response.data
   };
 
-  // export const getCommentApi = async (payload) => {
-  //   console.log(payload)
-  //   const response = await axios.get(`${BASE_URL}/commentList?boardId=${payload}`);  
-  //   console.log("리스펀스데이타",response.data);
-  //   return response.data;
-  // };
+export const getCommentApi = async (payload) => {
+  console.log(payload)
+  const response = await axios.get(`${BASE_URL}/commentList?boardId=${payload}`);  
+  console.log("리스펀스데이타",response.data);
+  return response.data;
+};
 
-  export const delCommentApi = async (payload) => {
-    await axios.delete(`${BASE_URL}/api/boards/comments/delete/${payload.id}`);
-  };
+export const delCommentApi = async (payload) => {
+  await axios.delete(`${BASE_URL}/api/boards/comments/delete/${payload.id}`);
+};
 
-  export const editCommentApi = async (edit) => {
-    await axios.put(`${BASE_URL}/commentList/${edit.id}`,edit);
-  };
+export const editCommentApi = async (edit) => {
+  await axios.put(`${BASE_URL}/commentList/${edit.id}`,edit);
+};
+

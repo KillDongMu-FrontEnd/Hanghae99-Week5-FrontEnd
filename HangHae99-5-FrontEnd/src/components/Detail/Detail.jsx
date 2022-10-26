@@ -107,6 +107,7 @@ export const Detail = () => {
         </DetailHeader>
       )}
       <DetailContent>
+        <img src={detailImage} alt="test"/>
         <hr />
         {board ? (
           <DetailText>

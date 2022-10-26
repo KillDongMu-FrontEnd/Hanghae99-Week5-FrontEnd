@@ -12,6 +12,7 @@ export const Login = () => {
 
   const userId = localStorage.getItem("isLogin")
 
+  // 로그인 한 사람이 로그인 페이지 억지로 들어오면, "돌아가"
   useEffect(() => {
     if (userId === "true") {
       navigate("/")
@@ -25,7 +26,6 @@ export const Login = () => {
 
   // 입력값 받는 state
   const [input, setInput] = useState(init);
-  // console.log(input)
 
   // input 값 state에 담는 handler
   const onChangeHandler = (e) => {
@@ -38,7 +38,7 @@ export const Login = () => {
     e.preventDefault();
     dispatch(__loginUser(input));
     setInput(init);
-  }
+  };
 
 
   return(

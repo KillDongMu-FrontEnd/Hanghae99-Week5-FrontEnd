@@ -10,8 +10,16 @@ export const __loginUser = createAsyncThunk(
       localStorage.setItem("refreshToken", response.headers.refreshtoken);
       localStorage.setItem("username", response.headers.username);
       localStorage.setItem("isLogin", true);
-      return thunkAPI.fulfillWithValue(payload);
+      if (response.status === 200 || response.status === 201) {
+        alert("로그인 성공")
+        window.location.replace("/")
+        return thunkAPI.fulfillWithValue(payload);
+      } 
     } catch (error) {
+      if (400 <= error.response.status && error.response.status < 600) {
+        window.location.reload();
+        alert("로그인 실패")
+      }
       return thunkAPI.rejectWithValue(error);
     }
   }
