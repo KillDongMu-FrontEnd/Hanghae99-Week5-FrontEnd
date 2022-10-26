@@ -107,6 +107,9 @@ export const DetailFloatingBtn = styled.button`
 export const DetailCommentInput = styled.input`
   width: 300px;
   margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.4);
+  outline: none;
 `
 
 export const DetailCommentInfo = styled.div`

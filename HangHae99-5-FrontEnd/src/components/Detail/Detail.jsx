@@ -158,7 +158,8 @@ export const Detail = () => {
           })}
         </DetailComment>
         <DetailCommentInfo>
-          <DetailCommentInput 
+          <DetailCommentInput
+            placeholder="댓글을 달아보세요" 
             onChange={commentChangeHandler}
           />
           <DetailCommentBtn onClick={() => {

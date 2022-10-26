@@ -60,3 +60,4 @@ export const StNoBoard = styled.div`
   margin-top: 30rem;
   color: white;
 `
+
