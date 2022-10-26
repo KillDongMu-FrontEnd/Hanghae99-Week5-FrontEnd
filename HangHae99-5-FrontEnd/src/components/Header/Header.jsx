@@ -1,9 +1,12 @@
 import { MenuToggle, Checkbox, Bar, Menu, MenuItem, MenuLink } from "./Header.styled"
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components"
 
 export const Header = () => {
 
-  const userId = localStorage.getItem("username")
+  const userId = localStorage.getItem("username");
+
+  const navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem("isLogin")
@@ -28,6 +31,7 @@ export const Header = () => {
             <Logout
               onClick={() => {
                 logout();
+                navigate("/")
               }}
             >Log Out</Logout>
           }
