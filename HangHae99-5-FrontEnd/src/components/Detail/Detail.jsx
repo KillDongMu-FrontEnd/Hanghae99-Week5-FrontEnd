@@ -30,12 +30,12 @@ export const Detail = () => {
   const navigate = useNavigate();
 
   // 상세페이지 모든 데이터 값 가져오기
-  const boardData = useSelector((state) => state.boards.board);
+  const boardData = useSelector((state) => state?.boards.board);
   console.log(boardData)
 
   // 댓글 리스트 아이디 값 불러오기
   const { title, content } = boardData;
-  const commentList = boardData.commentList;
+  const commentList = boardData?.commentList;
   console.log(commentList);
 
   const init = {
@@ -64,6 +64,8 @@ export const Detail = () => {
     setComment(e.target.value);
   };
 
+  const detailImage = boardData.file
+
   return (
     <DetailContainer>
       {board ? (
@@ -85,6 +87,7 @@ export const Detail = () => {
         </DetailHeader>
       )}
       <DetailContent>
+        <img src={detailImage} alt="test"/>
         <hr />
         {board ? (
           <DetailText>
@@ -132,7 +135,7 @@ export const Detail = () => {
               </DetailOptionBtn>
             </div>
           ) : null}
-          <DetailBsHeart />
+          <DetailBsHeart/>
         </DetailInfo>
       </DetailContent>
 

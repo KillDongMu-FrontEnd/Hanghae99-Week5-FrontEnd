@@ -1,63 +1,83 @@
-import { __getBoard, __delBoard } from "../../Redux/modules/boardSlice";
-import { useEffect } from "react";
+import { __getBoard } from "../../Redux/modules/boardSlice";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { MainContainer, LinkContainer, GoToForm, CardContainer, CardItem, CardItemTitle } from "./List.styled";
-import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
+import { StNoBoard, MainContainer, CardColumn, Card, CardBorder, CardInfo, CardDate, LodingContainer } from "./List.styled";
+import ReactLoading from "react-loading";
+
 
 export const List = () => {
 
+  // Infinity Scroll
+  const [page, setPage] = useState(1);
+  const preventRef = useRef(true);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-//리스트 첫 진입할때 겟보드 청크 디스패치보내기
+
   useEffect(() => {
     dispatch(__getBoard());
   }, [dispatch]);
 
-  const navigate = useNavigate();
-
-  //슬라이드 불러오기
+  // 불러오기
   const boards = useSelector((state) => state?.boards?.boards);
-  console.log("asd",boards);
+  console.log("게시물 리스트임", boards);
 
-// 만약 데이터가없다면 화면에 띄워줄 메시지
+  // 백엔드가 n개 만큼만 데이터를 보내줌 
+  // -> post요청이 되면[scroll이 바닥에 닿을 때] 
+  // -> n개 보내줌
+  // -> post요청이 되면[scroll이 바닥에 닿을 때] 
+  // -> n개 보내줌
+  // -> ...
+  // 쁠러스 알파
+  // 
+
+  // 만약 데이터가없다면 화면에 띄워줄 메시지
   if (boards.length === 0) {
     return(
       <StNoBoard>
         <h1>아직 생성한 게시물이 없습니다. 소중한 의견을 남겨주세요.</h1>
+        <Link to="/form">글 작성하러 가기</Link>
+        <LodingContainer><ReactLoading type="spin" color="#ff4444"/></LodingContainer>
       </StNoBoard>
     ) 
   };
 
   return(
-    <MainContainer>
-      <LinkContainer>
-        <GoToForm to="/form">새로운 글 작성하기</GoToForm>
-      </LinkContainer>
-      <CardContainer>
+    <>
+      <MainContainer>
         {
-          boards?.map((board, idx) => {
-            return(
-              <CardItem 
-              // 서버 연동하고나면, ID 값 넣어줄거임 (지엉님 몰래 쓰는거임 걸리면 혼남)
-                key={idx}
+          boards?.map((board) => {
+            return (
+              <CardColumn 
+                key={ board.boardId }
                 onClick={() => {
                   navigate(`/api/boards/detail/${board.boardId}`)
-              }}>
-                <CardItemTitle>{ board.title }</CardItemTitle>
-                <p>{ board.createdAt }</p>
-              </CardItem>
+                }}
+              >
+                <Card>
+                  <CardBorder/>
+                  <CardInfo>
+                    <p>좋아요 갯수임: { board.countHeart }</p>
+                    <p>댓글 갯수임: { board.countComment }</p>
+                  </CardInfo>
+                  <img src="https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785" alt="test"/>
+                  <h1>{ board.title }</h1>
+                  <CardDate>{ board.createdAt.substr(0,10) }</CardDate>
+                </Card>
+              </CardColumn>
             )
           })
         }
-      </CardContainer>
-    </MainContainer>
+        {/* {
+          loading ?
+            <LodingContainer>
+              <ReactLoading type="spin" color="#ff4444"/>
+            </LodingContainer> :
+            null
+        } */}
+      </MainContainer>
+    </>
   )
 };
-
-export const StNoBoard = styled.div`
-  text-align: center;
-  margin-top: 30rem;
-  color: white;
-`
 

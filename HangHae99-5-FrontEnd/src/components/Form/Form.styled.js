@@ -68,8 +68,7 @@ export const FormFront = styled.div`
   width: calc(50% - 30px);
   height: 40rem;
   min-height: 420px;
-  background-color: rgba(10,10,10,0.2);
-  /* border: 1px solid #ff4444; */
+  background-color: white;
   border-radius: 3px;
   box-shadow: 2px 0 15px rgba(0,0,0, .25);
   overflow: hidden;
@@ -91,7 +90,6 @@ export const FormFrontTitle = styled.h2`
 
 export const FormFrontInput = styled.input`
   padding: 10px;
-  font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif;
   width: 50%;
   display: block;
   margin: 0 auto;
@@ -103,7 +101,6 @@ export const FormFrontInput = styled.input`
 
 export const FormFrontTextarea = styled.textarea`
   box-sizing: border-box;
-  font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif;
   padding: 10px;
   width: 70%;
   height: 12rem;

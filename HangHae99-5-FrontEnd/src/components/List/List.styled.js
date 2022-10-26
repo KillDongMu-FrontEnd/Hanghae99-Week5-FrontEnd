@@ -1,58 +1,86 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
+
+export const StNoBoard = styled.div`
+  text-align: center;
+  margin-top: 30rem;
+  color: white;
+`
 
 export const MainContainer = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
   margin-top: 20rem;
 `
 
-export const LinkContainer = styled.div`
-  width: fit-content;
-  margin: 0 auto;
-  margin-bottom: 5rem;
-`
-
-export const GoToForm = styled(Link)`
-  font-size: 3rem;
-  text-decoration: none;
-  color: black;
-  width: 200px;
-  margin-left: 20px;
-`
-
-export const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-  grid-gap: 2rem;
-  margin: 2rem;
-  margin-top: 30rem;
-  width: 80%;
-  background: #b5b5ed;
-  float: right;
-  margin: 0;
+export const CardColumn = styled.div`
+  width: 50%;
+  float: left;
+  padding: 4%;
   box-sizing: border-box;
-  border-radius: 8px;
+  // 짝수 번 째 item만 살짝 밑으로 내리기
+  &:nth-child(even) {
+    padding-top: 100px;
+  }
 `
-
-export const CardItem = styled.div`
-  display: grid;
-  height: 15rem;
-  width: 15rem;
+export const Card = styled.div`
+  width: 92%;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
-  overflow: hidden;
-  margin: 20px;
-  border-radius: 8px;
-  background: #ff4444;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-  grid-template-rows: 1fr 1fr;
-  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: #EB5160;
+  color: #fff;
   cursor: pointer;
+  margin-bottom: 60px;
+  transition: all 0.5s;
   &:hover {
-    transform: scale(1.035, 1.035);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    transform: translateX(7%);
+    opacity: 1;
+  }
+  & h1 {
+    position: relative;
+    padding: 190px 0px 100px 10px;
+    width: 90%;
+    font-size: 1.8rem;
+  }
+  & img {
+    width: 60%;
+    position: absolute;
+    top: -6%;
+    left: -6%;
+    background: white;
+    box-shadow: 0 0 10px 10px rgba(0,0,0,0.15);
+    border-radius: 5px;
   }
 `
 
-export const CardItemTitle = styled.h2`
-  text-align: center;
+export const CardBorder = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border: 1px solid #fff;
+  opacity: 0.5;
+  left: -6px;
+  top: -6px;
+`
+
+export const CardInfo = styled.div`
+  float: right;
+  text-align: right;
+  margin: 15px;
+  & p {
+    margin-bottom: 5px;
+  }
+`
+
+export const CardDate = styled.p`
+  display: flex;
   padding: 10px;
+  justify-content: space-between;
+`
+
+export const LodingContainer = styled.div`
+  width: 50px;
+  margin: 0 auto;
 `

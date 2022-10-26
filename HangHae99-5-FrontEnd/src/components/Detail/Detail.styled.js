@@ -53,7 +53,7 @@ export const DetailContent = styled.div`
 export const DetailText = styled.div`
   overflow: scroll;
   background-color: #fff;
-	height: 60%;
+	height: fit-content;
   padding: 0px;
 	-ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -81,7 +81,7 @@ export const DetailInfo = styled.div`
 	padding: 15px 30px;
 	bottom: 0;
 	left: 0;
-	width: 100%;
+	width: 90%;
   & p {
     font-size: 14px;
 	  margin: 0;
@@ -122,7 +122,7 @@ export const DetailCommentInfo = styled.div`
   padding: 15px 30px;
   bottom: 0;
   left: 0;
-  width: 79%;
+  width: 75%;
   & p {
     font-size: 14px;
     margin: 0;

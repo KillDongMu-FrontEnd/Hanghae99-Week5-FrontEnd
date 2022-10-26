@@ -14,17 +14,17 @@ export const __addComment = createAsyncThunk(
     }
   );
 
-  // export const __getComment = createAsyncThunk(
-  //   "getComment",
-  //   async (payload, thunkAPI) => {
-  //     try{
-  //       const response = await getCommentApi(payload);
-  //       return thunkAPI.fulfillWithValue(response);
-  //     } catch (error) {
-  //       return thunkAPI.rejectWithValue(error);
-  //     }
-  //   }
-  // );
+  export const __getComment = createAsyncThunk(
+    "getComment",
+    async (payload, thunkAPI) => {
+      try{
+        const response = await getCommentApi(payload);
+        return thunkAPI.fulfillWithValue(response);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
+    }
+  );
 
   export const __delComment = createAsyncThunk(
     "delComment",

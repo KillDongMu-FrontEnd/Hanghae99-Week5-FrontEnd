@@ -53,6 +53,7 @@ export const __postBoard = createAsyncThunk(
   }
 );
 
+
 export const __getBoard = createAsyncThunk(
   "getBoard",
   async (payload, thunkAPI) => {
@@ -66,6 +67,7 @@ export const __getBoard = createAsyncThunk(
   }
 );
   
+
 export const __delBoard = createAsyncThunk(
     "delBoard",
     async (payload, thunkAPI) => {
@@ -107,8 +109,9 @@ export const boardSlice = createSlice({
   initialState:{
       boards : [],
       board: {},
+      isDone: false,
       isLoading: false,
-      error: null,    
+      error: null,
   },
   reducers: {
     //  // action => dispatch로 보낸 데이터를 받아오는 곳
@@ -124,9 +127,11 @@ export const boardSlice = createSlice({
     // GET Request BoardList
     [__getBoard.pending]: (state) => {
       state.isLoading = true;
+      state.isDone = false;
     },
     [__getBoard.fulfilled]: (state, action) => {
       state.isLoading = false;
+      state.isDone = true;
       state.boards = action.payload;
     },
     [__getBoard.rejected]: (state, action) => {
