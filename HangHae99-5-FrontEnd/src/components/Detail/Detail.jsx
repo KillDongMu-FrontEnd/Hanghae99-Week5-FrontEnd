@@ -25,8 +25,6 @@ import {
   DetailCommentEditInput,
   DetailOptionBtn,
 } from "./Detail.styled";
-import { BsHeartFill, BsHeart } from "react-icons/bs";
-
 import styled from "styled-components";
 
 export const Detail = () => {
@@ -108,7 +106,7 @@ export const Detail = () => {
         <hr />
         {board ? (
           <DetailText>
-            <input
+            <DetailEditInput
               type="text"
               name="content"
               defaultValue={update?.content}
@@ -129,6 +127,7 @@ export const Detail = () => {
                     dispatch(__editBoard({ update, id }));
                     dispatch(__getBoardId(id));
                     setBoard(false);
+                    window.location.reload();
                   }}
                 >
                   완료
@@ -156,7 +155,7 @@ export const Detail = () => {
             amILoved ? 
             <>
              <DetailBsHeartFill onClick={() => {
-              dispatch(__countHeart({id, }));
+              dispatch(__countHeart(id));
               setHeart(!heart);
             }}/>
               <p>{ boardData?.heartedUsernameList?.length }</p>
@@ -173,26 +172,27 @@ export const Detail = () => {
       <DetailContent>
         {/* 댓글 리스트 */}
         <DetailComment>
-          {!!boardData?.commentList && boardData?.commentList?.map((comment) => {
+          {!!boardData?.commentList && boardData?.commentList?.map((item) => {
             return (
-              <DetailCommentItem key={comment?.boardData?.board_id}>
+              <DetailCommentItem key={item?.commentId}>
                 <DetailCommentEditInput
                   type="text"
                   name="comment"
                   spellcheck={false}
-                  value={comment?.comment}
+                  value={item?.comment}
                   onChange={onChangeHandler}
                   readOnly
                 />
                 { 
-                 username === boardData?.username ? (
+                  username === item?.member?.username ? (
                     <DetailCommentItemDel
                       onClick={() => {
-                        dispatch(__delComment(id));
+                        dispatch(__delComment(item.commentId));
+                        window.location.reload();
                     }}>
                     X
                   </DetailCommentItemDel>
-                 ) : null
+                  ) : null
                 }
               </DetailCommentItem>
             );
@@ -242,4 +242,15 @@ export const DetailCommentItemDel = styled.button`
 export const ImageSize = styled.img`
 	height: 200px;
 	width: 200px;
+`
+
+export const DetailEditInput = styled.textarea`
+  border: none;
+  color: #494856;
+  line-height: 38px;
+  background: transparent;
+  width: 85%;
+  height: 40vh;
+  font-size: 14px;
+  margin: 0;
 `

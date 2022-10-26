@@ -150,6 +150,7 @@ export const DetailComment = styled.div`
 export const DetailCommentBtn = styled.button`
   border: none;
   background-color: #ff4444;
+  cursor: pointer;
 `;
 
 

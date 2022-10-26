@@ -7,14 +7,15 @@ export const ImageSize = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background-color: gray;
+  border: none;
 `;
 
 export const ImageLayout = styled.div`
   position: relative;
-  height: 300px;
-  width: 400px;
+  height: 15rem;
+  width: 25rem;
   border-radius: 50px;
+  background: rgba(0,0,0,0.25);
   /* overflow: hidden; */
 `;
 export const FormContainer = styled.section`
@@ -34,7 +35,7 @@ export const FormBack = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: rgba(0,0,0,0.2);
+  background-color: #001933;
   border-radius: 3px;
 `
 
@@ -55,6 +56,7 @@ export const FormBackInput = styled.input`
   border-radius: 3px;
   padding: 10px 30px;
   color: white;
+  font-size: 0.6rem;
   text-transform: uppercase;
   line-height: 1em;
   letter-spacing: .2rem;

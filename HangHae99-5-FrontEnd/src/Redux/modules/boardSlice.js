@@ -83,8 +83,9 @@ export const __delBoard = createAsyncThunk(
     "delBoard",
     async (payload, thunkAPI) => {
       try{
-        await countHeartApi(payload);
-        return thunkAPI.fulfillWithValue(payload);
+        const response = await countHeartApi(payload);
+        window.location.reload();
+        return thunkAPI.fulfillWithValue(response);
       } catch (error) {
         return thunkAPI.rejectWithValue(error);
       }

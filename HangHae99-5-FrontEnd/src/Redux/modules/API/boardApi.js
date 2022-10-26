@@ -55,7 +55,7 @@ export const delBoardApi = async (boardId) => {
 };
 
 export const countHeartApi = async (payload) => {
-  await axios.post(`${BASE_URL}/api/hearts/${payload}`, accessToken,{
+  await axios.post(`${BASE_URL}/api/hearts/${payload}`, accessToken, {
     headers: {
       Authorization: accessToken,
       "Refresh-Token": refreshToken,

@@ -18,6 +18,7 @@ import {
   FormFrontInput,
   FormFrontTextarea,
 } from "./Form.styled";
+import styled from "styled-components";
 
 
 export const Form = () => {
@@ -109,46 +110,59 @@ const onSubmitHandler = (e) => {
 };
 
   return (
-  <FormContainer>
-    <FormOptionContainer>
-      <form onSubmit={onSubmitHandler}>
-        <FormBack>
-          <FormBackText>
-            <h3>이미지를 업로드 해보세용</h3>
-            <ImageLayout>
-              <ImageSize src={imageSrc} alt="" />
-            </ImageLayout>
-            <FormBackInput
-              placeholder="업로드"
-              id="file"
-              type={"file"}
-              accept={"image/*"}
-              onChange={fileUpload}
-            ></FormBackInput>
-          </FormBackText>
-        </FormBack>
-        <FormFront>
-          <FormFrontTitle>내용을 작성 해보세용</FormFrontTitle>
-          <FormFrontInput
-            type="text"
-            autoComplete="off"
-            id = "title"
-            name="title"
-            placeholder="제목을 적어주세요"
-            onChange={onChangeHandler}
-          />
-          <FormFrontTextarea
-            type="text"
-            autoComplete="off"
-            id="content"
-            name="content"
-            placeholder="내용을 적어주세요"
-            onChange={onChangeHandler}
-          />
-        </FormFront>
-        <button>등록</button>
-      </form>
-    </FormOptionContainer>
-  </FormContainer>
-);
-  };
+    <FormContainer>
+      <FormOptionContainer>
+        <form onSubmit={onSubmitHandler}>
+          <FormBack>
+            <FormBackText>
+              <h3>이미지를 업로드 해보세용</h3>
+              <ImageLayout>
+                <ImageSize src={imageSrc} alt="" />
+              </ImageLayout>
+              <FormBackInput
+                placeholder="업로드"
+                id="file"
+                type={"file"}
+                accept={"image/*"}
+                onChange={fileUpload}
+              ></FormBackInput>
+            </FormBackText>
+          </FormBack>
+          <FormFront>
+            <FormFrontTitle>내용을 작성 해보세옽(하트)</FormFrontTitle>
+            <FormFrontInput
+              type="text"
+              autoComplete="off"
+              id = "title"
+              name="title"
+              placeholder="제목을 적어주세요"
+              onChange={onChangeHandler}
+            />
+            <FormFrontTextarea
+              type="text"
+              autoComplete="off"
+              id="content"
+              name="content"
+              placeholder="내용을 적어주세요"
+              onChange={onChangeHandler}
+            />
+            <FormFrontBtn>등록</FormFrontBtn>
+          </FormFront>
+        </form>
+      </FormOptionContainer>
+    </FormContainer>
+  );
+};
+
+const FormFrontBtn = styled.button`
+  display: flex;
+  margin: 0 auto;
+  border: none;
+  outline: none;
+  margin-top: 2rem;
+  background: tomato;
+  width: 12rem;
+  justify-content: center;
+  font-size: 1.4rem;
+  
+`
