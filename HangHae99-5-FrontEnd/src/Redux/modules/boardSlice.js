@@ -1,35 +1,45 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi} from "./API/boardApi"
-// import axios from "axios";
+import axios from "axios";
 
 
 
-// const BASE_URL = "REACT_APP_SERVER";
+const BASE_URL = "REACT_APP_SERVER";
 
-// const register = (payload) => {
-//   const accessToken = localStorage.getItem("accessToken");
-//   const refreshToken = localStorage.getItem("refreshToken");
+//폼데이터로 변환하여 서버에 전송하기
+const register = (payload) => {
 
-//   const frm = new FormData();
-//   frm.append("title", payload.title);
-//   frm.append("content", payload.content);
-//   // frm.append("file", payload.file);
-//   axios
-//     .post(`${BASE_URL}/api/boards/create`, frm, {
-//       headers: {
-//         Authorization: accessToken,
-//         "Refresh-Token": refreshToken,
-//         "Content-Type": "multipart/form-data",
-//       },
-//     })
-//     .then(function a(response) {
-//       alert("게시되었습니다.");
-//       window.location.replace("/");
-//     })
-//     .catch(function (error) {
-//       console.log(error.response);
-//     });
-// };
+  //토큰은 로컬스토리지에 전달하기
+  const accessToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem("refreshToken");
+
+  //인풋데이터들 폼데이터로 변환하기
+  const formdate = new FormData();
+  formdate.append("title", payload.title);
+  formdate.append("content", payload.content);
+  formdate.append("file", payload.file);
+
+  //폼데이터 콘솔보기
+  for(let pair of formdate.entries()){
+    console.log(pair[0]+','+pair[1]+','+pair[2]);
+  }
+//폼데이터 통신보내기 폼데이터 형식지정하고 헤더에 토큰도 같이 보내기
+  axios
+    .post(`${BASE_URL}/api/boards/create`, formdate, {
+      headers: {
+        Authorization: accessToken,
+        "Refresh-Token": refreshToken,
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then(function a(response) {
+      alert("게시되었습니다.");
+      window.location.replace("/");
+    })
+    .catch(function (error) {
+      console.log(error.response);
+    });
+};
 
 export const __postBoard = createAsyncThunk(
   "postBoard",
@@ -102,10 +112,10 @@ export const boardSlice = createSlice({
   },
   reducers: {
     //  // action => dispatch로 보낸 데이터를 받아오는 곳
-    //  addPost: (state, action) => {
-    //   state.board = action.payload;
-    //   register(action.payload);
-    // },
+     addPost: (state, action) => {
+      state.board = action.payload;
+      register(action.payload);
+    },
     // postBoard:(state, action) =>{
     //   state.boards.push(action.payload);
     // }
@@ -138,17 +148,17 @@ export const boardSlice = createSlice({
     },
 
     // POST Request board Item
-    [__postBoard.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [__postBoard.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.boards.push(action.payload);
-    },
-    [__postBoard.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+    // [__postBoard.pending]: (state) => {
+    //   state.isLoading = true;
+    // },
+    // [__postBoard.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.boards.push(action.payload);
+    // },
+    // [__postBoard.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
 
     // DELETE Request board Item
     [__delBoard.pending]: (state) => {
@@ -182,5 +192,5 @@ export const boardSlice = createSlice({
   }
 });
 
-export const { postBoard} = boardSlice.actions;
+export const { addPost } = boardSlice.actions;
 export default boardSlice.reducer;

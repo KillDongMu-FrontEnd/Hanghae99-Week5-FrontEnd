@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { fileUploadApi } from "../../Redux/modules/API/boardApi";
-// import { addPost } from "../../Redux/modules/boardSlice"; 
+import { addPost } from "../../Redux/modules/boardSlice"; 
 import { __postBoard } from "../../Redux/modules/boardSlice";
 import {
   ImageSize,
@@ -28,14 +28,16 @@ export const Form = () => {
   const init= {
     title: "",
     content:"",
+    file: "",
   }
   const [input, setInput] = useState(init);
   // const [content, setContent] = useState("");
 
 
   //이미지, 이미지미리보기 usestate
-  // const [imageSrc, setImageSrc] = useState("");
-  // const [image, setImage] = useState(null);
+  const [imageSrc, setImageSrc] = useState("");
+  const [image, setImage] = useState(null);
+
   //board usestate
   // const [board, setBoard] = useState({
   //   title: "",
@@ -44,55 +46,56 @@ export const Form = () => {
   // });
 
   //이미지 온체인지핸들러
-  // const fileUpload = (e) => {
-  //   setImage(e.target.files[0]);
+  const fileUpload = (e) => {
+    //이미지데이터 스테이트에 담기
+    setImage(e.target.files[0]);
 
-  //   let reader = new FileReader();
-  //   if (e.target.files[0]) {
-  //     reader.readAsDataURL(e.target.files[0]);
-  //   }
-  //   reader.onload = () => {
-  //     const previewImgUrl = reader.result;
-  //     if (previewImgUrl) {
-  //       setImageSrc([...imageSrc, previewImgUrl]);
-  //     }
-  //   };
-  // };
+  //이미지 미리보기
+    let reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    reader.onload = () => {
+      const previewImgUrl = reader.result;
+      if (previewImgUrl) {
+        setImageSrc([...imageSrc, previewImgUrl]);
+      }
+    };
+  };
 //이미지, 제목, 콘텐트 서버에 보내기
-
 //text, image Borad에 넣었음
 const onChangeHandler = (e) => {
   const { name, value } = e.target;
   setInput({
     ...input,
-    [name]: value
-    // file: image,
+    [name]: value,
+    file: image,
   });
 };
 
 //업데이트 된 board를 디스패치 보내기
 const onSubmitHandler = (e) => {
   e.preventDefault();
-  dispatch(__postBoard(input));
+  dispatch(addPost(input));
   navigate("/")
 };
 
   return (
   <FormContainer>
     <FormOptionContainer>
-      <form onSubmit={onSubmitHandler}>
+      <form onSubmit={onSubmitHandler} method="post" encType="multipart/form-data">
         <FormBack>
           <FormBackText>
             <h3>이미지를 업로드 해보세용</h3>
             <ImageLayout>
-              {/* <ImageSize src={imageSrc} alt="" /> */}
+              <ImageSize src={imageSrc} alt="" />
             </ImageLayout>
-            {/* <FormBackInput
+            <FormBackInput
               type="file"
               id="file"
               accept="image/jpg, image/jpeg, image/png"
               onChange={fileUpload}
-            ></FormBackInput> */}
+            ></FormBackInput>
           </FormBackText>
         </FormBack>
         <FormFront>
@@ -100,6 +103,7 @@ const onSubmitHandler = (e) => {
           <FormFrontInput
             type="text"
             autoComplete="off"
+            id = "title"
             name="title"
             placeholder="제목을 적어주세요"
             onChange={onChangeHandler}
@@ -107,6 +111,7 @@ const onSubmitHandler = (e) => {
           <FormFrontTextarea
             type="text"
             autoComplete="off"
+            id="content"
             name="content"
             placeholder="내용을 적어주세요"
             onChange={onChangeHandler}
