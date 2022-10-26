@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // import { fileUploadApi } from "../../Redux/modules/API/boardApi";
 import { addPost } from "../../Redux/modules/boardSlice"; 
 import { __postBoard } from "../../Redux/modules/boardSlice";
@@ -28,7 +29,6 @@ export const Form = () => {
   const init= {
     title: "",
     content:"",
-    file: "",
   }
   const [input, setInput] = useState(init);
   // const [content, setContent] = useState("");
@@ -36,7 +36,7 @@ export const Form = () => {
 
   //이미지, 이미지미리보기 usestate
   const [imageSrc, setImageSrc] = useState("");
-  const [image, setImage] = useState(null);
+  const [imageUpload, setImageUpload] = useState(null);
 
   //board usestate
   // const [board, setBoard] = useState({
@@ -48,7 +48,7 @@ export const Form = () => {
   //이미지 온체인지핸들러
   const fileUpload = (e) => {
     //이미지데이터 스테이트에 담기
-    setInput({...input,file:e.target.files[0]});
+    setImageUpload(e.target.files[0]);
 
 
   //이미지 미리보기
@@ -64,28 +64,54 @@ export const Form = () => {
     };
   };
 //이미지, 제목, 콘텐트 서버에 보내기
-//text, image Borad에 넣었음
+//text,  input에 넣었음
 const onChangeHandler = (e) => {
   const { name, value } = e.target;
 
   setInput({
     ...input,
     [name]: value,
-    // file: image,
   });
 };
 
 //업데이트 된 board를 디스패치 보내기
 const onSubmitHandler = (e) => {
   e.preventDefault();
-  dispatch(addPost(input));
-  navigate("/")
+  const accessToken = localStorage.getItem("authorization");
+  const refreshToken = localStorage.getItem("refreshToken");
+
+  const formData = new FormData();
+  formData.append("file",imageUpload);
+  formData.append("title",input.title);
+  formData.append("content",input.content);
+
+  let entries = formData.entries();
+  for (const pair of entries) {
+      console.log(pair[0] + ", " + pair[1]);
+  }
+  axios
+      .post("http://13.125.92.237:8080/api/boards/create", formData, {
+          headers: {
+              Authorization: accessToken,
+              "Refresh-Token": refreshToken,
+              "Content-Type": "multipart/form-data",
+          },
+      })
+      .then(function a(response) {
+          alert("게시되었습니다.");
+          window.location.replace("/");
+      })
+      .catch(function (error) {
+          console.log(error.response);
+      });
+ 
+  navigate("/");
 };
 
   return (
   <FormContainer>
     <FormOptionContainer>
-      <form onSubmit={onSubmitHandler} method="post" encType="multipart/form-data">
+      <form onSubmit={onSubmitHandler}>
         <FormBack>
           <FormBackText>
             <h3>이미지를 업로드 해보세용</h3>
@@ -93,9 +119,10 @@ const onSubmitHandler = (e) => {
               <ImageSize src={imageSrc} alt="" />
             </ImageLayout>
             <FormBackInput
-              type="file"
+              placeholder="업로드"
               id="file"
-              accept="image/jpg, image/jpeg, image/png"
+              type={"file"}
+              accept={"image/*"}
               onChange={fileUpload}
             ></FormBackInput>
           </FormBackText>

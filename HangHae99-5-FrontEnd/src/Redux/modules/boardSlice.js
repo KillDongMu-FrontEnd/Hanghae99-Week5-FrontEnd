@@ -4,55 +4,54 @@ import axios from "axios";
 
 
 
-const BASE_URL = "REACT_APP_SERVER";
+// const BASE_URL = "REACT_APP_SERVER";
 
 //폼데이터로 변환하여 서버에 전송하기
-const register = (payload) => {
+// const register = (payload) => {
 
-  //토큰은 로컬스토리지에 전달하기
-  const accessToken = localStorage.getItem("accessToken");
-  const refreshToken = localStorage.getItem("refreshToken");
-  console.log("폼데이터페이로드",payload)
-  
-  //인풋데이터들 폼데이터로 변환하기
-  const formdata = new FormData();
-  formdata.append("title", payload.title);
-  formdata.append("content", payload.content);
-  formdata.append("file", payload.file);
+//   //토큰은 로컬스토리지에 전달하기
+//   const accessToken = localStorage.getItem("Authorization");
+//   const refreshToken = localStorage.getItem("refreshToken");
 
-  //폼데이터 콘솔보기
-  for(let pair of formdata.entries()){
-    console.log(pair[0]+','+pair[1]+','+pair[2]);
-  }
-//폼데이터 통신보내기 폼데이터 형식지정하고 헤더에 토큰도 같이 보내기
-  axios
-    .post(`${BASE_URL}/api/boards/create`, formdata, {
-      headers: {
-        Authorization: accessToken,
-        "Refresh-Token": refreshToken,
-        "Content-Type": "multipart/form-data",
-      },
-    })
-    .then(function a(response) {
-      alert("게시되었습니다.");
-      window.location.replace("/");
-    })
-    .catch(function (error) {
-      console.log(error.response);
-    });
-};
+//   //인풋데이터들 폼데이터로 변환하기
+//   const formdata = new FormData();
+//   formdata.append("title", payload.title);
+//   formdata.append("content", payload.content);
+//   formdata.append("file", payload.file);
 
-export const __postBoard = createAsyncThunk(
-  "postBoard",
-  async (payload, thunkAPI) => {
-    try {
-      const response = await postBoardApi(payload);      
-      return thunkAPI.fulfillWithValue(response);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
+//   //폼데이터 콘솔보기
+//   for(let pair of formdata.entries()){
+//     console.log(pair[0]+','+pair[1]+','+pair[2]);
+//   }
+// //폼데이터 통신보내기 폼데이터 형식지정하고 헤더에 토큰도 같이 보내기
+//   axios
+//     .post("http://13.125.92.237:8080/api/boards/create", formdata, {
+//       headers: {
+//         Authorization: accessToken,
+//         "Refresh-Token": refreshToken,
+//         "content-type": "multipart/form-data",
+//       },
+//     })
+//     .then(function a(response) {
+//       alert("게시되었습니다.");
+//       window.location.replace("/");
+//     })
+//     .catch(function (error) {
+//       console.log(error.response);
+//     });
+// };
+
+// export const __postBoard = createAsyncThunk(
+//   "postBoard",
+//   async (payload, thunkAPI) => {
+//     try {
+//       const response = await postBoardApi(payload);      
+//       return thunkAPI.fulfillWithValue(response);
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error);
+//     }
+//   }
+// );
 
 
 export const __getBoard = createAsyncThunk(
@@ -127,10 +126,11 @@ export const boardSlice = createSlice({
   },
   reducers: {
     //  // action => dispatch로 보낸 데이터를 받아오는 곳
-     addPost: (state, action) => {
-      state.board = action.payload;
-      register(action.payload);
-    },
+    //  addPost: (state, action) => {
+    //   console.log("리듀서", action.payload)
+    //   state.board = action.payload;
+    //   register(action.payload);
+    // },
     // postBoard:(state, action) =>{
     //   state.boards.push(action.payload);
     // }

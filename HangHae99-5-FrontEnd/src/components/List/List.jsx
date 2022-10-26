@@ -62,7 +62,7 @@ export const List = () => {
                     <p>댓글 갯수임: { board.countComment }</p>
                   </CardInfo>
                   <img src="https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785" alt="test"/>
-                  <h1>{ board.title }</h1>
+                  <h1>{ JSON.stringify(board.title)}</h1>
                   <CardDate>{ board.createdAt.substr(0,10) }</CardDate>
                 </Card>
               </CardColumn>

@@ -108,7 +108,7 @@ export const Detail = () => {
         </DetailHeader>
       )}
       <DetailContent>
-        <img src={detailImage} alt="test"/>
+        <ImageSize src={detailImage} alt="test"/>
         <hr />
         {board ? (
           <DetailText>
@@ -121,11 +121,11 @@ export const Detail = () => {
           </DetailText>
         ) : (
           <DetailText>
-            <p>{!!!boardData?.content && boardData?.content}</p>
+            <p>{boardData?.content}</p>
           </DetailText>
         )}
         <DetailInfo>
-          {username === !!boardData?.boardData && username ? (
+          {username === boardData?.username ? (
             <div>
               {board ? (
                 <DetailOptionBtn
@@ -238,3 +238,9 @@ export const DetailCommentItemDel = styled.button`
     color: #ff4444;
   }
 `;
+
+export const ImageSize = styled.img`
+	height: 500px;
+	width: 500px;
+
+`
