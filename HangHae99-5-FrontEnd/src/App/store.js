@@ -14,7 +14,7 @@ export const store = configureStore({
     comments: commentSlice.reducer,
     users: userSlice.reducer,
     login: loginSlice.reducer,
-    mypage :mypageSlice.reducer
+    mypage : mypageSlice.reducer
     // files: fileUploadApi.reducer,
   },
 });

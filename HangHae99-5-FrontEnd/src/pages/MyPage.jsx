@@ -1,15 +1,16 @@
 import { Header } from "../components/Header/Header";
-import { Logo } from "../components/Logo/Logo";
-import {MyPageList} from "../components/Mypage/MypageList"
+import { LoginLogo, LoginLogoOne } from "../components/Login/login.styled";
+import { MyPageList } from "../components/MyPage/MypageList";
 
 export const MyPage = () => {
  
   return(
-  
     <div>
       <Header/>
-      <Logo/>
-    <MyPageList/>
+      <LoginLogo>
+        <LoginLogoOne>OTT_Review_You</LoginLogoOne>
+      </LoginLogo>
+      <MyPageList/>
     </div>
   )
 }
