@@ -55,6 +55,7 @@ export const DetailText = styled.div`
   background-color: #fff;
 	height: fit-content;
   padding: 0px;
+  height: auto;
 	-ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
@@ -149,6 +150,7 @@ export const DetailComment = styled.div`
 export const DetailCommentBtn = styled.button`
   border: none;
   background-color: #ff4444;
+  cursor: pointer;
 `;
 
 
@@ -161,6 +163,17 @@ export const DetailOptionBtn = styled.button`
 `
 
 export const DetailBsHeart = styled(BsHeart)`
+  color: #ff4444;
+  font-size: 1.2rem;
+  margin-right: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.3);
+  }
+`
+
+export const DetailBsHeartFill = styled(BsHeartFill)`
   color: #ff4444;
   font-size: 1.2rem;
   margin-right: 1.5rem;

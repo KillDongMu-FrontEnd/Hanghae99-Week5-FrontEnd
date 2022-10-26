@@ -4,13 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { StNoBoard, MainContainer, CardColumn, Card, CardBorder, CardInfo, CardDate, LodingContainer } from "./List.styled";
 import ReactLoading from "react-loading";
-import { paste } from "@testing-library/user-event/dist/paste";
 // import axios from "axios";
 
 
 export const List = () => {
-
-  const BASE_URL = process.env.REACT_APP_SERVER;
 
   // Infinity Scroll
   // const [list, setList] = useState([]);

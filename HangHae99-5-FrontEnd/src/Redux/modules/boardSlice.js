@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import{getBoardApi, delBoardApi, getBoardIdApi, editBoardApi,countHeartApi } from "./API/boardApi"
-import axios from "axios";
+import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi,countHeartApi } from "./API/boardApi"
 
 
 
@@ -84,8 +83,9 @@ export const __delBoard = createAsyncThunk(
     "delBoard",
     async (payload, thunkAPI) => {
       try{
-        await countHeartApi(payload);
-        return thunkAPI.fulfillWithValue(payload);
+        const response = await countHeartApi(payload);
+        window.location.reload();
+        return thunkAPI.fulfillWithValue(response);
       } catch (error) {
         return thunkAPI.rejectWithValue(error);
       }

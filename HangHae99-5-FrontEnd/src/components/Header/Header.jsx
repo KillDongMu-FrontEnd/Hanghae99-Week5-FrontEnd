@@ -38,8 +38,15 @@ export const Header = () => {
         </MenuItem>
         <hr/>
         <MenuItem><MenuLink to="/">Home</MenuLink></MenuItem>
-        <MenuItem><MenuLink to="/form">글 작성하기*</MenuLink></MenuItem>
-        <MenuItem><MenuLink to="/mypage">마이페이지*</MenuLink></MenuItem>
+        {
+            userId !== null ? 
+            <div>
+              <MenuItem><MenuLink to="/form">Posting</MenuLink></MenuItem>
+              <MenuItem><MenuLink to="/mypage">My Page</MenuLink></MenuItem>
+            </div>
+            : 
+            null
+          }
       </Menu>
     </MenuToggle>
   )

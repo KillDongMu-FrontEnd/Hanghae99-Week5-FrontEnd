@@ -25,7 +25,14 @@ export const getCommentApi = async (payload) => {
 };
 
 export const delCommentApi = async (payload) => {
-  await axios.delete(`${BASE_URL}/api/boards/comments/delete/${payload.id}`);
+  console.log(payload)
+  await axios.delete(`${BASE_URL}/api/boards/comments/delete/${payload}`, {
+    headers: {
+      Authorization: accessToken,
+      "Refresh-Token": refreshToken,
+      "Content-Type": "application/json",
+    }
+  });
 };
 
 export const editCommentApi = async (edit) => {

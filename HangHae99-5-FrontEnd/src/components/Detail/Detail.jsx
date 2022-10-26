@@ -21,10 +21,10 @@ import {
   DetailCommentInput,
   DetailCommentBtn,
   DetailBsHeart,
+  DetailBsHeartFill,
   DetailCommentEditInput,
   DetailOptionBtn,
 } from "./Detail.styled";
-
 import styled from "styled-components";
 
 export const Detail = () => {
@@ -36,17 +36,6 @@ export const Detail = () => {
   // 상세페이지 모든 데이터 값 가져오기
   const boardData = useSelector((state) => state.boards.board);
 
-  // 댓글 리스트 아이디 값 불러오기
-  // const { title, content, countHeart } = boardData;
-  // const commentList = boardData.commentList;
-
-  
-
-  // 좋아요 눌렀는지 정보를 받아온다 useEffect
-  // useEffect(()=>{
-
-  // })
-
   const init = {
     title: "",
     content: "",
@@ -56,6 +45,7 @@ export const Detail = () => {
   const [board, setBoard] = useState(false);
 
   const username = localStorage.getItem("username");
+  const token = localStorage.getItem("authorization");
 
   useEffect(() => {
     dispatch(__getBoardId(id));
@@ -82,16 +72,17 @@ export const Detail = () => {
   }, [boardData]);
 
   console.log(boardData);
+  const amILoved = boardData?.heartedUsernameList.includes(username)
 
   // 좋아요 usestate
   // const [heart, setHeart] = useState(!!boardData.countHeart&&boardData.countHeart);
 
   const detailImage = boardData?.file
-  const heart = boardData?.heartedUsernameList
+  // const heart = boardData?.heartedUsernameList
+  const [heart, setHeart] = useState(false);
 
   return (   
     <DetailContainer>
-       
       {board ? (
         <DetailHeader>
           <input
@@ -115,7 +106,7 @@ export const Detail = () => {
         <hr />
         {board ? (
           <DetailText>
-            <input
+            <DetailEditInput
               type="text"
               name="content"
               defaultValue={update?.content}
@@ -136,6 +127,7 @@ export const Detail = () => {
                     dispatch(__editBoard({ update, id }));
                     dispatch(__getBoardId(id));
                     setBoard(false);
+                    window.location.reload();
                   }}
                 >
                   완료
@@ -159,48 +151,49 @@ export const Detail = () => {
               </DetailOptionBtn>
             </div>
           ) : null}
-          { heart? (
-            <span>❤️</span>
-          ) : (
-            <DetailBsHeart
-              onClick={() => {
-                dispatch(__countHeart(id));
-                // setHeart(!heart);
-              }}
-            />
-          )}
-           {/* <DetailBsHeart onClick={()=>{
-            dispatch(__countHeart(id))
-          }}/> */}
+          { 
+            amILoved ? 
+            <>
+             <DetailBsHeartFill onClick={() => {
+              dispatch(__countHeart(id));
+              setHeart(!heart);
+            }}/>
+              <p>{ boardData?.heartedUsernameList?.length }</p>
+            </>
+            : 
+            <DetailBsHeart onClick={() => {
+              dispatch(__countHeart(id));
+              setHeart(!heart);
+            }}/>
+          }
         </DetailInfo>
       </DetailContent>
 
       <DetailContent>
         {/* 댓글 리스트 */}
         <DetailComment>
-          {!!boardData?.commentList && boardData?.commentList?.map((comment) => {
+          {!!boardData?.commentList && boardData?.commentList?.map((item) => {
             return (
-              <DetailCommentItem key={comment?.boardData?.board_id}>
+              <DetailCommentItem key={item?.commentId}>
                 <DetailCommentEditInput
                   type="text"
                   name="comment"
                   spellcheck={false}
-                  value={comment?.comment}
+                  value={item?.comment}
                   onChange={onChangeHandler}
                   readOnly
                 />
                 { 
-                 username === !!boardData?.boardData && username ? (
+                  username === item?.member?.username ? (
                     <DetailCommentItemDel
                       onClick={() => {
-                        dispatch(__delComment(id));
-                      }}
-                    >
+                        dispatch(__delComment(item.commentId));
+                        window.location.reload();
+                    }}>
                     X
                   </DetailCommentItemDel>
-                 ) : null
+                  ) : null
                 }
-
               </DetailCommentItem>
             );
           })}
@@ -214,8 +207,7 @@ export const Detail = () => {
             onClick={() => {
               dispatch(__addComment({ comment, id }));
               window.location.reload();
-            }}
-          >
+          }}>
             댓
           </DetailCommentBtn>
         </DetailCommentInfo>
@@ -224,8 +216,7 @@ export const Detail = () => {
       <DetailFloatingBtn
         onClick={() => {
           navigate("/");
-        }}
-      >
+      }}>
         뒤로 가기
       </DetailFloatingBtn>
     </DetailContainer>
@@ -249,7 +240,17 @@ export const DetailCommentItemDel = styled.button`
 `;
 
 export const ImageSize = styled.img`
-	height: 500px;
-	width: 500px;
+	height: 200px;
+	width: 200px;
+`
 
+export const DetailEditInput = styled.textarea`
+  border: none;
+  color: #494856;
+  line-height: 38px;
+  background: transparent;
+  width: 85%;
+  height: 40vh;
+  font-size: 14px;
+  margin: 0;
 `

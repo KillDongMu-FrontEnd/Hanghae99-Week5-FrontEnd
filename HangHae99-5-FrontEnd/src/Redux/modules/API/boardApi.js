@@ -54,8 +54,8 @@ export const delBoardApi = async (boardId) => {
   });
 };
 
-export const countHeartApi = async (boardId) => {
-  await axios.post(`${BASE_URL}/api/hearts/${boardId}`, {
+export const countHeartApi = async (payload) => {
+  await axios.post(`${BASE_URL}/api/hearts/${payload}`, accessToken, {
     headers: {
       Authorization: accessToken,
       "Refresh-Token": refreshToken,
@@ -63,7 +63,6 @@ export const countHeartApi = async (boardId) => {
     },
   });
 };
-
 export const getBoardIdApi = async (id) => {
   const response = await axios.get(`${BASE_URL}/api/boards/detail/${id}`);
   return response.data;

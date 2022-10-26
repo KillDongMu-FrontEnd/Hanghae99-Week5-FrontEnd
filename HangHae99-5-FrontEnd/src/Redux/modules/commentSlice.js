@@ -6,7 +6,6 @@ export const __addComment = createAsyncThunk(
     async (payload, thunkAPI) => {
       try{
         const response = await addCommentApi(payload);
-        console.log(response)
         return thunkAPI.fulfillWithValue(response);
       } catch (error) {
         return thunkAPI.rejectWithValue(error);
@@ -43,7 +42,7 @@ export const __addComment = createAsyncThunk(
     async (payload, thunkAPI) => {    
       await editCommentApi(payload);    
       thunkAPI.dispatch(editComment(payload));
-      }
+    }
   );
 
 
