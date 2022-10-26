@@ -101,7 +101,7 @@ export const List = () => {
 
   // 불러오기
   const boards = useSelector((state) => state?.boards?.boards);
-  console.log("게시물 리스트임", boards);
+  // console.log("게시물 리스트임", boards);
 
   // 로딩 값, 페이지 값 불러오기
   const { isLoading, pageCount  } = useSelector(state => ({
