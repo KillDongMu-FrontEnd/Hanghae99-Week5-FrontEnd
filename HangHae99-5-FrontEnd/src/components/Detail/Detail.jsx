@@ -32,9 +32,7 @@ export const Detail = () => {
   console.log(boardData)
 
   // 댓글 리스트 아이디 값 불러오기
-  const commentId = boardData.commentIdList
-  console.log(commentId)
-
+ 
   const { title, content } = boardData;
   const commentList = boardData.commentList;
   console.log(commentList);

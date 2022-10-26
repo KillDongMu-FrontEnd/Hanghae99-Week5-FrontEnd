@@ -14,18 +14,18 @@ const register = (payload) => {
   const refreshToken = localStorage.getItem("refreshToken");
 
   //인풋데이터들 폼데이터로 변환하기
-  const formDate = new FormData();
-  formDate.append("title", payload.title);
-  formDate.append("content", payload.content);
-  formDate.append("file", payload.file[0]);
+  const formdate = new FormData();
+  formdate.append("title", payload.title);
+  formdate.append("content", payload.content);
+  formdate.append("file", payload.file);
 
   //폼데이터 콘솔보기
-  for(let pair of formDate.entries()){
+  for(let pair of formdate.entries()){
     console.log(pair[0]+','+pair[1]+','+pair[2]);
   }
 //폼데이터 통신보내기 폼데이터 형식지정하고 헤더에 토큰도 같이 보내기
   axios
-    .post(`${BASE_URL}/api/boards/create`, formDate, {
+    .post(`${BASE_URL}/api/boards/create`, formdate, {
       headers: {
         Authorization: accessToken,
         "Refresh-Token": refreshToken,

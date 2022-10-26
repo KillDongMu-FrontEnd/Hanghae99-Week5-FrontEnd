@@ -82,7 +82,7 @@ const onSubmitHandler = (e) => {
   return (
   <FormContainer>
     <FormOptionContainer>
-      <form onSubmit={onSubmitHandler} method="post" enctype="multipart/form-data">
+      <form onSubmit={onSubmitHandler} method="post" encType="multipart/form-data">
         <FormBack>
           <FormBackText>
             <h3>이미지를 업로드 해보세용</h3>

@@ -42,7 +42,7 @@ export const List = () => {
               // 서버 연동하고나면, ID 값 넣어줄거임 (지엉님 몰래 쓰는거임 걸리면 혼남)
                 key={idx}
                 onClick={() => {
-                  navigate(`/api/boards/detail/${board.board_id}`)
+                  navigate(`/api/boards/detail/${board.boardId}`)
               }}>
                 <CardItemTitle>{ board.title }</CardItemTitle>
                 <p>{ board.createdAt }</p>
