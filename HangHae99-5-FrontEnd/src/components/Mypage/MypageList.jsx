@@ -8,6 +8,7 @@ export const MyPageList = () => {
     const navigate = useNavigate();
     const username = localStorage.getItem("username");
   const dispatch = useDispatch();
+  
 
   useEffect(()=>{
      dispatch(__getMyPageId(username))
