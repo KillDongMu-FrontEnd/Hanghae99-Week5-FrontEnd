@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardId } from "../../Redux/modules/boardSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import { __editBoard, __delBoard } from "../../Redux/modules/boardSlice";
+import { __editBoard, __delBoard, __countHeart  } from "../../Redux/modules/boardSlice";
 import { __addComment, __delComment } from "../../Redux/modules/commentSlice";
 import {
   DetailContainer,
@@ -34,9 +34,17 @@ export const Detail = () => {
   console.log(boardData)
 
   // 댓글 리스트 아이디 값 불러오기
-  const { title, content } = boardData;
+  const { title, content,countHeart } = boardData;
   const commentList = boardData.commentList;
   console.log(commentList);
+
+  //좋아요 usestate
+  const [heart, setHeart]=useState(countHeart);
+
+  //좋아요 눌렀는지 정보를 받아온다 useEffect
+  // useEffect(()=>{
+    
+  // })
 
   const init = {
     title: title,
@@ -63,6 +71,11 @@ export const Detail = () => {
     e.preventDefault();
     setComment(e.target.value);
   };
+
+  //수정시 초기값 보여주는 useEffect
+  // useEffect(() => {
+  //   dispatch(boardData)
+  // }, [dispatch,boardData]);
 
   return (
     <DetailContainer>
@@ -132,7 +145,19 @@ export const Detail = () => {
               </DetailOptionBtn>
             </div>
           ) : null}
-          <DetailBsHeart />
+          {
+            heart?(
+              <span>❤️</span>
+            ):(
+              <DetailBsHeart onClick={()=>{
+                dispatch(__countHeart(id));
+                setHeart(!heart);
+              }}/>
+            )
+          }
+          {/* <DetailBsHeart onClick={()=>{
+            dispatch(__countHeart(id))
+          }}/> */}
         </DetailInfo>
       </DetailContent>
 

@@ -50,6 +50,16 @@ export const delBoardApi = async (boardId) => {
   });
 };
 
+export const countHeartApi = async (boardId) => {
+  await axios.post(`${BASE_URL}/api/heart/${boardId}`, {
+    headers: {
+      Authorization: accessToken,
+      "Refresh-Token": refreshToken,
+      "Content-Type": "application/json",
+    },
+  });
+};
+
 export const getBoardIdApi = async (id) => {
   const response = await axios.get(`${BASE_URL}/api/boards/detail/${id}`);
   return response.data;
