@@ -104,6 +104,18 @@ export const __getBoardId = createAsyncThunk(
   }
 );
 
+// export const __getMyPageId = createAsyncThunk(
+//   "getMyPage_Id",
+//   async (payload, thunkAPI) => {
+//     try {
+//       const response= await getMyPageIdApi(payload);
+//       return thunkAPI.fulfillWithValue(response);
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error);
+//     }
+//   }
+// );
+
 export const __editBoard = createAsyncThunk(
   "editBoard",
   async (payload, thunkAPI) => {
@@ -164,6 +176,20 @@ export const boardSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+   
+
+    //GET Request My page Item
+    // [__getMyPageId.pending]: (state) => {
+    //   state.isLoading = true;
+    // },
+    // [__getMyPageId.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.board = action.payload;
+    // },
+    // [__getMyPageId.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
 
     // POST Request board Item
     // [__postBoard.pending]: (state) => {
