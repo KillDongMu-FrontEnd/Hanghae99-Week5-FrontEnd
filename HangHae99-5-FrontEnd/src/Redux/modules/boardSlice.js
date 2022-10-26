@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi} from "./API/boardApi"
+import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi,countHeartApi } from "./API/boardApi"
 import axios from "axios";
 
 
@@ -12,20 +12,21 @@ const register = (payload) => {
   //토큰은 로컬스토리지에 전달하기
   const accessToken = localStorage.getItem("accessToken");
   const refreshToken = localStorage.getItem("refreshToken");
-
+  console.log("폼데이터페이로드",payload)
+  
   //인풋데이터들 폼데이터로 변환하기
-  const formdate = new FormData();
-  formdate.append("title", payload.title);
-  formdate.append("content", payload.content);
-  formdate.append("file", payload.file);
+  const formdata = new FormData();
+  formdata.append("title", payload.title);
+  formdata.append("content", payload.content);
+  formdata.append("file", payload.file);
 
   //폼데이터 콘솔보기
-  for(let pair of formdate.entries()){
+  for(let pair of formdata.entries()){
     console.log(pair[0]+','+pair[1]+','+pair[2]);
   }
 //폼데이터 통신보내기 폼데이터 형식지정하고 헤더에 토큰도 같이 보내기
   axios
-    .post(`${BASE_URL}/api/boards/create`, formdate, {
+    .post(`${BASE_URL}/api/boards/create`, formdata, {
       headers: {
         Authorization: accessToken,
         "Refresh-Token": refreshToken,
@@ -80,6 +81,18 @@ export const __delBoard = createAsyncThunk(
     }
   );
 
+  export const __countHeart = createAsyncThunk(
+    "delBoard",
+    async (payload, thunkAPI) => {
+      try{
+        await countHeartApi(payload);
+        return thunkAPI.fulfillWithValue(payload);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
+    }
+  );
+
 export const __getBoardId = createAsyncThunk(
   "getBoard_Id",
   async (payload, thunkAPI) => {
@@ -108,8 +121,7 @@ export const boardSlice = createSlice({
   name: "boards",
   initialState:{
       boards : [],
-      board: {},
-      isDone: false,
+      board: null,
       isLoading: false,
       error: null,
   },

@@ -48,14 +48,15 @@ export const Form = () => {
   //이미지 온체인지핸들러
   const fileUpload = (e) => {
     //이미지데이터 스테이트에 담기
-    setImage(e.target.files[0]);
+    setInput({...input,file:e.target.files[0]});
+
 
   //이미지 미리보기
     let reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
     }
-    reader.onload = () => {
+    reader.onloadend = () => {
       const previewImgUrl = reader.result;
       if (previewImgUrl) {
         setImageSrc([...imageSrc, previewImgUrl]);
@@ -66,10 +67,11 @@ export const Form = () => {
 //text, image Borad에 넣었음
 const onChangeHandler = (e) => {
   const { name, value } = e.target;
+
   setInput({
     ...input,
     [name]: value,
-    file: image,
+    // file: image,
   });
 };
 
