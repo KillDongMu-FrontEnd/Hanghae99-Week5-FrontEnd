@@ -12,7 +12,8 @@ const register = (payload) => {
   //토큰은 로컬스토리지에 전달하기
   const accessToken = localStorage.getItem("accessToken");
   const refreshToken = localStorage.getItem("refreshToken");
-console.log("폼데이터페이로드",payload)
+  console.log("폼데이터페이로드",payload)
+  
   //인풋데이터들 폼데이터로 변환하기
   const formdata = new FormData();
   formdata.append("title", payload.title);
@@ -118,7 +119,7 @@ export const boardSlice = createSlice({
   name: "boards",
   initialState:{
       boards : [],
-      board: {},
+      board: null,
       isLoading: false,
       error: null,    
   },

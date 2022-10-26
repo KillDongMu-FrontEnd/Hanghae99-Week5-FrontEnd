@@ -67,7 +67,7 @@ export const Form = () => {
 //text, image Borad에 넣었음
 const onChangeHandler = (e) => {
   const { name, value } = e.target;
-  console.log(image);
+
   setInput({
     ...input,
     [name]: value,
