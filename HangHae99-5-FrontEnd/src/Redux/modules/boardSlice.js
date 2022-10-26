@@ -123,6 +123,7 @@ export const boardSlice = createSlice({
       boards : [],
       board: null,
       isLoading: false,
+      pageCount: 1,
       error: null,
   },
   reducers: {

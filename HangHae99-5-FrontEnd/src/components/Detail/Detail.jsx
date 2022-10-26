@@ -81,6 +81,8 @@ export const Detail = () => {
     }
   }, [boardData]);
 
+  console.log(boardData);
+
   // 좋아요 usestate
   // const [heart, setHeart] = useState(!!boardData.countHeart&&boardData.countHeart);
 
@@ -166,9 +168,6 @@ export const Detail = () => {
               }}
             />
           )}
-           <DetailBsHeart onClick={()=>{
-            dispatch(__countHeart(id))
-          }}/>
         </DetailInfo>
       </DetailContent>
 
@@ -177,7 +176,7 @@ export const Detail = () => {
         <DetailComment>
           {!!boardData?.commentList && boardData?.commentList?.map((comment) => {
             return (
-              <DetailCommentItem key={comment?.boardData?.commentId}>
+              <DetailCommentItem key={comment?.boardData?.board_id}>
                 <DetailCommentEditInput
                   type="text"
                   name="comment"
@@ -186,13 +185,18 @@ export const Detail = () => {
                   onChange={onChangeHandler}
                   readOnly
                 />
-                <DetailCommentItemDel
-                  onClick={() => {
-                    dispatch(__delComment(id));
-                  }}
-                >
-                  X
-                </DetailCommentItemDel>
+                { 
+                 username === !!boardData?.boardData && username ? (
+                    <DetailCommentItemDel
+                      onClick={() => {
+                        dispatch(__delComment(id));
+                      }}
+                    >
+                    X
+                  </DetailCommentItemDel>
+                 ) : null
+                }
+
               </DetailCommentItem>
             );
           })}
@@ -205,6 +209,7 @@ export const Detail = () => {
           <DetailCommentBtn
             onClick={() => {
               dispatch(__addComment({ comment, id }));
+              window.location.reload();
             }}
           >
             댓
