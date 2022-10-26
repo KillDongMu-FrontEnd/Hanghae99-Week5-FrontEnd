@@ -11,6 +11,22 @@ export const List = () => {
   // Infinity Scroll
   const [page, setPage] = useState(1);
   const preventRef = useRef(true);
+  const obsRef = useRef(null);
+  const endRef = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
+    if (obsRef.current) observer.observe(obsRef.current);
+    return () => { observer.disconnect(); }
+  }, [])
+
+  const obsHandler = ((entries) => {
+    const target = entries[0];
+    if (!endRef.current && target.isIntersecting && preventRef.current) {
+      preventRef.current = false; // 옵쩌버 중복 실행 방지
+      setPage(prev => prev + 1); // 페이지 값 증가시키기
+    }
+  });
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
