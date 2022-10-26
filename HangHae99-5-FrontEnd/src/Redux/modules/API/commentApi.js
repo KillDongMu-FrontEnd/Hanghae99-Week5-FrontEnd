@@ -24,8 +24,8 @@ export const addCommentApi = async (payload) => {
   //   return response.data;
   // };
 
-  export const delCommentApi = async (comment) => {
-    await axios.delete(`${BASE_URL}/api/boards/comments/delete/${comment.id}`);
+  export const delCommentApi = async (payload) => {
+    await axios.delete(`${BASE_URL}/api/boards/comments/delete/${payload.id}`);
   };
 
   export const editCommentApi = async (edit) => {

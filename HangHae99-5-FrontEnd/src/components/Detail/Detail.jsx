@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { __getBoardId } from "../../Redux/modules/boardSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { __editBoard, __delBoard } from "../../Redux/modules/boardSlice";
-import { __addComment } from "../../Redux/modules/commentSlice";
+import { __addComment, __delComment } from "../../Redux/modules/commentSlice";
 import {
   DetailContainer,
   DetailHeader,
@@ -23,24 +23,27 @@ import {
 
 export const Detail = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // 상세페이지 모든 데이터 값 가져오기
   const boardData = useSelector((state) => state.boards.board);
-  // console.log(boardData)
-  const { title, content, board_id } = boardData;
-  // console.log(board_id)
+  console.log(boardData)
 
+  // 댓글 리스트 아이디 값 불러오기
+  const commentId = boardData.commentIdList
+  console.log(commentId)
+
+  const { title, content } = boardData;
   const commentList = boardData.commentList;
-
+  console.log(commentList);
   const init = {
     title: title,
     content: content
   };
-  // console.log(init)
+
   const [update, setEdit] = useState(init);
-  console.log("에딧", update);
   const [board, setBoard] = useState(false);
 
   const username = localStorage.getItem("username");
@@ -60,10 +63,6 @@ export const Detail = () => {
     e.preventDefault();
     setComment(e.target.value);
   };
-
-  // useEffect(() => {
-  //   setEdit(boardData);
-  // }, [boardData]);
 
   return (
     <DetailContainer>
@@ -150,6 +149,9 @@ export const Detail = () => {
                   onChange={onChangeHandler}
                   readOnly
                 />
+                <button onClick={() => {
+                  dispatch(__delComment(id))
+                }}>버튼임</button>
                 <hr />
               </div>
             );
