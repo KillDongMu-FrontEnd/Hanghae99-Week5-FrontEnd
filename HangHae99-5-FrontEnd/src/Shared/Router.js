@@ -16,7 +16,6 @@ const Router = () => {
         <Route exact path="/login" element={ <Login/> } />
         <Route exact path="/register" element={ <Register/> } />
         <Route exact path="/api/boards/detail/:id" element={ <DetailPage/> } />
-        {/* <Route exact path="/detail/:id" element={ <DetailPage/> } /> */}
         <Route exact path="/form"  element={ <FormPage/> }/>
         <Route exact path="/mypage" element={ <MyPage/> } />
         <Route path="*" element={ <ErrorPage/> } />

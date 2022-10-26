@@ -1,12 +1,16 @@
 import { Logo } from "../components/Logo/Logo";
 import { Header } from "../components/Header/Header";
-import { Form } from "../components/Form/Form"
+import { Form } from "../components/Form/Form";
+import { LoginLogo, LoginLogoOne } from "../components/Login/login.styled";
 
 export const FormPage = () => {
   return(
     <div>
       <Header/>
-      <Logo/>
+      {/* <Logo/> */}
+      <LoginLogo>
+        <LoginLogoOne>OTT_Review_You</LoginLogoOne>
+      </LoginLogo>
       <Form/>
     </div>
   );

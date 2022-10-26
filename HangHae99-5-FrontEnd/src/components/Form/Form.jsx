@@ -18,6 +18,7 @@ import {
   FormFrontTextarea,
 } from "./Form.styled";
 
+
 export const Form = () => {
 
   const dispatch = useDispatch();
@@ -100,12 +101,14 @@ const onSubmitHandler = (e) => {
             type="text"
             autoComplete="off"
             name="title"
+            placeholder="제목을 적어주세요"
             onChange={onChangeHandler}
           />
           <FormFrontTextarea
             type="text"
             autoComplete="off"
             name="content"
+            placeholder="내용을 적어주세요"
             onChange={onChangeHandler}
           />
         </FormFront>

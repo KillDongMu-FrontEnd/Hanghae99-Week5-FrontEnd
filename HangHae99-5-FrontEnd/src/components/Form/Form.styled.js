@@ -34,7 +34,7 @@ export const FormBack = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0.2);
   border-radius: 3px;
 `
 
@@ -66,11 +66,12 @@ export const FormFront = styled.div`
   top: 50%;
   left: 30px;
   width: calc(50% - 30px);
+  height: 40rem;
   min-height: 420px;
-  background-color: white;
-  border: 1px solid #ff4444;
+  background-color: rgba(10,10,10,0.2);
+  /* border: 1px solid #ff4444; */
   border-radius: 3px;
-  box-shadow: 2px 0 15px rgba($black, .25);
+  box-shadow: 2px 0 15px rgba(0,0,0, .25);
   overflow: hidden;
   transform: translate3d(100%, -50%, 0);
   transition: transform .4s ease-in-out;
@@ -79,6 +80,7 @@ export const FormFront = styled.div`
 export const FormFrontTitle = styled.h2`
   font-size: 1.5rem;
   padding: 15px;
+  margin-top: 5rem;
   font-weight: 400;
   line-height: 1em;
   text-transform: uppercase;
@@ -89,22 +91,25 @@ export const FormFrontTitle = styled.h2`
 
 export const FormFrontInput = styled.input`
   padding: 10px;
-  width: 15rem;
-  margin-bottom: 2rem;
+  font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif;
+  width: 50%;
   display: block;
   margin: 0 auto;
   margin-bottom: 3rem;
   outline: none;
-  /* border: none; */
+  border: none;
+  border-bottom: 1px solid #ff4444;
 `
 
 export const FormFrontTextarea = styled.textarea`
+  box-sizing: border-box;
+  font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif;
   padding: 10px;
-  width: 20rem;
-  height: 10rem;
+  width: 70%;
+  height: 12rem;
   display: block;
   margin: 0 auto;
   outline: none;
-  /* background-color: rgba(0, 0, 0, 0.7); */
-  /* border: none; */
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
 `

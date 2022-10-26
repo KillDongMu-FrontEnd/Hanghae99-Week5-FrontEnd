@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 export const MenuToggle = styled.div`
   display: block;
+  margin-top: 2rem;
   top: 3rem;
   left: 3rem;
   position: sticky;
@@ -45,7 +46,7 @@ export const Bar = styled.span`
   margin-bottom: 0.31rem;
   margin-left: 2.5rem;
   position: relative;
-  background: black;
+  background: whitesmoke;
   border-radius: .85rem;
   z-index: 1;
   transform-origin: 0.26rem 0;
