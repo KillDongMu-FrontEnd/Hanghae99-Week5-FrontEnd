@@ -8,6 +8,7 @@ export const DetailContainer = styled.div`
 	height: 80vh;
 	width: 80vw;
 	margin: 0 auto;
+  margin-top: 20rem;
   margin-bottom: 10rem;
 	max-width: 800px;
 `

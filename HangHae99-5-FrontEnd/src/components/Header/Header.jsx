@@ -1,15 +1,16 @@
 import { MenuToggle, Checkbox, Bar, Menu, MenuItem, MenuLink } from "./Header.styled"
-import { __logoutUser } from "../../Redux/modules/loginSlice"
-import { useDispatch } from "react-redux"
+import styled from "styled-components"
 
 export const Header = () => {
 
   const userId = localStorage.getItem("username")
-  const dispatch = useDispatch();
 
-  // const logoutHandler = () => {
-  //   dispatch(__logoutUser());
-  // }
+  const logout = () => {
+    localStorage.removeItem("isLogin")
+    localStorage.removeItem("username")
+    localStorage.removeItem("refreshToken")
+    localStorage.removeItem("authorization")
+  }
 
   return(
     <MenuToggle>
@@ -24,7 +25,11 @@ export const Header = () => {
           {
             userId === null ? 
             <MenuLink to="/login">Log In</MenuLink> : 
-            <p>Log Out</p>
+            <Logout
+              onClick={() => {
+                logout();
+              }}
+            >Log Out</Logout>
           }
         </MenuItem>
         <hr/>
@@ -34,4 +39,8 @@ export const Header = () => {
       </Menu>
     </MenuToggle>
   )
-}
+};
+
+export const Logout = styled.p`
+  cursor: pointer;
+`

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MainContainer, LinkContainer, GoToForm, CardContainer, CardItem, CardItemTitle } from "./List.styled";
-// import "./style.css"
+import styled from "styled-components";
 
 export const List = () => {
 
@@ -18,14 +18,14 @@ export const List = () => {
 
   //슬라이드 불러오기
   const boards = useSelector((state) => state?.boards?.boards);
-  console.log(boards);
+  console.log("asd",boards);
 
 // 만약 데이터가없다면 화면에 띄워줄 메시지
   if (boards.length === 0) {
     return(
-      <div>
+      <StNoBoard>
         <h1>아직 생성한 게시물이 없습니다. 소중한 의견을 남겨주세요.</h1>
-      </div>
+      </StNoBoard>
     ) 
   };
 
@@ -46,11 +46,6 @@ export const List = () => {
               }}>
                 <CardItemTitle>{ board.title }</CardItemTitle>
                 <p>{ board.createdAt }</p>
-                {/* <button onClick={(e)=>{
-                  e.preventDefault();
-                  dispatch(__delBoard(board.id));
-                  dispatch(__getBoard());
-                }}>삭제하기</button> */}
               </CardItem>
             )
           })
@@ -59,3 +54,9 @@ export const List = () => {
     </MainContainer>
   )
 };
+
+export const StNoBoard = styled.div`
+  text-align: center;
+  margin-top: 30rem;
+  color: white;
+`

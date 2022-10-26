@@ -21,6 +21,8 @@ import {
   DetailOptionBtn,
 } from "./Detail.styled";
 
+import styled from "styled-components";
+
 export const Detail = () => {
   const { id } = useParams();
   // console.log(id);
@@ -32,10 +34,10 @@ export const Detail = () => {
   console.log(boardData)
 
   // 댓글 리스트 아이디 값 불러오기
- 
   const { title, content } = boardData;
   const commentList = boardData.commentList;
   console.log(commentList);
+
   const init = {
     title: title,
     content: content
@@ -135,23 +137,23 @@ export const Detail = () => {
       </DetailContent>
 
       <DetailContent>
+        {/* 댓글 리스트 */}
         <DetailComment>
-          {commentList?.map((comment, idx) => {
+          {commentList?.map((comment) => {
             return (
-              <div key={idx}>
+              <DetailCommentItem key={comment?.commetId}>
                 <DetailCommentEditInput
                   type="text"
                   name="comment"
-                  spellcheck={false}
-                  value={comment}
+                  spellcheck={ false }
+                  value={ comment?.comment }
                   onChange={onChangeHandler}
                   readOnly
                 />
-                <button onClick={() => {
+                <DetailCommentItemDel onClick={() => {
                   dispatch(__delComment(id))
-                }}>버튼임</button>
-                <hr />
-              </div>
+                }}>X</DetailCommentItemDel>
+              </DetailCommentItem>
             );
           })}
         </DetailComment>
@@ -176,3 +178,19 @@ export const Detail = () => {
     </DetailContainer>
   );
 };
+
+export const DetailCommentItem = styled.div`
+  display: flex;
+  border-bottom: 1px solid black;
+`
+
+export const DetailCommentItemDel = styled.button`
+  border: none;
+  padding: 1rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: transparent;
+  &:hover {
+    color: #ff4444;
+  }
+`

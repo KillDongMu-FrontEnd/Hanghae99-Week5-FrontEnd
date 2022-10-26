@@ -17,20 +17,6 @@ export const __loginUser = createAsyncThunk(
   }
 );
 
-export const __logoutUser = createAsyncThunk(
-  "logoutUser",
-  async (payload, thunkAPI) => {
-    try {
-      localStorage.removeItem("authorization")
-      localStorage.setItem("refreshToken");
-      localStorage.setItem("username");
-      localStorage.setItem("isLogin");
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-)
-
 export const loginSlice = createSlice({
   name: "loginInfo",
   initialState: {
@@ -44,5 +30,4 @@ export const loginSlice = createSlice({
   }
 });
 
-// export const { loginUser } = loginSlice.actions;
 export default loginSlice.reducer;
