@@ -84,8 +84,8 @@ export const Detail = () => {
   // 좋아요 usestate
   // const [heart, setHeart] = useState(!!boardData.countHeart&&boardData.countHeart);
 
-  const detailImage = boardData.file
-  
+  const detailImage = boardData?.file
+
   return (   
     <DetailContainer>
        
@@ -177,7 +177,7 @@ export const Detail = () => {
         <DetailComment>
           {!!boardData?.commentList && boardData?.commentList?.map((comment) => {
             return (
-              <DetailCommentItem key={comment?.boardData.commetId}>
+              <DetailCommentItem key={comment?.boardData?.commentId}>
                 <DetailCommentEditInput
                   type="text"
                   name="comment"
