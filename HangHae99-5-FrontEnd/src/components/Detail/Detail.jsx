@@ -84,7 +84,7 @@ export const Detail = () => {
   // 좋아요 usestate
   // const [heart, setHeart] = useState(!!boardData.countHeart&&boardData.countHeart);
 
-  const detailImage = boardData.file
+  const detailImage = boardData?.file
 
   return (   
     <DetailContainer>
