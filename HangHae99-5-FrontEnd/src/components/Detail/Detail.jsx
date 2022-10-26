@@ -106,7 +106,7 @@ export const Detail = () => {
           <h1>
             <strong>{boardData?.title}</strong>
           </h1>
-          <DetailAuthor>{!!boardData?.boardData && username}</DetailAuthor>
+          <DetailAuthor>{boardData.username}</DetailAuthor>
         </DetailHeader>
       )}
       <DetailContent>
