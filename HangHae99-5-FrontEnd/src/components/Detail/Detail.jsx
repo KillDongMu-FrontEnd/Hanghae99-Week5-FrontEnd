@@ -85,6 +85,7 @@ export const Detail = () => {
   // const [heart, setHeart] = useState(!!boardData.countHeart&&boardData.countHeart);
 
   const detailImage = boardData?.file
+  const heart = boardData?.heartedUsernameList
 
   return (   
     <DetailContainer>
@@ -156,7 +157,7 @@ export const Detail = () => {
               </DetailOptionBtn>
             </div>
           ) : null}
-          {!!boardData?.countHeart && boardData?.countHeart? (
+          { heart? (
             <span>❤️</span>
           ) : (
             <DetailBsHeart
@@ -166,9 +167,9 @@ export const Detail = () => {
               }}
             />
           )}
-           <DetailBsHeart onClick={()=>{
+           {/* <DetailBsHeart onClick={()=>{
             dispatch(__countHeart(id))
-          }}/>
+          }}/> */}
         </DetailInfo>
       </DetailContent>
 
