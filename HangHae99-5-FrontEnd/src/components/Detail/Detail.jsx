@@ -87,6 +87,7 @@ export const Detail = () => {
   // const [heart, setHeart] = useState(!!boardData.countHeart&&boardData.countHeart);
 
   const detailImage = boardData?.file
+  const heart = boardData?.heartedUsernameList
 
   return (   
     <DetailContainer>
@@ -110,7 +111,7 @@ export const Detail = () => {
         </DetailHeader>
       )}
       <DetailContent>
-        <img src={detailImage} alt="test"/>
+        <ImageSize src={detailImage} alt="test"/>
         <hr />
         {board ? (
           <DetailText>
@@ -123,11 +124,11 @@ export const Detail = () => {
           </DetailText>
         ) : (
           <DetailText>
-            <p>{!!!boardData?.content && boardData?.content}</p>
+            <p>{boardData?.content}</p>
           </DetailText>
         )}
         <DetailInfo>
-          {username === !!boardData?.boardData && username ? (
+          {username === boardData?.username ? (
             <div>
               {board ? (
                 <DetailOptionBtn
@@ -158,7 +159,7 @@ export const Detail = () => {
               </DetailOptionBtn>
             </div>
           ) : null}
-          {!!boardData?.countHeart && boardData?.countHeart? (
+          { heart? (
             <span>❤️</span>
           ) : (
             <DetailBsHeart
@@ -168,6 +169,9 @@ export const Detail = () => {
               }}
             />
           )}
+           {/* <DetailBsHeart onClick={()=>{
+            dispatch(__countHeart(id))
+          }}/> */}
         </DetailInfo>
       </DetailContent>
 
@@ -243,3 +247,9 @@ export const DetailCommentItemDel = styled.button`
     color: #ff4444;
   }
 `;
+
+export const ImageSize = styled.img`
+	height: 500px;
+	width: 500px;
+
+`
