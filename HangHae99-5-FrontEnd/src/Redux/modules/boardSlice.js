@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import{postBoardApi, getBoardApi, delBoardApi, getBoardIdApi, editBoardApi,countHeartApi } from "./API/boardApi"
-import axios from "axios";
 
 
 
