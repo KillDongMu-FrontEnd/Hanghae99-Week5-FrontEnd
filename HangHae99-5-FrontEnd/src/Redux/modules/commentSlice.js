@@ -4,7 +4,6 @@ import { addCommentApi, getCommentApi, delCommentApi, editCommentApi } from "./A
 export const __addComment = createAsyncThunk(
     "addComment",
     async (payload, thunkAPI) => {
-      console.log(payload);
       try{
         const response = await addCommentApi(payload);
         console.log(response)
@@ -30,8 +29,12 @@ export const __addComment = createAsyncThunk(
   export const __delComment = createAsyncThunk(
     "delComment",
     async (payload, thunkAPI) => {
-      await delCommentApi(payload);
-      thunkAPI.dispatch(delComment(payload));
+      try {
+        await delCommentApi(payload);
+        thunkAPI.fulfillWithValue(payload);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error)
+      }
     }
   );
   
@@ -88,47 +91,20 @@ export const __addComment = createAsyncThunk(
       [__addComment.rejectWithValue]: (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      },
+      [__delComment.pending]: (state) => {
+        state.isLoading = true;
+      },
+      [__delComment.fulfilled]: (state, action) => {
+        state.isLoading = false;
+        state.comment = state.comment.filter((item) => 
+        item.id !== action.payload)
+      },
+      [__delComment.rejected]: (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       }
     }
-    // extraReducers: {
-    //     [__getComment.fulfilled]: (state, action) => {
-    //     state.isLoading = false;
-    //     state.comment = action.payload;
-    //     console.log("엑스트랴리듀서")
-    //     },
-    //     [__getComment.rejected]: (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = action.payload;
-    //     },
-    //     [__getComment.pending]: (state) => {
-    //     state.isLoading = true;
-    //     },
-
-
-    //     [__addTodoThunk.pending]: (state) => {
-    //     state.isSuccess = false;
-    //     state.isLoading = true;
-    //     },
-    //     [__addTodoThunk.fulfilled]: (state, action) => {
-    //     state.isSuccess = true;
-    //     state.isLoading = false;
-    //     state.todos.push(action.payload);
-    //     },
-    //     [__addTodoThunk.rejected]: (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = action.payload;
-    //     },
-        
-    //     [__deleteTodoThunk.fulfilled]: (state, action) => {
-    //     const target = state.todos.findIndex(
-    //     (comment) => comment.id === action.payload
-    //     );
-        
-    //     state.todos.splice(target, 1);
-    //     },
-    //     [__deleteTodoThunk.rejected]: () => {},
-    //     [__deleteTodoThunk.pending]: () => {},
-    //     },
   });
   
   export const { addComment, getComment, delComment, editComment } = commentSlice.actions;
