@@ -1,13 +1,24 @@
 {
-  "members":[],
-  "boards":[
+  "memberList": [
     {
-      "id":1,
-      "title": "제목입니다.",
-      "content": "내용입니다.",
-      "createdAt": "2022-10-21"
+      "id": 1,
+      "username": "김성호",
+      "password": "1234",
+      "email": "ksh_1035@naver.com",
+      "createAt": "2022-10-23"
+    },
+    {
+      "email": "v_vsoi@naver.com",
+      "username": "임소희",
+      "password": "1234",
+      "passwordConfirm": "1234",
+      "createAt": "2022-10-24",
+      "id": 2
     }
   ],
-  "comments":[],
-  "hearts": []
+  "commentList": [],
+  "boardList": [
+  ],
+  "hearts": [],
+  "file": []
 }

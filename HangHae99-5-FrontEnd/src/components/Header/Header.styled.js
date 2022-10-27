@@ -1,22 +1,23 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export const MenuToggle = styled.div`
   display: block;
-  position: relative;
-  top: 3rem;
-  left: 3rem;
-  position: sticky;
+  margin-top: 2rem;
+  top: 2rem;
+  left: 2rem;
+  position: fixed;
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
 `
 export const Checkbox = styled.input`
   display: block;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 4rem;
+  height: 4rem;
   position: absolute;
-  top: -0.2rem;
-  left: -0.2rem;
+  top: -1.5rem;
+  left: 1.5rem;
   cursor: pointer;
   opacity: 0;
   z-index: 5;
@@ -43,9 +44,9 @@ export const Bar = styled.span`
   width: 2.15rem;
   height: .26rem;
   margin-bottom: 0.31rem;
-  margin-left: 20px;
+  margin-left: 2.5rem;
   position: relative;
-  background: black;
+  background: whitesmoke;
   border-radius: .85rem;
   z-index: 1;
   transform-origin: 0.26rem 0;
@@ -60,10 +61,10 @@ export const Menu = styled.ul`
   position: absolute;
   width: 10rem;
   height: 50rem;
-  margin: -3rem 0 0 -.5rem;
+  margin: -6rem 0 0 -2rem;
   padding: 50px;
   padding-top: 125px;
-  background: gray;
+  background: #bd2424;
   list-style: none;
   overflow: scroll;
   -ms-overflow-style: none;
@@ -77,7 +78,17 @@ export const Menu = styled.ul`
 `
 
 export const MenuItem = styled.li`
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   padding: 10px 0;
   font-size: 2rem;
-  font-weight: 300;
+  font-weight: 400;
+  color: white;
+  transition: all 0.3s;
+  &:hover {
+    transform: translateX(10%);
+  }
+`
+export const MenuLink = styled(Link)`
+  text-decoration: none;
+  color: white;
 `

@@ -1,8 +1,9 @@
 import { Header } from "../components/Header/Header";
-import { List } from "../components/List/List";
+import { Logo } from "../components/Logo/Logo";
+import { Detail } from "../components/Detail/Detail";
 import { LoginLogo, LoginLogoOne } from "../components/Login/login.styled";
 
-export const MainPage = () => {
+export const DetailPage = () => {
   return(
     <div>
       <Header/>
@@ -10,7 +11,7 @@ export const MainPage = () => {
       <LoginLogo>
         <LoginLogoOne>OTT_Review_You</LoginLogoOne>
       </LoginLogo>
-      <List/>
+      <Detail/>
     </div>
-  )
-}
+  );
+};

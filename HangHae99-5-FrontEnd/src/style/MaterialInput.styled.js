@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const FormInput = styled.input`
-  font-size: 18px;
+  font-size: 14px;
   padding: 10px 10px 10px 5px;
   display: block;
-  width: 300px;
+  width: 200px;
+  margin: 0 auto;
   border: none;
   border-bottom: 1px solid tomato;
+  background: transparent;
   &:focus {
     outline: none;
   }

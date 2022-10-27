@@ -1,9 +1,11 @@
-import { MainPage } from "./pages/MainPage"
+import Router from "./Shared/Router";
+import GlobalStyle from "./Theme/GlobalStyle";
 
 function App() {
   return (
     <div className="App">
-      <MainPage/>
+      <GlobalStyle/>
+      <Router/>
     </div>
   );
 }
