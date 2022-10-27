@@ -5,6 +5,7 @@ import { __getMyPageId } from "../../Redux/modules/mypageSlice";
 export const MyPageList = () => {
   const username = localStorage.getItem("username");
   const dispatch = useDispatch();
+  
 
   useEffect(()=>{
      dispatch(__getMyPageId(username))
