@@ -5,7 +5,6 @@ import { MainPage } from "../pages/MainPage"
 import { FormPage } from "../pages/FormPage";
 import { DetailPage } from "../pages/DetailPage";
 import { ErrorPage } from "../pages/ErrorPage";
-import { MyPage } from "../pages/MyPage";
 
 
 const Router = () => {
@@ -17,7 +16,6 @@ const Router = () => {
         <Route exact path="/register" element={ <Register/> } />
         <Route exact path="/api/boards/detail/:id" element={ <DetailPage/> } />
         <Route exact path="/form"  element={ <FormPage/> }/>
-        <Route exact path="/mypage" element={ <MyPage/> } />
         <Route path="*" element={ <ErrorPage/> } />
       </Routes>
     </BrowserRouter>
