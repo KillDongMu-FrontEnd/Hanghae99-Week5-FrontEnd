@@ -45,7 +45,6 @@ export const Detail = () => {
   const [board, setBoard] = useState(false);
 
   const username = localStorage.getItem("username");
-  const token = localStorage.getItem("authorization");
 
   useEffect(() => {
     dispatch(__getBoardId(id));
