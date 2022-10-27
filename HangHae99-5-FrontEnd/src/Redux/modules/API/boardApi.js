@@ -1,26 +1,8 @@
 import axios from "axios";
-import { useRef } from "react";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 const accessToken = localStorage.getItem("authorization");
 const refreshToken = localStorage.getItem("refreshToken");
-
-// const instance = axios.create({
-//   BASE_URL: process.env.REACT_APP_SERVER,
-// });
-
-// instance.interceptors.request.use(config => {
-//   config.headers["Content-Type"] = "multipart/form-data";
-//   return config;
-// });
-
-//     .post(`${BASE_URL}/api/boards/create`, frm, {
-//       headers: {
-//         Authorization: accessToken,
-//         "Refresh-Token": refreshToken,
-//         "Content-Type": "multipart/form-data",
-//       },
-//     })
 
 // 게시글 작성하는 api(동작함)
 export const postBoardApi = async (payload) => {

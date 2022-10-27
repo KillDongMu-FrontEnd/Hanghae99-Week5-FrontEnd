@@ -71,7 +71,7 @@ export const Detail = () => {
     }
   }, [boardData]);
 
-  console.log(boardData);
+  // console.log(boardData);
   const amILoved = boardData?.heartedUsernameList.includes(username)
 
   // 좋아요 usestate
