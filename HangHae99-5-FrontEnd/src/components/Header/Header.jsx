@@ -42,7 +42,6 @@ export const Header = () => {
             userId !== null ? 
             <div>
               <MenuItem><MenuLink to="/form">Posting</MenuLink></MenuItem>
-              <MenuItem><MenuLink to="/mypage">My Page</MenuLink></MenuItem>
             </div>
             : 
             null
